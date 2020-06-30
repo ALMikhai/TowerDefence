@@ -16,7 +16,21 @@ _global_script_class_icons={
 [application]
 
 config/name="TowerDefence"
+run/main_scene="res://Scens/TestScene.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[mono]
+
+debugger_agent/wait_for_debugger=true
 
 [rendering]
 
