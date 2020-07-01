@@ -29,3 +29,6 @@ public class Enemy : Area2D
 
 [node name="Enemy" instance=ExtResource( 1 )]
 script = SubResource( 1 )
+
+[node name="AtackTimer" type="Timer" parent="." index="2"]
+[connection signal="timeout" from="AtackTimer" to="." method="OnAtackTimerTimeout"]
