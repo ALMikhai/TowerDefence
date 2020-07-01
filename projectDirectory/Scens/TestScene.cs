@@ -5,7 +5,7 @@ public class TestScene : Node
 {
     [Export]
     public PackedScene Enemy;
-    private Position2D _target;
+    protected Position2D _target;
 
     public override void _Ready()
     {
@@ -23,7 +23,6 @@ public class TestScene : Node
         }
     }
 
-    //  // Called every frame. 'delta' is the elapsed time since the previous frame.
     //  public override void _Process(float delta)
     //  {
     //      

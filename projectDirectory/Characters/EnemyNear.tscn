@@ -1,6 +1,6 @@
 [gd_scene load_steps=65 format=2]
 
-[ext_resource path="res://Characters/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Characters/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/EnemyAnimation/1/Walk/0_Warrior_Run_009.png" type="Texture" id=2]
 [ext_resource path="res://Assets/EnemyAnimation/1/Walk/0_Warrior_Run_005.png" type="Texture" id=3]
 [ext_resource path="res://Assets/EnemyAnimation/1/Walk/0_Warrior_Run_002.png" type="Texture" id=4]
@@ -61,31 +61,7 @@
 [ext_resource path="res://Assets/EnemyAnimation/1/Atack/0_Warrior_Attack_2_003.png" type="Texture" id=59]
 [ext_resource path="res://Assets/EnemyAnimation/1/Atack/0_Warrior_Attack_2_002.png" type="Texture" id=60]
 [ext_resource path="res://Assets/EnemyAnimation/1/Atack/0_Warrior_Attack_2_008.png" type="Texture" id=61]
-
-[sub_resource type="CSharpScript" id=3]
-resource_name = "EnemyNear"
-script/source = "using Godot;
-using System;
-
-public class EnemyNear : Area2D
-{
-    // Declare member variables here. Examples:
-    // private int a = 2;
-    // private string b = \"text\";
-
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
-    {
-        
-    }
-
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
-}
-"
+[ext_resource path="res://Characters/EnemyNear.cs" type="Script" id=62]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -105,19 +81,17 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 161.078, 288.36 )
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 136.485
+height = 257.709
 
 [node name="EnemyNear" instance=ExtResource( 1 )]
 scale = Vector2( 0.2, 0.2 )
-script = SubResource( 3 )
+script = ExtResource( 62 )
 
 [node name="AnimatedSprite" parent="." index="0"]
 frames = SubResource( 1 )
-animation = "Walk"
-frame = 14
-speed_scale = 2.0
-playing = true
+animation = "Atack"
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource( 2 )
