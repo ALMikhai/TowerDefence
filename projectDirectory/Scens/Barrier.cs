@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class Barrier : Area2D
+public class Barrier : StaticBody2D
 {
     [Signal]
     public delegate void Broken();
@@ -28,9 +28,4 @@ public class Barrier : Area2D
     {
         _brokenTimer = GetNode<Timer>("BrokenTimer");
     }
-
-    //  public override void _Process(float delta)
-    //  {
-    //      
-    //  }
 }

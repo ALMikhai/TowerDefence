@@ -1,10 +1,10 @@
 using Godot;
 using System;
 
-public class Enemy : Area2D
+public class Enemy : Character
 {
     [Export]
-    public int Speed = 100;
+    public int Speed = 7000;
     [Export]
     public float Damage = 25f;
     private Barrier _target;
@@ -30,12 +30,12 @@ public class Enemy : Area2D
     public override void _Process(float delta)
     {
         var velocity = _target.Position - Position;
-        if (velocity.Length() > 10)
+        if (velocity.Length() > 80)
         {
             _atackTimer.Stop();
             _animatedSprite.Animation = "Walk";
             _animatedSprite.Play();
-            Position += velocity.Normalized() * Speed * delta;
+            LinearVelocity = velocity.Normalized() * Speed * delta;
         }
         else
         {
@@ -43,6 +43,7 @@ public class Enemy : Area2D
                 _atackTimer.Start();
             _animatedSprite.Animation = "Atack";
             _animatedSprite.Play();
+            LinearVelocity = Vector2.Zero;
         }
     }
 }

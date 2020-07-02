@@ -4,10 +4,10 @@
 [ext_resource path="res://Scens/Barrier.cs" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 45.754
-height = 53.7066
+radius = 30.7538
+height = 35.5939
 
-[node name="Barrier" type="Area2D"]
+[node name="Barrier" type="StaticBody2D"]
 rotation = 0.675442
 script = ExtResource( 2 )
 

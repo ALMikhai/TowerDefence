@@ -1,6 +1,16 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
 
-[node name="Character" type="Area2D"]
+[ext_resource path="res://Characters/Character.cs" type="Script" id=1]
+
+[sub_resource type="PhysicsMaterial" id=1]
+friction = 0.0
+
+[node name="Character" type="RigidBody2D"]
+mode = 2
+physics_material_override = SubResource( 1 )
+gravity_scale = 0.0
+contacts_reported = 1
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
