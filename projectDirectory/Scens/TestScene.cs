@@ -41,9 +41,9 @@ public class TestScene : Node
         if (@event is InputEventScreenTouch eventScreenTouch && eventScreenTouch.Pressed)
         {
             var newEnemy = (EnemyNear)Enemy.Instance();
+            AddChild(newEnemy);
             newEnemy.Position = eventScreenTouch.Position;
             newEnemy.SetTarget(_target);
-            AddChild(newEnemy);
         }
     }
 
