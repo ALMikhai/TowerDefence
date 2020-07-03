@@ -82,8 +82,8 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 13.7847
-height = 15.7968
+radius = 11.3783
+height = 14.1138
 
 [node name="EnemyNear" groups=[
 "Enemy",
@@ -95,9 +95,9 @@ script = ExtResource( 62 )
 scale = Vector2( 0.1, 0.1 )
 frames = SubResource( 1 )
 animation = "Walk"
-frame = 10
 speed_scale = 2.0
 playing = true
 
 [node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( 0, 10 )
 shape = SubResource( 2 )

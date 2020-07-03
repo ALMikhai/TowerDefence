@@ -1,5 +1,44 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Characters/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Defender/Atack/5_ATTACK_001.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Defender/Atack/5_ATTACK_002.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Defender/Atack/5_ATTACK_004.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Defender/Atack/5_ATTACK_000.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Defender/Idle/1_IDLE_004.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Defender/Idle/1_IDLE_001.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Defender/Idle/1_IDLE_002.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Defender/Idle/1_IDLE_003.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Defender/Atack/5_ATTACK_003.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Defender/Idle/1_IDLE_000.png" type="Texture" id=11]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 11 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 10 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Atack",
+"speed": 4.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 19.6639
 
 [node name="Defender" instance=ExtResource( 1 )]
+script = null
+
+[node name="AnimatedSprite" parent="." index="0"]
+scale = Vector2( 0.3, 0.3 )
+frames = SubResource( 1 )
+animation = "Atack"
+frame = 2
+speed_scale = 2.0
+playing = true
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( 0, 15 )
+shape = SubResource( 2 )

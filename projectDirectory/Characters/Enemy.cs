@@ -6,11 +6,11 @@ public class Enemy : Character
     [Export]
     public int Speed = 7000;
     [Export]
-    public float Damage = 25f;
-    private Barrier _target;
+    public int Damage = 25;
+    private HealthNode _target;
     private AnimatedSprite _animatedSprite;
 
-    public void SetTarget(Barrier target)
+    public void SetTarget(HealthNode target)
     {
         _target = target;
         _animatedSprite.Animation = "Walk";
@@ -30,7 +30,7 @@ public class Enemy : Character
 
     public override void _Process(float delta)
     {
-        var velocity = _target.Position - Position;
+        var velocity = _target.GlobalPosition - Position;
         if (velocity.Length() > 80)
         {
             _animatedSprite.Animation = "Walk";

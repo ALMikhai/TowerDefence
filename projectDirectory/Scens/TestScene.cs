@@ -28,7 +28,7 @@ public class TestScene : Node
         {
             _target = _targets.Dequeue();
             _target.Connect("Broken", this, nameof(_SetTarget));
-            GetTree().CallGroup("Enemy", "SetTarget", _target);
+            GetTree().CallGroup("Enemy", "SetTarget", (HealthNode)_target.GetNode<HealthNode>("Hp"));
         }
         else
         {
@@ -43,7 +43,7 @@ public class TestScene : Node
             var newEnemy = (EnemyNear)Enemy.Instance();
             AddChild(newEnemy);
             newEnemy.Position = eventScreenTouch.Position;
-            newEnemy.SetTarget(_target);
+            newEnemy.SetTarget((HealthNode)_target.GetNode<HealthNode>("Hp"));
         }
     }
 
