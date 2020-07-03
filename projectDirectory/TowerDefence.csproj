@@ -57,12 +57,12 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Characters\Character.cs" />
-    <Compile Include="Characters\DamageNode.cs" />
-    <Compile Include="Characters\Enemy.cs" />
-    <Compile Include="Characters\EnemyNear.cs" />
-    <Compile Include="Characters\Fireball.cs" />
-    <Compile Include="Characters\HealthNode.cs" />
+    <Compile Include="Scens\Character.cs" />
+    <Compile Include="Scens\DamageNode.cs" />
+    <Compile Include="Scens\Enemy.cs" />
+    <Compile Include="Scens\EnemyNear.cs" />
+    <Compile Include="Scens\Fireball.cs" />
+    <Compile Include="Scens\HealthNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scens\Barrier.cs" />
     <Compile Include="Scens\TestScene.cs" />
