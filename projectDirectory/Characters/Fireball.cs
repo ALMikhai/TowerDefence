@@ -3,18 +3,35 @@ using System;
 
 public class Fireball : Node2D
 {
-    private HealthNode _target;
-    public void SetTarget(HealthNode healthNode) {
-        _target = healthNode;
-    }
+    [Export]
+    public int Speed = 100;
+
+    private DamageNode _damageNode;
+
     public override void _Ready()
     {
-        
+        _damageNode = GetNode<DamageNode>("DamageNode");
     }
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
+    public override void _Process(float delta)
+    {
+        var target = _damageNode.GetTarget();
+        try
+        {
+            var velocity = target.GlobalPosition - Position;
+            if (velocity.Length() > 10)
+            {
+                Position += velocity.Normalized() * Speed * delta;
+            }
+            else
+            {
+                _damageNode.TakeDamage();
+                QueueFree();
+            }
+        }
+        catch
+        {
+            QueueFree();
+        }
+    }
 }

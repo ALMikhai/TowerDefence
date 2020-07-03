@@ -43,7 +43,7 @@ public class TestScene : Node
             var newEnemy = (EnemyNear)Enemy.Instance();
             AddChild(newEnemy);
             newEnemy.Position = eventScreenTouch.Position;
-            newEnemy.SetTarget((HealthNode)_target.GetNode<HealthNode>("Hp"));
+            newEnemy.GetNode<DamageNode>("DamageNode").SetTarget((HealthNode)_target.GetNode<HealthNode>("Hp"));
         }
     }
 

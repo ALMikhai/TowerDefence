@@ -8,7 +8,8 @@ public class Barrier : StaticBody2D
     private HealthNode _hp;
     private Timer _brokenTimer;
 
-    public void OnDeath() {
+    public void OnDeath()
+    {
         EmitSignal(nameof(Broken));
         _brokenTimer.Start();
     }

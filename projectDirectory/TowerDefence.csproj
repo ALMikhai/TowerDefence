@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Characters\Character.cs" />
+    <Compile Include="Characters\DamageNode.cs" />
     <Compile Include="Characters\Enemy.cs" />
     <Compile Include="Characters\EnemyNear.cs" />
     <Compile Include="Characters\Fireball.cs" />

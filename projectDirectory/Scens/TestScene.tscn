@@ -1,9 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Characters/EnemyNear.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scens/Barrier.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Characters/Defender.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Characters/Fireball.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CSharpScript" id=1]
 resource_name = "TestScene"
@@ -46,9 +44,3 @@ position = Vector2( 332.619, 459.871 )
 
 [node name="BarrierPos3" type="Position2D" parent="."]
 position = Vector2( 94.4941, 199.068 )
-
-[node name="Defender" parent="." instance=ExtResource( 3 )]
-position = Vector2( 114.289, 599.951 )
-
-[node name="Fireball" parent="." instance=ExtResource( 4 )]
-position = Vector2( 238.143, 583.721 )

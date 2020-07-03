@@ -17,7 +17,6 @@ __meta__ = {
 
 [node name="Hp" parent="." instance=ExtResource( 3 )]
 rotation = 2.98023e-08
-scale = Vector2( 1, 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 rotation = -1.01578
@@ -27,6 +26,7 @@ texture = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="BrokenTimer" type="Timer" parent="."]
+wait_time = 0.001
 one_shot = true
 [connection signal="Death" from="Hp" to="." method="OnDeath"]
 [connection signal="timeout" from="BrokenTimer" to="." method="OnBrokenTimerTimeout"]
