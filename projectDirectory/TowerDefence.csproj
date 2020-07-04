@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Scens\Character.cs" />
     <Compile Include="Scens\DamageNode.cs" />
+    <Compile Include="Scens\Defender.cs" />
     <Compile Include="Scens\Enemy.cs" />
     <Compile Include="Scens\EnemyNear.cs" />
     <Compile Include="Scens\Fireball.cs" />

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scens/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Defender/Atack/5_ATTACK_001.png" type="Texture" id=2]
@@ -11,7 +11,8 @@
 [ext_resource path="res://Assets/Defender/Idle/1_IDLE_003.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Defender/Atack/5_ATTACK_003.png" type="Texture" id=10]
 [ext_resource path="res://Assets/Defender/Idle/1_IDLE_000.png" type="Texture" id=11]
-
+[ext_resource path="res://Scens/Defender.cs" type="Script" id=12]
+[ext_resource path="res://Scens/Fireball.tscn" type="PackedScene" id=13]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -30,16 +31,18 @@ animations = [ {
 radius = 19.6639
 
 [node name="Defender" instance=ExtResource( 1 )]
-script = null
+script = ExtResource( 12 )
+Shell = ExtResource( 13 )
 
 [node name="AnimatedSprite" parent="." index="0"]
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 1 )
-animation = "Atack"
-frame = 2
+animation = "Idle"
+frame = 1
 speed_scale = 2.0
 playing = true
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2( 0, 15 )
 shape = SubResource( 2 )
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="OnAnimatedSpriteAnimationFinished"]

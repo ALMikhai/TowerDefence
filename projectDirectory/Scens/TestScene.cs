@@ -7,8 +7,8 @@ public class TestScene : Node
     public PackedScene Enemy;
     [Export]
     public PackedScene Barrier;
-    private Queue<Barrier> _targets = new Queue<Barrier>();
-    private Barrier _target;
+    private Queue<Barrier> _barriers = new Queue<Barrier>();
+    private Barrier _barrierNow;
 
     public override void _Ready()
     {
@@ -17,18 +17,18 @@ public class TestScene : Node
             var newBarrier = (Barrier)Barrier.Instance();
             newBarrier.Position = GetNode<Position2D>($"BarrierPos{i}").Position;
             AddChild(newBarrier);
-            _targets.Enqueue(newBarrier);
+            _barriers.Enqueue(newBarrier);
         }
         _SetTarget();
     }
 
     private void _SetTarget()
     {
-        if (_targets.Count > 0)
+        if (_barriers.Count > 0)
         {
-            _target = _targets.Dequeue();
-            _target.Connect("Broken", this, nameof(_SetTarget));
-            GetTree().CallGroup("Enemy", "SetTarget", (HealthNode)_target.GetNode<HealthNode>("Hp"));
+            _barrierNow = _barriers.Dequeue();
+            _barrierNow.Connect("Broken", this, nameof(_SetTarget));
+            GetTree().CallGroup("Enemy", "SetTarget", (HealthNode)_barrierNow.GetNode<HealthNode>("Hp"));
         }
         else
         {
@@ -43,7 +43,7 @@ public class TestScene : Node
             var newEnemy = (EnemyNear)Enemy.Instance();
             AddChild(newEnemy);
             newEnemy.Position = eventScreenTouch.Position;
-            newEnemy.GetNode<DamageNode>("DamageNode").SetTarget((HealthNode)_target.GetNode<HealthNode>("Hp"));
+            newEnemy.GetNode<DamageNode>("DamageNode").SetTarget((HealthNode)_barrierNow.GetNode<HealthNode>("Hp"));
         }
     }
 

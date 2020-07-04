@@ -1,18 +1,43 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scens/DamageNode.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scens/Fireball.cs" type="Script" id=2]
-[ext_resource path="res://Assets/Fireball/bubble_explo2.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Fireball/Default/1.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Fireball/Default/3.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Fireball/Default/4.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Fireball/Default/2.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Fireball/Falling/1.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Fireball/Falling/3.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Fireball/Falling/2.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Fireball/Falling/5.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Fireball/Falling/4.png" type="Texture" id=11]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "Default",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "Falling",
+"speed": 7.0
+} ]
 
 [node name="Fireball" type="Node2D"]
-scale = Vector2( 0.15, 0.15 )
+scale = Vector2( 1.5, 1.5 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
+Speed = 600
 
-[node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 13, 13 )
-texture = ExtResource( 3 )
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "Default"
+frame = 2
+playing = true
 
 [node name="DamageNode" parent="." instance=ExtResource( 1 )]
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="OnAnimatedSpriteAnimationFinished"]

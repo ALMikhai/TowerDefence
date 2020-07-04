@@ -17,6 +17,9 @@ public class HealthNode : Node2D
     {
         _hp -= damage;
         if (_hp <= 0)
+        {
             EmitSignal(nameof(Death));
+            QueueFree();
+        }
     }
 }
