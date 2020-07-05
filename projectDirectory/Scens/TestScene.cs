@@ -9,6 +9,7 @@ public class TestScene : Node
     public PackedScene Barrier;
     private Queue<Barrier> _barriers = new Queue<Barrier>();
     private Barrier _barrierNow;
+    private HealthNode _barrierHelthNode;
 
     public override void _Ready()
     {
@@ -28,7 +29,8 @@ public class TestScene : Node
         {
             _barrierNow = _barriers.Dequeue();
             _barrierNow.Connect("Broken", this, nameof(_SetTarget));
-            GetTree().CallGroup("Enemy", "SetTarget", (HealthNode)_barrierNow.GetNode<HealthNode>("Hp"));
+            _barrierHelthNode = (HealthNode)_barrierNow.GetNode<HealthNode>("HealthNode");
+            GetTree().CallGroup("Enemy", "SetTarget", _barrierHelthNode);
         }
         else
         {
@@ -43,7 +45,7 @@ public class TestScene : Node
             var newEnemy = (EnemyNear)Enemy.Instance();
             AddChild(newEnemy);
             newEnemy.Position = eventScreenTouch.Position;
-            newEnemy.GetNode<DamageNode>("DamageNode").SetTarget((HealthNode)_barrierNow.GetNode<HealthNode>("Hp"));
+            newEnemy.GetNode<DamageNode>("DamageNode").SetTarget(_barrierHelthNode);
         }
     }
 

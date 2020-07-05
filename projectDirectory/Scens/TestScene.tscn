@@ -47,4 +47,10 @@ position = Vector2( 332.619, 459.871 )
 position = Vector2( 94.4941, 199.068 )
 
 [node name="Defender" parent="." instance=ExtResource( 3 )]
-position = Vector2( 68.9221, 74.9152 )
+position = Vector2( 85.6793, 85.2098 )
+
+[node name="Defender2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 70.7605, 622.697 )
+
+[node name="Defender3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 66.2707, 438.613 )

@@ -1,38 +1,32 @@
 using Godot;
 using System;
 
-public class Defender : RigidBody2D
+public class Defender : Character
 {
     [Export]
     public PackedScene Shell;
-    private AnimatedSprite _animatedSprite;
-
-    public void OnAnimatedSpriteAnimationFinished()
+    private HealthNode _target;
+    public override void Atack()
     {
-        if (_animatedSprite.Animation == "Atack")
-        {
-            var target = (HealthNode)GetTree().GetNodesInGroup("EnemyBody")[0];
-            var fireBall = (Fireball)Shell.Instance();
-            var damageNode = fireBall.GetNode<DamageNode>("DamageNode");
-            damageNode.SetTarget(target);
-            AddChild(fireBall);
-        }
+        if (_target == null)
+            return;
+        var fireBall = (Fireball)Shell.Instance();
+        var damageNode = fireBall.GetNode<DamageNode>("DamageNode");
+        damageNode.SetTarget(_target);
+        AddChild(fireBall);
     }
 
-    public override void _Ready()
+    public override void Process(float delta)
     {
-        _animatedSprite = GetNode<AnimatedSprite>("AnimatedSprite");
-    }
-
-    public override void _Process(float delta)
-    {
-        if (GetTree().GetNodesInGroup("EnemyBody").Count == 0)
+        var enemies = GetTree().GetNodesInGroup("EnemyBody");
+        if (enemies.Count == 0)
         {
-            _animatedSprite.Animation = "Idle";
+            _animatedSprite.Animation = _getAnimation(Animations.IDLE);
         }
         else
         {
-            _animatedSprite.Animation = "Atack";
+            _target = (HealthNode)enemies[0];
+            _animatedSprite.Animation = _getAnimation(Animations.ATACK);
         }
     }
 }
