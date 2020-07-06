@@ -7,6 +7,8 @@ public class TestScene : Node
     public PackedScene Enemy;
     [Export]
     public PackedScene Barrier;
+    [Signal]
+    public delegate void EnemiesUpdeted();
     private Queue<Barrier> _barriers = new Queue<Barrier>();
     private Barrier _barrierNow;
     private HealthNode _barrierHelthNode;
@@ -42,15 +44,17 @@ public class TestScene : Node
     {
         if (@event is InputEventScreenTouch eventScreenTouch && eventScreenTouch.Pressed)
         {
-            var newEnemy = (EnemyNear)Enemy.Instance();
+            var newEnemy = (Character)Enemy.Instance();
             AddChild(newEnemy);
             newEnemy.Position = eventScreenTouch.Position;
             newEnemy.GetNode<DamageNode>("DamageNode").SetTarget(_barrierHelthNode);
+            EmitEnemiesUpdeted();
+            newEnemy.Connect(nameof(EnemyNear.Death), this, nameof(EmitEnemiesUpdeted));
         }
     }
 
-    //  public override void _Process(float delta)
-    //  {
-    //      
-    //  }
+    private void EmitEnemiesUpdeted()
+    {
+        EmitSignal(nameof(EnemiesUpdeted));
+    }
 }

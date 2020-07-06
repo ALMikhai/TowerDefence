@@ -7,9 +7,11 @@ public class DamageNode : Node2D
     public int Damage = 25;
     private HealthNode _target;
 
-    public void SetTarget(HealthNode healthNode)
+    public void SetTarget(HealthNode target)
     {
-        _target = healthNode;
+        if (target == null)
+            throw new NullReferenceException();
+        _target = target;
     }
 
     public HealthNode GetTarget()
@@ -17,8 +19,8 @@ public class DamageNode : Node2D
         return _target;
     }
 
-    public void TakeDamage()
+    public void ApplyDamage()
     {
-        _target.Hit(Damage);
+        _target.GetDamage(Damage);
     }
 }

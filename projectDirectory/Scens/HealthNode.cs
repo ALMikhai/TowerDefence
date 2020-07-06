@@ -13,7 +13,7 @@ public class HealthNode : Node2D
         _hp = hp;
     }
 
-    public void Hit(int damage)
+    public void GetDamage(int damage)
     {
         _hp -= damage;
         if (_hp <= 0)

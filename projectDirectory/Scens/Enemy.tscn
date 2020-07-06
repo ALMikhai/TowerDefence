@@ -37,4 +37,3 @@ script = SubResource( 1 )
 [node name="HealthNode" parent="." index="3" groups=[
 "EnemyBody",
 ]]
-[connection signal="Death" from="HealthNode" to="." method="OnDeath"]

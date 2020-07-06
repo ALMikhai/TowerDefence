@@ -37,7 +37,7 @@ public class Fireball : Node2D
                 }
                 else
                 {
-                    _damageNode.TakeDamage();
+                    _damageNode.ApplyDamage();
                     QueueFree();
                 }
             }

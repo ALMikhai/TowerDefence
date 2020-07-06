@@ -1,22 +1,17 @@
 using Godot;
 using System;
+using projectDirectory.Scens;
 
 public class Character : RigidBody2D
 {
-    protected enum Animations : int
-    {
-        ATACK = 0,
-        DEATH = 1,
-        WALK = 2,
-        IDLE = 3
-    };
-
     protected AnimatedSprite _animatedSprite;
     protected DamageNode _damageNode;
     protected HealthNode _healthNode;
+
     private bool _isDead = false;
 
-    private string[] _animationsNames = { "Atack", "Death", "Walk", "Idle" };
+    [Signal]
+    public delegate void Death();
 
     public override void _Ready()
     {
@@ -32,26 +27,26 @@ public class Character : RigidBody2D
         Process(delta);
     }
 
-    public virtual void Atack() { }
-    public virtual void OnAnimationFinished() { }
-    public virtual void Process(float delta) { }
-    public virtual void OnDeath()
-    {
-        _isDead = true;
-    }
-
-    protected string _getAnimation(Animations animation) => _animationsNames[(int)animation];
-
-    private void _onDeath()
+    private void _OnDeath()
     {
         OnDeath();
+        EmitSignal(nameof(Death));
     }
-    private void _onAnimatedSpriteAnimationFinished()
+
+    private void _OnAnimationFinished()
     {
         OnAnimationFinished();
-        if (_animatedSprite.Animation == _getAnimation(Animations.ATACK))
+        if (_animatedSprite.Animation == CharacterAnimationNames.GetAnimation(Names.ATACK))
             Atack();
-        if (_animatedSprite.Animation == _getAnimation(Animations.DEATH))
+        if (_animatedSprite.Animation == CharacterAnimationNames.GetAnimation(Names.DEATH))
             QueueFree();
+    }
+
+    protected virtual void Atack() { }
+    protected virtual void OnAnimationFinished() { }
+    protected virtual void Process(float delta) { }
+    protected virtual void OnDeath()
+    {
+        _isDead = true;
     }
 }

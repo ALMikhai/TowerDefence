@@ -1,15 +1,16 @@
 using Godot;
 using System;
+using projectDirectory.Scens;
 
 public class Enemy : Character
 {
     [Export]
     public int Speed = 7000;
 
-    public override void OnDeath()
+    protected override void OnDeath()
     {
         base.OnDeath();
-        _animatedSprite.Animation = _getAnimation(Animations.DEATH);
+        _animatedSprite.Animation = CharacterAnimationNames.GetAnimation(Names.DEATH);
         LinearVelocity = Vector2.Zero;
         GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
     }

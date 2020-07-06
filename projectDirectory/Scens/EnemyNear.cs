@@ -1,25 +1,26 @@
 using Godot;
 using System;
+using projectDirectory.Scens;
 
 public class EnemyNear : Enemy
 {
-    public override void Atack()
+    protected override void Atack()
     {
-        _damageNode.TakeDamage();
+        _damageNode.ApplyDamage();
     }
 
-    public override void Process(float delta)
+    protected override void Process(float delta)
     {
         var target = _damageNode.GetTarget();
         var velocity = target.GlobalPosition - Position;
         if (velocity.Length() > 80)
         {
-            _animatedSprite.Animation = _getAnimation(Animations.WALK);
+            _animatedSprite.Animation = CharacterAnimationNames.GetAnimation(Names.WALK);
             LinearVelocity = velocity.Normalized() * Speed * delta;
         }
         else
         {
-            _animatedSprite.Animation = _getAnimation(Animations.ATACK);
+            _animatedSprite.Animation = CharacterAnimationNames.GetAnimation(Names.ATACK);
             LinearVelocity = Vector2.Zero;
         }
     }

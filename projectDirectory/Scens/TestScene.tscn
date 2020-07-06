@@ -54,3 +54,6 @@ position = Vector2( 70.7605, 622.697 )
 
 [node name="Defender3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 66.2707, 438.613 )
+[connection signal="EnemiesUpdeted" from="." to="Defender2" method="_OnEnemiesUpdeted"]
+[connection signal="EnemiesUpdeted" from="." to="Defender" method="_OnEnemiesUpdeted"]
+[connection signal="EnemiesUpdeted" from="." to="Defender3" method="_OnEnemiesUpdeted"]
