@@ -52,12 +52,12 @@ public class Character : RigidBody2D
     {
         OnAnimationFinished();
         if (_animatedSprite.Animation == CharacterAnimationNames.GetAnimation(Names.ATACK))
-            Atack();
+            Attack();
         if (_animatedSprite.Animation == CharacterAnimationNames.GetAnimation(Names.DEATH))
             QueueFree();
     }
 
-    protected virtual void Atack() { }
+    protected virtual void Attack() { }
     protected virtual void OnAnimationFinished() { }
     protected virtual void Process(float delta) { }
     protected virtual void OnDeath() { }

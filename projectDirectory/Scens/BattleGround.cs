@@ -18,7 +18,7 @@ public class BattleGround : Node2D
     private Queue<Enemy> _enemies = new Queue<Enemy>();
     private Random _random = new Random();
     private Barrier _barrier;
-    private PathFollow2D _defenderSpawnLocation;
+    private Position2D _defenderSpawnPoint;
     private PathFollow2D _enemySpawnLocation;
 
     public override void _Ready()
@@ -26,7 +26,7 @@ public class BattleGround : Node2D
         _barrier = GetNode<Barrier>("Barrier");
         _barrier.Connect(nameof(Barrier.Broken), this, nameof(OnLose));
 
-        _defenderSpawnLocation = GetNode<PathFollow2D>("DefenderPath/DefenderSpawnLocation");
+        _defenderSpawnPoint = GetNode<Position2D>("DefendersSpawnPoint");
         _enemySpawnLocation = GetNode<PathFollow2D>("EnemyPath/EnemySpawnLocation");
 
         AddDefender();
@@ -40,8 +40,8 @@ public class BattleGround : Node2D
     private void AddDefender()
     {
         var defender = (Defender)ObjectCreator.Create(ObjectCreator.Objects.DEFENDER);
-        defender.Position = _defenderSpawnLocation.Position;
         AddChild(defender);
+        defender.Position = _defenderSpawnPoint.Position;
     }
 
     private void AddEnemy()
@@ -72,14 +72,13 @@ public class BattleGround : Node2D
 
     private void OnEnemyDeath()
     {
-        _enemies.Dequeue();
+        var enemy = _enemies.Dequeue();
+        enemy.Disconnect(nameof(Enemy.Death), this, nameof(OnEnemyDeath));
         UpdateDefendersTarget();
     }
 
     private void Start() { }
-
-    private void Restart() { }
-
+    
     private void OnLose()
     {
         EmitSignal(nameof(Lose));

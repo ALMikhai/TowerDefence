@@ -7,7 +7,7 @@ public class Defender : Character
     [Export]
     public PackedScene Shell;
 
-    protected override void Atack()
+    protected override void Attack()
     {
         var fireBall = (Fireball)Shell.Instance();
         var damageNode = fireBall.GetNode<DamageNode>("DamageNode");

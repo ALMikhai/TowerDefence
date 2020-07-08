@@ -4,7 +4,7 @@ using projectDirectory.Scens;
 
 public class EnemyNear : Enemy
 {
-    protected override void Atack()
+    protected override void Attack()
     {
         _damageNode.ApplyDamage();
     }
