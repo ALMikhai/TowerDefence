@@ -12,11 +12,11 @@ public class EnemyNear : Enemy
     protected override void Process(float delta)
     {
         var target = _damageNode.GetTarget();
-        var velocity = target.GlobalPosition - Position;
-        if (velocity.Length() > 80)
+        var distance = target.GlobalPosition - Position;
+        if (distance.Length() > 80)
         {
             _animatedSprite.Animation = CharacterAnimationNames.GetAnimation(Names.WALK);
-            LinearVelocity = velocity.Normalized() * Speed * delta;
+            LinearVelocity = distance.Normalized() * Speed * delta;
         }
         else
         {
