@@ -27,13 +27,10 @@ public class Enemy : Area2D
 }
 "
 
-[node name="Enemy" instance=ExtResource( 1 )]
+[node name="Enemy" groups=[
+"Enemy",
+] instance=ExtResource( 1 )]
 script = SubResource( 1 )
 
-[node name="DamageNode" parent="." index="2" groups=[
-"Enemy",
-]]
-
-[node name="HealthNode" parent="." index="3" groups=[
-"EnemyBody",
-]]
+[node name="DamageNode" parent="." index="2"]
+Damage = 1

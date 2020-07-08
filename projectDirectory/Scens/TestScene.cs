@@ -4,17 +4,23 @@ using System.Collections.Generic;
 public class TestScene : Node
 {
     [Export]
-    public PackedScene Enemy;
-    [Export]
     public PackedScene Barrier;
-    [Signal]
-    public delegate void EnemiesUpdeted();
+
     private Queue<Barrier> _barriers = new Queue<Barrier>();
     private Barrier _barrierNow;
     private HealthNode _barrierHelthNode;
 
+    private EnemySpawner _enemySpawner;
+    private Queue<Enemy> _enemies;
+    private Enemy _enemyNow;
+    private HealthNode _enemyHelthNode;
+
+    private int _numWaves = 3;
+
     public override void _Ready()
     {
+        _enemySpawner = GetNode<EnemySpawner>("EnemySpawner");
+
         for (int i = 0; i < 4; i++)
         {
             var newBarrier = (Barrier)Barrier.Instance();
@@ -22,15 +28,17 @@ public class TestScene : Node
             AddChild(newBarrier);
             _barriers.Enqueue(newBarrier);
         }
-        _SetTarget();
+        _enemies = _enemySpawner.CreateNewWave(_numWaves);
+        SetEnemyTarget();
+        SetDefenderTarget();
     }
 
-    private void _SetTarget()
+    private void SetEnemyTarget()
     {
         if (_barriers.Count > 0)
         {
             _barrierNow = _barriers.Dequeue();
-            _barrierNow.Connect("Broken", this, nameof(_SetTarget));
+            _barrierNow.Connect("Broken", this, nameof(SetEnemyTarget));
             _barrierHelthNode = (HealthNode)_barrierNow.GetNode<HealthNode>("HealthNode");
             GetTree().CallGroup("Enemy", "SetTarget", _barrierHelthNode);
         }
@@ -40,21 +48,22 @@ public class TestScene : Node
         }
     }
 
-    public override void _Input(InputEvent @event)
+    private void SetDefenderTarget()
     {
-        if (@event is InputEventScreenTouch eventScreenTouch && eventScreenTouch.Pressed)
+        if (_enemies.Count > 0)
         {
-            var newEnemy = (Character)Enemy.Instance();
-            AddChild(newEnemy);
-            newEnemy.Position = eventScreenTouch.Position;
-            newEnemy.GetNode<DamageNode>("DamageNode").SetTarget(_barrierHelthNode);
-            EmitEnemiesUpdeted();
-            newEnemy.Connect(nameof(EnemyNear.Death), this, nameof(EmitEnemiesUpdeted));
-        }
-    }
+            if (_enemyNow != null)
+                _enemyNow.Disconnect(nameof(Character.Death), this, nameof(SetDefenderTarget));
 
-    private void EmitEnemiesUpdeted()
-    {
-        EmitSignal(nameof(EnemiesUpdeted));
+            _enemyNow = _enemies.Dequeue();
+            _enemyNow.Connect(nameof(Character.Death), this, nameof(SetDefenderTarget));
+            _enemyHelthNode = (HealthNode)_enemyNow.GetNode<HealthNode>("HealthNode");
+            GetTree().CallGroup("Defender", "SetTarget", _enemyHelthNode);
+        }
+        else
+        {
+            //GetTree().CallGroup("Defender", "Wait");
+            _enemies = _enemySpawner.CreateNewWave(_numWaves);
+        }
     }
 }

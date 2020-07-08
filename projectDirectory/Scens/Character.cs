@@ -8,7 +8,7 @@ public class Character : RigidBody2D
     protected DamageNode _damageNode;
     protected HealthNode _healthNode;
 
-    private bool _isDead = false;
+    private bool _isDeath = false;
 
     [Signal]
     public delegate void Death();
@@ -22,13 +22,28 @@ public class Character : RigidBody2D
 
     public override void _Process(float delta)
     {
-        if (_isDead)
+        if (IsDeath())
             return;
         Process(delta);
     }
 
+    public bool IsDeath() => _isDeath;
+
+    public void SetTarget(HealthNode target)
+    {
+        _damageNode.SetTarget(target);
+        if (!IsDeath())
+            _animatedSprite.Animation = CharacterAnimationNames.GetAnimation(Names.ATACK);
+    }
+
+    public void Wait()
+    {
+        _animatedSprite.Animation = CharacterAnimationNames.GetAnimation(Names.IDLE);
+    }
+
     private void _OnDeath()
     {
+        _isDeath = true;
         OnDeath();
         EmitSignal(nameof(Death));
     }
@@ -45,8 +60,5 @@ public class Character : RigidBody2D
     protected virtual void Atack() { }
     protected virtual void OnAnimationFinished() { }
     protected virtual void Process(float delta) { }
-    protected virtual void OnDeath()
-    {
-        _isDead = true;
-    }
+    protected virtual void OnDeath() { }
 }

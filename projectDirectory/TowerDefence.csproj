@@ -62,6 +62,7 @@
     <Compile Include="Scens\Defender.cs" />
     <Compile Include="Scens\Enemy.cs" />
     <Compile Include="Scens\EnemyNear.cs" />
+    <Compile Include="Scens\EnemySpawner.cs" />
     <Compile Include="Scens\Fireball.cs" />
     <Compile Include="Scens\HealthNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
