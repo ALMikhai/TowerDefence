@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Assets/Barrier/!$floatingrocks_2.png" type="Texture" id=1]
 [ext_resource path="res://Scens/Crystal.cs" type="Script" id=2]
-[ext_resource path="res://Scens/HealthNode.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scens/Сharacteristics/HealthNode.tscn" type="PackedScene" id=3]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -40,7 +40,6 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 2.5, 2.5 )
 frames = SubResource( 4 )
-frame = 2
 playing = true
 
 [node name="HealthNode" parent="." instance=ExtResource( 3 )]

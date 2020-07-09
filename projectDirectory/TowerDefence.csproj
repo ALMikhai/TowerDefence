@@ -58,17 +58,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Scens\BattleGround.cs" />
-    <Compile Include="Scens\Character.cs" />
-    <Compile Include="Scens\DamageNode.cs" />
-    <Compile Include="Scens\Defender.cs" />
-    <Compile Include="Scens\Enemy.cs" />
-    <Compile Include="Scens\EnemyNear.cs" />
-    <Compile Include="Scens\Fireball.cs" />
-    <Compile Include="Scens\HealthNode.cs" />
+    <Compile Include="Scens\Charecters\Character.cs" />
+    <Compile Include="Scens\Сharacteristics\DamageNode.cs" />
+    <Compile Include="Scens\Charecters\Defender.cs" />
+    <Compile Include="Scens\Charecters\Enemy.cs" />
+    <Compile Include="Scens\Charecters\EnemyNear.cs" />
+    <Compile Include="Scens\Shells\Fireball.cs" />
+    <Compile Include="Scens\Сharacteristics\HealthNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scens\Crystal.cs" />
-    <Compile Include="Scens\ObjectCreator.cs" />
-    <Compile Include="Scens\CharacterAnimationNames.cs" />
+    <Compile Include="Scens\Static\ObjectCreator.cs" />
+    <Compile Include="Scens\Static\CharacterAnimationNames.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

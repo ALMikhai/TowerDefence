@@ -1,14 +1,14 @@
 using Godot;
 using System.Collections.Generic;
 
-public class ObjectCreator
+public static class ObjectCreator
 {
     public enum Objects : int { DEFENDER = 0, ENEMYNEAR = 1, BARRIER = 2 }
     private static string[] _objectsPaths =
     {
-        "res://Scens/Defender.tscn",
-        "res://Scens/EnemyNear.tscn",
-        "res://Scens/Barrier.tscn"
+        "res://Scens/Charecters/Defender.tscn",
+        "res://Scens/Charecters/EnemyNear.tscn",
+        "res://Scens/Charecters/Barrier.tscn"
     };
 
     public static Node Create(Objects obj)
