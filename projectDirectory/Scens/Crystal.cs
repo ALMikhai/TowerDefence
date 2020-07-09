@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class Barrier : StaticBody2D
+public class Crystal : StaticBody2D
 {
     [Signal]
     public delegate void Broken();
