@@ -1,6 +1,6 @@
 using Godot;
 using System;
-using projectDirectory.Scens;
+using projectDirectory.Static;
 
 public class EnemyNear : Enemy
 {
@@ -11,16 +11,15 @@ public class EnemyNear : Enemy
 
     protected override void Process(float delta)
     {
-        var target = _damageNode.GetTarget();
-        var distance = target.GlobalPosition - Position;
+        var distance = _target.GlobalPosition - Position;
         if (distance.Length() > 80)
         {
-            _animatedSprite.Animation = CharacterAnimationNames.GetAnimation(Names.WALK);
+            SetAnimation(projectDirectory.Static.Character.WALK);
             LinearVelocity = distance.Normalized() * Speed * delta;
         }
         else
         {
-            _animatedSprite.Animation = CharacterAnimationNames.GetAnimation(Names.ATACK);
+            SetAnimation(projectDirectory.Static.Character.ATACK);
             LinearVelocity = Vector2.Zero;
         }
     }

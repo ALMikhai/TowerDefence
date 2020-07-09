@@ -1,6 +1,6 @@
 using Godot;
 using System;
-using projectDirectory.Scens;
+using Static = projectDirectory.Static;
 
 public class Enemy : Character
 {
@@ -9,7 +9,7 @@ public class Enemy : Character
 
     protected override void OnDeath()
     {
-        _animatedSprite.Animation = CharacterAnimationNames.GetAnimation(Names.DEATH);
+        SetAnimation(Static.Character.DEATH);
         LinearVelocity = Vector2.Zero;
         GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
     }

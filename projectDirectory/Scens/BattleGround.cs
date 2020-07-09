@@ -18,19 +18,19 @@ public class BattleGround : Node2D
     private int _enemyOnWave = 3;
     private Queue<Enemy> _enemies = new Queue<Enemy>();
     private Random _random = new Random();
-    private Crystal _crystal;
+    private Character _crystal;
     private Position2D _defenderSpawnPoint;
     private PathFollow2D _enemySpawnLocation;
     private Timer _waveSpawnTimer;
 
     public override void _Ready()
     {
-        _crystal = GetNode<Crystal>("Crystal");
+        _crystal = GetNode<Character>("Crystal");
         _defenderSpawnPoint = GetNode<Position2D>("DefendersSpawnPoint");
         _enemySpawnLocation = GetNode<PathFollow2D>("EnemyPath/EnemySpawnLocation");
         _waveSpawnTimer = GetNode<Timer>("WaveSpawnTimer");
 
-        _crystal.Connect(nameof(Crystal.Broken), this, nameof(OnLose));
+        _crystal.Connect(nameof(Character.Death), this, nameof(OnLose));
         AddDefender();
     }
 
@@ -53,7 +53,7 @@ public class BattleGround : Node2D
         AddChild(enemy);
         _enemySpawnLocation.Offset = _random.Next();
         enemy.Position = _enemySpawnLocation.Position;
-        enemy.SetTarget((HealthNode)_crystal.GetNode<HealthNode>("HealthNode"));
+        enemy.SetTarget(_crystal);
 
         _enemies.Enqueue(enemy);
         enemy.Connect(nameof(Enemy.Death), this, nameof(OnEnemyDeath));
@@ -64,7 +64,7 @@ public class BattleGround : Node2D
     {
         if (_enemies.Count > 0)
         {
-            GetTree().CallGroup("Defender", "SetTarget", _enemies.Peek().GetNode<HealthNode>("HealthNode"));
+            GetTree().CallGroup("Defender", "SetTarget", _enemies.Peek());
         }
         else
         {

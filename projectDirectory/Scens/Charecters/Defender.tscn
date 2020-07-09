@@ -12,7 +12,7 @@
 [ext_resource path="res://Assets/Defender/Atack/Action_09.png" type="Texture" id=10]
 [ext_resource path="res://Assets/Defender/Atack/Action_04.png" type="Texture" id=11]
 [ext_resource path="res://Scens/Charecters/Defender.cs" type="Script" id=12]
-[ext_resource path="res://Scens/Shells/Fireball.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scens/Shells/Shell.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Assets/Defender/Atack/Action_16.png" type="Texture" id=14]
 [ext_resource path="res://Assets/Defender/Atack/Action_11.png" type="Texture" id=15]
 [ext_resource path="res://Assets/Defender/Atack/Action_12.png" type="Texture" id=16]
@@ -28,8 +28,6 @@
 [ext_resource path="res://Assets/Defender/Idle/Idle_03.png" type="Texture" id=26]
 [ext_resource path="res://Assets/Defender/Idle/Idle_05.png" type="Texture" id=27]
 [ext_resource path="res://Assets/Defender/Idle/Idle_02.png" type="Texture" id=28]
-
-
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -58,7 +56,7 @@ Shell = ExtResource( 13 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 3
+frame = 1
 speed_scale = 2.0
 playing = true
 

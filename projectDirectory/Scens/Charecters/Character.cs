@@ -1,12 +1,14 @@
 using Godot;
 using System;
-using projectDirectory.Scens;
+using projectDirectory.Static;
+using Static = projectDirectory.Static;
 
 public class Character : RigidBody2D
 {
     protected AnimatedSprite _animatedSprite;
     protected DamageNode _damageNode;
     protected HealthNode _healthNode;
+    protected Character _target;
 
     private bool _isDeath = false;
 
@@ -29,31 +31,37 @@ public class Character : RigidBody2D
 
     public bool IsDeath() => _isDeath;
 
-    public void SetTarget(HealthNode target)
+    public void SetTarget(Character target)
     {
-        _damageNode.SetTarget(target);
+        _target = target;
+        _damageNode.SetTarget(target.GetNode<HealthNode>("HealthNode"));
+        SetAnimation(Static.Character.ATACK);
+    }
+
+    protected void SetAnimation(Static.Character animation)
+    {
         if (!IsDeath())
-            _animatedSprite.Animation = CharacterAnimationNames.GetAnimation(Names.ATACK);
+            _animatedSprite.Animation = AnimationNames.GetCharacterAnimation(animation);
     }
 
     public void Wait()
     {
-        _animatedSprite.Animation = CharacterAnimationNames.GetAnimation(Names.IDLE);
+        SetAnimation(Static.Character.IDLE);
     }
 
     private void _OnDeath()
     {
-        _isDeath = true;
         OnDeath();
         EmitSignal(nameof(Death));
+        _isDeath = true;
     }
 
     private void _OnAnimationFinished()
     {
         OnAnimationFinished();
-        if (_animatedSprite.Animation == CharacterAnimationNames.GetAnimation(Names.ATACK))
+        if (_animatedSprite.Animation == AnimationNames.GetCharacterAnimation(Static.Character.ATACK))
             Attack();
-        if (_animatedSprite.Animation == CharacterAnimationNames.GetAnimation(Names.DEATH))
+        if (_animatedSprite.Animation == AnimationNames.GetCharacterAnimation(Static.Character.DEATH))
             QueueFree();
     }
 

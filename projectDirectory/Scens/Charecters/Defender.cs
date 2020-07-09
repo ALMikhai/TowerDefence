@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using projectDirectory.Scens;
 
 public class Defender : Character
 {
@@ -9,9 +8,8 @@ public class Defender : Character
 
     protected override void Attack()
     {
-        var fireBall = (Fireball)Shell.Instance();
-        var damageNode = fireBall.GetNode<DamageNode>("DamageNode");
-        damageNode.SetTarget(_damageNode.GetTarget());
+        var fireBall = (Shell)Shell.Instance();
         AddChild(fireBall);
+        fireBall.SetTarget(_target);
     }
 }

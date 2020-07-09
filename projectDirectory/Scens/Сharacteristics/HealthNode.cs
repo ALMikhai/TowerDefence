@@ -19,7 +19,6 @@ public class HealthNode : Node2D
         if (_hp <= 0)
         {
             EmitSignal(nameof(Death));
-            QueueFree();
         }
     }
 }
