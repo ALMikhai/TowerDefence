@@ -15,26 +15,29 @@ public class BattleGround : Node2D
     public delegate void EnemyDeath(int moneyDrop);
 
     private int _wavesNum = 3;
+    private int _enemyOnWave = 3;
     private Queue<Enemy> _enemies = new Queue<Enemy>();
     private Random _random = new Random();
     private Barrier _barrier;
     private Position2D _defenderSpawnPoint;
     private PathFollow2D _enemySpawnLocation;
+    private Timer _waveSpawnTimer;
 
     public override void _Ready()
     {
         _barrier = GetNode<Barrier>("Barrier");
-        _barrier.Connect(nameof(Barrier.Broken), this, nameof(OnLose));
-
         _defenderSpawnPoint = GetNode<Position2D>("DefendersSpawnPoint");
         _enemySpawnLocation = GetNode<PathFollow2D>("EnemyPath/EnemySpawnLocation");
+        _waveSpawnTimer = GetNode<Timer>("WaveSpawnTimer");
 
+        _barrier.Connect(nameof(Barrier.Broken), this, nameof(OnLose));
         AddDefender();
     }
 
-    public void _OnEnemySpawnTimerTimeout()
+    public void _OnWaveSpawnTimerTimeout()
     {
-        AddEnemy();
+        for (int i = 0; i < _enemyOnWave; i++)
+            AddEnemy();
     }
 
     private void AddDefender()
@@ -66,19 +69,33 @@ public class BattleGround : Node2D
         else
         {
             GetTree().CallGroup("Defender", "Wait");
+            AddWave();
         }
-       
+    }
+
+    private void AddWave()
+    {
+        if (_wavesNum > 0)
+        {
+            _wavesNum--;
+            _waveSpawnTimer.Start();
+        }
+        else
+        {
+            OnWin();
+        }
     }
 
     private void OnEnemyDeath()
     {
+        EmitSignal(nameof(EnemyDeath), 0);
         var enemy = _enemies.Dequeue();
         enemy.Disconnect(nameof(Enemy.Death), this, nameof(OnEnemyDeath));
         UpdateDefendersTarget();
     }
 
     private void Start() { }
-    
+
     private void OnLose()
     {
         EmitSignal(nameof(Lose));

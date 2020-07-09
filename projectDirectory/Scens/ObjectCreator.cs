@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class ObjectCreator
 {
-    public enum Objects : int {DEFENDER = 0, ENEMYNEAR = 1, BARRIER = 2}
+    public enum Objects : int { DEFENDER = 0, ENEMYNEAR = 1, BARRIER = 2 }
     private static string[] _objectsPaths =
     {
         "res://Scens/Defender.tscn",

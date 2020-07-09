@@ -246,6 +246,8 @@ position = Vector2( 96, 352 )
 [node name="Barrier" parent="." instance=ExtResource( 2 )]
 position = Vector2( 280, 360 )
 
-[node name="EnemySpawnTimer" type="Timer" parent="."]
+[node name="WaveSpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
 autostart = true
-[connection signal="timeout" from="EnemySpawnTimer" to="." method="_OnEnemySpawnTimerTimeout"]
+[connection signal="timeout" from="WaveSpawnTimer" to="." method="_OnWaveSpawnTimerTimeout"]
