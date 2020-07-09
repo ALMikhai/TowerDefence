@@ -15,7 +15,7 @@ public class BattleGround : Node2D
     public delegate void EnemyDeath(int moneyDrop);
 
     private int _wavesNum = 3;
-    private int _enemyOnWave = 3;
+    private int _enemyOnWave = 10;
     private Queue<Enemy> _enemies = new Queue<Enemy>();
     private Random _random = new Random();
     private Character _crystal;
@@ -54,6 +54,7 @@ public class BattleGround : Node2D
         _enemySpawnLocation.Offset = _random.Next();
         enemy.Position = _enemySpawnLocation.Position;
         enemy.SetTarget(_crystal);
+        enemy.GoToTarget();
 
         _enemies.Enqueue(enemy);
         enemy.Connect(nameof(Enemy.Death), this, nameof(OnEnemyDeath));

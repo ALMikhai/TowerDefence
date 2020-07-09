@@ -5,6 +5,9 @@ using Static = projectDirectory.Static;
 
 public class Character : RigidBody2D
 {
+    [Export]
+    public int Speed = 70;
+
     protected AnimatedSprite _animatedSprite;
     protected DamageNode _damageNode;
     protected HealthNode _healthNode;
@@ -22,13 +25,6 @@ public class Character : RigidBody2D
         _healthNode = GetNode<HealthNode>("HealthNode");
     }
 
-    public override void _Process(float delta)
-    {
-        if (IsDeath())
-            return;
-        Process(delta);
-    }
-
     public bool IsDeath() => _isDeath;
 
     public void SetTarget(Character target)
@@ -44,11 +40,6 @@ public class Character : RigidBody2D
             _animatedSprite.Animation = AnimationNames.GetCharacterAnimation(animation);
     }
 
-    public void Wait()
-    {
-        SetAnimation(Static.Character.IDLE);
-    }
-
     private void _OnDeath()
     {
         OnDeath();
@@ -58,7 +49,6 @@ public class Character : RigidBody2D
 
     private void _OnAnimationFinished()
     {
-        OnAnimationFinished();
         if (_animatedSprite.Animation == AnimationNames.GetCharacterAnimation(Static.Character.ATACK))
             Attack();
         if (_animatedSprite.Animation == AnimationNames.GetCharacterAnimation(Static.Character.DEATH))
@@ -66,7 +56,5 @@ public class Character : RigidBody2D
     }
 
     protected virtual void Attack() { }
-    protected virtual void OnAnimationFinished() { }
-    protected virtual void Process(float delta) { }
     protected virtual void OnDeath() { }
 }

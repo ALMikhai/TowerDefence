@@ -1,4 +1,4 @@
-using Godot;
+    using Godot;
 using System;
 using projectDirectory.Static;
 
@@ -9,18 +9,16 @@ public class EnemyNear : Enemy
         _damageNode.ApplyDamage();
     }
 
-    protected override void Process(float delta)
+    private void _OnEnemyNearBodyEntered(Node body)
     {
-        var distance = _target.GlobalPosition - Position;
-        if (distance.Length() > 80)
-        {
-            SetAnimation(projectDirectory.Static.Character.WALK);
-            LinearVelocity = distance.Normalized() * Speed * delta;
-        }
-        else
+        if (body is Character character && character == _target)
         {
             SetAnimation(projectDirectory.Static.Character.ATACK);
-            LinearVelocity = Vector2.Zero;
         }
+    }
+
+    private void _OnEnemyNearBodyExited(Node body)
+    {
+        GoToTarget();
     }
 }

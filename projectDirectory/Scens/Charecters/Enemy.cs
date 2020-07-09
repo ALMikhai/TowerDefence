@@ -4,13 +4,22 @@ using Static = projectDirectory.Static;
 
 public class Enemy : Character
 {
-    [Export]
-    public int Speed = 7000;
+    public override void _PhysicsProcess(float delta)
+    {
+        if (!IsDeath())
+            LinearVelocity = Position.DirectionTo(_target.Position) * Speed;
+        else
+            LinearVelocity = Vector2.Zero;
+    }
+
+    public void GoToTarget()
+    {
+        SetAnimation(Static.Character.WALK);
+    }
 
     protected override void OnDeath()
     {
         SetAnimation(Static.Character.DEATH);
-        LinearVelocity = Vector2.Zero;
         GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
     }
 }
