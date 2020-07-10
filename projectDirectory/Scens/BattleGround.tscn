@@ -1,25 +1,31 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scens/BattleGround.cs" type="Script" id=1]
 [ext_resource path="res://Scens/Crystal.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Map/Tiles/tf_dd_A5_2.png" type="Texture" id=3]
+[ext_resource path="res://Scens/Сharacteristics/MoneyNode.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Font/Silver.ttf" type="DynamicFontData" id=5]
 
-[sub_resource type="ConvexPolygonShape2D" id=1]
-points = PoolVector2Array( 0, 0, 10.0278, 2.18791, 16.4234, 5.48263, 23.7881, 10.3278, 30.9589, 19.4367, 31.3465, 32, 22.4314, 31.8403, 22.0438, 30.2899, 19.7181, 23.5066, 12.9349, 16.5296, 5.37643, 11.8783, 0, 9.94019 )
+[sub_resource type="DynamicFont" id=1]
+size = 65
+font_data = ExtResource( 5 )
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
-points = PoolVector2Array( 32, 32, 22.0438, 32, 22.0438, 0.227943, 32, 0.227943 )
+points = PoolVector2Array( 0, 0, 10.0278, 2.18791, 16.4234, 5.48263, 23.7881, 10.3278, 30.9589, 19.4367, 31.3465, 32, 22.4314, 31.8403, 22.0438, 30.2899, 19.7181, 23.5066, 12.9349, 16.5296, 5.37643, 11.8783, 0, 9.94019 )
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
-points = PoolVector2Array( 0, 22.6876, 6.73309, 22.8814, 12.1597, 18.4239, 17.5863, 12.2221, 21.0748, 5.43883, 21.0748, 0, 31.7341, 0.0122375, 27.6642, 20.9434, 24.3695, 27.1452, 19.7181, 31.9903, 0.337463, 31.6027 )
+points = PoolVector2Array( 32, 32, 22.0438, 32, 22.0438, 0.227943, 32, 0.227943 )
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
-points = PoolVector2Array( 32, 12.2659, 0, 11.8783, 0, 0, 32, 0 )
+points = PoolVector2Array( 0, 22.6876, 6.73309, 22.8814, 12.1597, 18.4239, 17.5863, 12.2221, 21.0748, 5.43883, 21.0748, 0, 31.7341, 0.0122375, 27.6642, 20.9434, 24.3695, 27.1452, 19.7181, 31.9903, 0.337463, 31.6027 )
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
+points = PoolVector2Array( 32, 12.2659, 0, 11.8783, 0, 0, 32, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
 points = PoolVector2Array( 32, 32, 0.165558, 32, 0.165558, 21.1372, 32, 21.1372 )
 
-[sub_resource type="TileSet" id=6]
+[sub_resource type="TileSet" id=7]
 0/name = "tf_dd_A5_2.png 0"
 0/texture = ExtResource( 3 )
 0/tex_offset = Vector2( 0, 0 )
@@ -30,14 +36,14 @@ points = PoolVector2Array( 32, 32, 0.165558, 32, 0.165558, 21.1372, 32, 21.1372 
 0/navigation_offset = Vector2( 0, 0 )
 0/shape_offset = Vector2( 0, 0 )
 0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape = SubResource( 1 )
+0/shape = SubResource( 2 )
 0/shape_one_way = false
 0/shape_one_way_margin = 1.0
 0/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 1 ),
+"shape": SubResource( 2 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0
@@ -51,14 +57,14 @@ points = PoolVector2Array( 32, 32, 0.165558, 32, 0.165558, 21.1372, 32, 21.1372 
 1/navigation_offset = Vector2( 0, 0 )
 1/shape_offset = Vector2( 0, 0 )
 1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape = SubResource( 2 )
+1/shape = SubResource( 3 )
 1/shape_one_way = false
 1/shape_one_way_margin = 1.0
 1/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 2 ),
+"shape": SubResource( 3 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 1/z_index = 0
@@ -72,14 +78,14 @@ points = PoolVector2Array( 32, 32, 0.165558, 32, 0.165558, 21.1372, 32, 21.1372 
 2/navigation_offset = Vector2( 0, 0 )
 2/shape_offset = Vector2( 0, 0 )
 2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-2/shape = SubResource( 3 )
+2/shape = SubResource( 4 )
 2/shape_one_way = false
 2/shape_one_way_margin = 1.0
 2/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 3 ),
+"shape": SubResource( 4 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 2/z_index = 0
@@ -93,14 +99,14 @@ points = PoolVector2Array( 32, 32, 0.165558, 32, 0.165558, 21.1372, 32, 21.1372 
 3/navigation_offset = Vector2( 0, 0 )
 3/shape_offset = Vector2( 0, 0 )
 3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-3/shape = SubResource( 4 )
+3/shape = SubResource( 5 )
 3/shape_one_way = false
 3/shape_one_way_margin = 1.0
 3/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 4 ),
+"shape": SubResource( 5 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 3/z_index = 0
@@ -128,14 +134,14 @@ points = PoolVector2Array( 32, 32, 0.165558, 32, 0.165558, 21.1372, 32, 21.1372 
 5/navigation_offset = Vector2( 0, 0 )
 5/shape_offset = Vector2( 0, 0 )
 5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-5/shape = SubResource( 5 )
+5/shape = SubResource( 6 )
 5/shape_one_way = false
 5/shape_one_way_margin = 1.0
 5/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 5 ),
+"shape": SubResource( 6 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 5/z_index = 0
@@ -219,7 +225,7 @@ points = PoolVector2Array( 32, 32, 0.165558, 32, 0.165558, 21.1372, 32, 21.1372 
 10/shapes = [  ]
 10/z_index = 0
 
-[sub_resource type="Curve2D" id=7]
+[sub_resource type="Curve2D" id=8]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 1280, 0, 0, 0, 0, 0, 1344, 0, 0, 0, 0, 0, 1344, 720, 0, 0, 0, 0, 1280, 720, 0, 0, 0, 0, 1280, 0 )
 }
@@ -227,20 +233,46 @@ _data = {
 [node name="BattleGround" type="Node2D"]
 script = ExtResource( 1 )
 
+[node name="TestMoneyLable" type="Label" parent="."]
+margin_left = 561.595
+margin_top = 9.0
+margin_right = 663.595
+margin_bottom = 82.0
+custom_fonts/font = SubResource( 1 )
+text = "Money"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Money" type="Label" parent="TestMoneyLable"]
+margin_left = 122.838
+margin_top = 4.54066
+margin_right = 311.838
+margin_bottom = 77.5407
+custom_fonts/font = SubResource( 1 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MoneyNode" parent="." instance=ExtResource( 4 )]
+
 [node name="WaveSpawnTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
 autostart = true
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource( 6 )
+tile_set = SubResource( 7 )
 cell_size = Vector2( 32, 32 )
 collision_use_kinematic = true
 format = 1
 tile_data = PoolIntArray( 65535, 1, 0, 0, 3, 0, 1, 3, 0, 2, 3, 0, 3, 3, 0, 4, 3, 0, 5, 0, 0, 131071, 1, 0, 65536, 4, 0, 65537, 4, 0, 65538, 4, 0, 65539, 4, 0, 65540, 4, 0, 65541, 1, 0, 196607, 1, 0, 131072, 4, 0, 131073, 4, 0, 131074, 4, 0, 131075, 10, 0, 131076, 4, 0, 131077, 1, 0, 262143, 1, 0, 196608, 10, 0, 196609, 4, 0, 196610, 4, 0, 196611, 4, 0, 196612, 4, 0, 196613, 1, 0, 327679, 1, 0, 262144, 4, 0, 262145, 4, 0, 262146, 4, 0, 262147, 4, 0, 262148, 4, 0, 262149, 1, 0, 393215, 1, 0, 327680, 4, 0, 327681, 4, 0, 327682, 4, 0, 327683, 4, 0, 327684, 4, 0, 327685, 1, 0, 458751, 1, 0, 393216, 4, 0, 393217, 4, 0, 393218, 4, 0, 393219, 10, 0, 393220, 4, 0, 393221, 1, 0, 524287, 1, 0, 458752, 4, 0, 458753, 10, 0, 458754, 4, 0, 458755, 4, 0, 458756, 4, 0, 458757, 1, 0, 589823, 1, 0, 524288, 4, 0, 524289, 4, 0, 524290, 4, 0, 524291, 4, 0, 524292, 4, 0, 524293, 1, 0, 655359, 1, 0, 589824, 4, 0, 589825, 4, 0, 589826, 4, 0, 589827, 4, 0, 589828, 4, 0, 589829, 1, 0, 720895, 1, 0, 655360, 4, 0, 655361, 4, 0, 655362, 4, 0, 655363, 10, 0, 655364, 4, 0, 655365, 1, 0, 786431, 1, 0, 720896, 4, 0, 720897, 4, 0, 720898, 4, 0, 720899, 4, 0, 720900, 4, 0, 720901, 1, 0, 851967, 1, 0, 786432, 4, 0, 786433, 10, 0, 786434, 4, 0, 786435, 4, 0, 786436, 4, 0, 786437, 1, 0, 917503, 1, 0, 851968, 4, 0, 851969, 4, 0, 851970, 4, 0, 851971, 4, 0, 851972, 4, 0, 851973, 1, 0, 983039, 1, 0, 917504, 10, 0, 917505, 4, 0, 917506, 4, 0, 917507, 4, 0, 917508, 4, 0, 917509, 1, 0, 1048575, 1, 0, 983040, 4, 0, 983041, 4, 0, 983042, 4, 0, 983043, 10, 0, 983044, 4, 0, 983045, 1, 0, 1114111, 1, 0, 1048576, 10, 0, 1048577, 4, 0, 1048578, 4, 0, 1048579, 4, 0, 1048580, 4, 0, 1048581, 1, 0, 1179647, 1, 0, 1114112, 4, 0, 1114113, 4, 0, 1114114, 4, 0, 1114115, 4, 0, 1114116, 4, 0, 1114117, 1, 0, 1245183, 1, 0, 1179648, 4, 0, 1179649, 4, 0, 1179650, 4, 0, 1179651, 4, 0, 1179652, 10, 0, 1179653, 1, 0, 1310719, 1, 0, 1245184, 4, 0, 1245185, 10, 0, 1245186, 4, 0, 1245187, 4, 0, 1245188, 4, 0, 1245189, 1, 0, 1376255, 1, 0, 1310720, 4, 0, 1310721, 4, 0, 1310722, 4, 0, 1310723, 4, 0, 1310724, 4, 0, 1310725, 1, 0, 1441791, 1, 0, 1376256, 5, 0, 1376257, 5, 0, 1376258, 5, 0, 1376259, 5, 0, 1376260, 5, 0, 1376261, 2, 0, 1507327, 1, 0, 1441792, 6, 0, 1441793, 6, 0, 1441794, 6, 0, 1441795, 6, 0, 1441796, 6, 0, 1441797, 7, 0 )
 
 [node name="EnemyPath" type="Path2D" parent="."]
-curve = SubResource( 7 )
+curve = SubResource( 8 )
 
 [node name="EnemySpawnLocation" type="PathFollow2D" parent="EnemyPath"]
 position = Vector2( 1280, 0 )
@@ -251,4 +283,5 @@ position = Vector2( 96, 352 )
 [node name="Crystal" parent="." instance=ExtResource( 2 )]
 position = Vector2( 286.869, 327.851 )
 mode = 1
+[connection signal="MoneyChange" from="MoneyNode" to="." method="_OnMoneyChange"]
 [connection signal="timeout" from="WaveSpawnTimer" to="." method="_OnWaveSpawnTimerTimeout"]

@@ -10,6 +10,8 @@ public class Character : RigidBody2D
     public int Speed = 70;
     [Export]
     public int AttackRange = 10;
+    [Export]
+    public int Cost = 25;
 
     public StateMachine StateMachine;
     public IdleState _idleState;
@@ -75,10 +77,9 @@ public class Character : RigidBody2D
         return _target;
     }
 
-    public int GetAttackRange()
-    {
-        return AttackRange;
-    }
+    public int GetAttackRange() => AttackRange;
+
+    public int GetCost() => Cost;
 
     public bool IsCloseToTarget() => Position.DistanceTo(GetTarget().Position) < GetAttackRange();
 

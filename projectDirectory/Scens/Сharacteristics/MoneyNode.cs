@@ -4,23 +4,31 @@ using System;
 public class MoneyNode : Node2D
 {
     [Signal]
-    public delegate void BadTransaction();
+    public delegate void BadTransaction(); // Звуковой сигнал.
     [Signal]
-    public delegate void GoodTransaction();
+    public delegate void GoodTransaction(); // Звуковой сигнал.
     [Signal]
     public delegate void MoneyChange();
 
+    [Export]
+    public int StartMoney = 100;
+
     private int _money = 0;
 
-    public int GetMoney() => _money;
+    public void Initialize()
+    {
+        Add(StartMoney);
+    }
 
-    public void AddMoney(int money)
+    public int Get() => _money;
+
+    public void Add(int money)
     {
         _money += money;
         EmitSignal(nameof(MoneyChange));
     }
 
-    public bool SpendMoney(int money)
+    public bool TrySpend(int money)
     {
         if (money <= _money)
         {
