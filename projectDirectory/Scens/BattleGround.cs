@@ -12,6 +12,8 @@ public class BattleGround : Node2D
     [Signal]
     public delegate void Lose();
     [Signal]
+    public delegate void OnWaveEnd();
+    [Signal]
     public delegate void EnemyDeath(int moneyDrop);
 
     private int _wavesNum = 1;
@@ -38,6 +40,12 @@ public class BattleGround : Node2D
     {
         for (int i = 0; i < _enemyOnWave; i++)
             AddEnemy();
+    }
+
+    public void Start(int waveNum, int enemyOnWave) 
+    {
+        _wavesNum = waveNum;
+        _enemyOnWave = enemyOnWave;
     }
 
     private void AddDefender()
@@ -92,8 +100,6 @@ public class BattleGround : Node2D
         enemy.Disconnect(nameof(Enemy.Death), this, nameof(OnEnemyDeath));
         UpdateDefendersTarget();
     }
-
-    private void Start() { }
 
     private void OnLose()
     {
