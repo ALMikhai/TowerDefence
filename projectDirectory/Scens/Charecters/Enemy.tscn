@@ -31,7 +31,6 @@ public class Enemy : Area2D
 "Enemy",
 ] instance=ExtResource( 1 )]
 collision_mask = 2
-contact_monitor = true
 script = SubResource( 1 )
 
 [node name="DamageNode" parent="." index="2"]

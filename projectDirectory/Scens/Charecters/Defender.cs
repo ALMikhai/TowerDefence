@@ -7,12 +7,7 @@ public class Defender : Character
     [Export]
     public PackedScene Shell;
 
-    public void Wait()
-    {
-        SetAnimation(Static.Character.IDLE);
-    }
-
-    protected override void Attack()
+    public override void Attack()
     {
         var fireBall = (Shell)Shell.Instance();
         AddChild(fireBall);
