@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using Static = projectDirectory.Scens.Static;
 
 public class BattleGround : Node2D
 {
@@ -21,7 +22,6 @@ public class BattleGround : Node2D
     private List<Enemy> _enemies = new List<Enemy>();
     private Random _random = new Random();
     private Character _crystal;
-    private Position2D _defenderSpawnPoint;
     private PathFollow2D _enemySpawnLocation;
     private Timer _waveSpawnTimer;
     private MoneyNode _moneyNode;
@@ -30,14 +30,13 @@ public class BattleGround : Node2D
     public override void _Ready()
     {
         _crystal = GetNode<Character>("Crystal");
-        _defenderSpawnPoint = GetNode<Position2D>("DefendersSpawnPoint");
         _enemySpawnLocation = GetNode<PathFollow2D>("EnemyPath/EnemySpawnLocation");
         _waveSpawnTimer = GetNode<Timer>("WaveSpawnTimer");
         _moneyLabel = GetNode<Label>("TestMoneyLable/Money"); // Test !!!
         _moneyNode = GetNode<MoneyNode>("MoneyNode");
 
         _crystal.Connect(nameof(Character.Death), this, nameof(OnLose));
-        AddDefender();
+        AddDefenders();
     }
 
     public void _OnWaveSpawnTimerTimeout()
@@ -57,11 +56,15 @@ public class BattleGround : Node2D
         _enemyOnWave = enemyOnWave;
     }
 
-    private void AddDefender()
+    private void AddDefenders()
     {
-        var defender = (Defender)ObjectCreator.Create(ObjectCreator.Objects.DEFENDER);
-        AddChild(defender);
-        defender.Position = _defenderSpawnPoint.Position;
+        var defenders = Static.SelectedDefenders.GetDefenders();
+        for (int i = 0; i < defenders.Count; i++)
+        {
+            var defenderNode = (Defender)ObjectCreator.Create(defenders[i]);
+            AddChild(defenderNode);
+            defenderNode.Position = GetNode<Position2D>($"DefendersSpawnPoint{i}").Position;
+        }
     }
 
     private void AddEnemy()
