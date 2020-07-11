@@ -17,8 +17,8 @@ public class BattleGround : Node2D
     public delegate void EnemyDeath(int moneyDrop); // При использовании MoneyNode, может не понадобиться.
 
     private int _wavesNum = 3;
-    private int _enemyOnWave = 15;
-    private Queue<Enemy> _enemies = new Queue<Enemy>();
+    private int _enemyOnWave = 3;
+    private List<Enemy> _enemies = new List<Enemy>();
     private Random _random = new Random();
     private Character _crystal;
     private Position2D _defenderSpawnPoint;
@@ -36,15 +36,8 @@ public class BattleGround : Node2D
         _moneyLabel = GetNode<Label>("TestMoneyLable/Money"); // Test !!!
         _moneyNode = GetNode<MoneyNode>("MoneyNode");
 
-        _moneyNode.Initialize(); // Выглядит как фигня.
-
         _crystal.Connect(nameof(Character.Death), this, nameof(OnLose));
-    }
-
-    public override void _Input(InputEvent @event) // Test !!!
-    {
-        if (@event is InputEventScreenTouch screenTouchEvent && screenTouchEvent.Pressed)
-            AddDefender();
+        AddDefender();
     }
 
     public void _OnWaveSpawnTimerTimeout()
@@ -58,7 +51,7 @@ public class BattleGround : Node2D
         _moneyLabel.Text = _moneyNode.Get().ToString();
     }
 
-    public void Start(int waveNum, int enemyOnWave) 
+    public void Start(int waveNum, int enemyOnWave)
     {
         _wavesNum = waveNum;
         _enemyOnWave = enemyOnWave;
@@ -67,15 +60,8 @@ public class BattleGround : Node2D
     private void AddDefender()
     {
         var defender = (Defender)ObjectCreator.Create(ObjectCreator.Objects.DEFENDER);
-        if (_moneyNode.TrySpend(defender.GetCost()))
-        {
-            AddChild(defender);
-            defender.Position = _defenderSpawnPoint.Position;
-        }
-        else
-        {
-            defender.QueueFree();
-        }
+        AddChild(defender);
+        defender.Position = _defenderSpawnPoint.Position;
     }
 
     private void AddEnemy()
@@ -86,7 +72,7 @@ public class BattleGround : Node2D
         enemy.Position = _enemySpawnLocation.Position;
         enemy.SetTarget(_crystal);
 
-        _enemies.Enqueue(enemy);
+        _enemies.Add(enemy);
         enemy.Connect(nameof(Enemy.Death), this, nameof(OnEnemyDeath));
         UpdateDefendersTarget();
     }
@@ -95,7 +81,7 @@ public class BattleGround : Node2D
     {
         if (_enemies.Count > 0)
         {
-            GetTree().CallGroup("Defender", "SetTarget", _enemies.Peek());
+            GetTree().CallGroup("Defender", "SetTarget", _enemies[0]);
         }
         else
         {
@@ -116,10 +102,10 @@ public class BattleGround : Node2D
         }
     }
 
-    private void OnEnemyDeath()
+    private void OnEnemyDeath(Enemy enemy)
     {
         EmitSignal(nameof(EnemyDeath), 0); // При использовании MoneyNode, может не понадобиться.
-        var enemy = _enemies.Dequeue();
+        _enemies.Remove(enemy);
         _moneyNode.Add(enemy.GetCost());
         enemy.Disconnect(nameof(Enemy.Death), this, nameof(OnEnemyDeath));
         UpdateDefendersTarget();

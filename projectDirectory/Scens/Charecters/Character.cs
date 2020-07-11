@@ -25,7 +25,7 @@ public class Character : RigidBody2D
     protected Character _target;
 
     [Signal]
-    public delegate void Death();
+    public delegate void Death(Character character);
 
     public override void _Ready()
     {
@@ -50,7 +50,7 @@ public class Character : RigidBody2D
     private void _OnDeath()
     {
         StateMachine.CurrentState.Death();
-        EmitSignal(nameof(Death));
+        EmitSignal(nameof(Death), this);
     }
 
     private void _OnAnimationFinished()

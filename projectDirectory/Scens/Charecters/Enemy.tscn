@@ -30,6 +30,7 @@ public class Enemy : Area2D
 [node name="Enemy" groups=[
 "Enemy",
 ] instance=ExtResource( 1 )]
+collision_layer = 1
 collision_mask = 2
 script = SubResource( 1 )
 

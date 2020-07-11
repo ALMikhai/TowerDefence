@@ -10,15 +10,7 @@ public class MoneyNode : Node2D
     [Signal]
     public delegate void MoneyChange();
 
-    [Export]
-    public int StartMoney = 100;
-
     private int _money = 0;
-
-    public void Initialize()
-    {
-        Add(StartMoney);
-    }
 
     public int Get() => _money;
 

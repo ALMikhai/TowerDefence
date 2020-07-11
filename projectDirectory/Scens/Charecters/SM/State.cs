@@ -38,7 +38,7 @@ namespace projectDirectory.Scens.Charecters.SM
         {
             if (!_targetConnected)
             {
-                _character.GetTarget().Connect(nameof(Character.Death), this, nameof(OnTargetDeath));
+                _character.GetTarget().Connect(nameof(Character.Death), this, nameof(_OnTargetDeath));
                 _targetConnected = true;
             }
         }
@@ -47,12 +47,12 @@ namespace projectDirectory.Scens.Charecters.SM
         {
             if (_targetConnected)
             {
-                _character.GetTarget().Disconnect(nameof(Character.Death), this, nameof(OnTargetDeath));
+                _character.GetTarget().Disconnect(nameof(Character.Death), this, nameof(_OnTargetDeath));
                 _targetConnected = false;
             }
         }
 
-        protected void OnTargetDeath()
+        protected void _OnTargetDeath(Character character)
         {
             TargetDisconnect();
             _stateMachine.ChangeState(_character._idleState);

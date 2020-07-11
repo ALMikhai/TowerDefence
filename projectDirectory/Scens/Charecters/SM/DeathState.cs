@@ -9,12 +9,11 @@ namespace projectDirectory.Scens.Charecters.SM
         public override void Enter()
         {
             _character.SetAnimation(projectDirectory.Static.Character.DEATH);
-            _character.GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
         }
 
         public override void AnimationFinished()
         {
-            _character.QueueFree();
+            _character.CallDeferred("queue_free");
         }
 
         public override void Death() { }
