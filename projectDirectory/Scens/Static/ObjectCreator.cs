@@ -3,12 +3,13 @@ using System.Collections.Generic;
 
 public static class ObjectCreator
 {
-    public enum Objects : int { DEFENDER = 0, ENEMYNEAR = 1, BARRIER = 2 }
+    public enum Objects : int { DEFENDER = 0, ENEMYNEAR = 1, BARRIER = 2, DEFENDERGINO = 3 }
     private static string[] _objectsPaths =
     {
         "res://Scens/Charecters/Defender.tscn",
         "res://Scens/Charecters/EnemyNear.tscn",
-        "res://Scens/Charecters/Barrier.tscn"
+        "res://Scens/Charecters/Barrier.tscn",
+        "res://Scens/Charecters/DefenderGino.tscn"
     };
 
     public static Node Create(Objects obj)

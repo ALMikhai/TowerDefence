@@ -67,7 +67,7 @@ Shell = ExtResource( 13 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 1 )
 animation = "Attack"
-frame = 7
+frame = 5
 speed_scale = 2.0
 playing = true
 
