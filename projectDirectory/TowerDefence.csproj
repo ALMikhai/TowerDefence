@@ -59,7 +59,9 @@
   <ItemGroup>
     <Compile Include="Scens\BattleGround.cs" />
     <Compile Include="Scens\Charecters\Character.cs" />
+    <Compile Include="Scens\EnemyContainer.cs" />
     <Compile Include="Scens\Shells\Shell.cs" />
+    <Compile Include="Scens\WaveSpawner.cs" />
     <Compile Include="Scens\Сharacteristics\DamageNode.cs" />
     <Compile Include="Scens\Charecters\Defender.cs" />
     <Compile Include="Scens\Charecters\Enemy.cs" />

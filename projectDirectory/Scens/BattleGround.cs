@@ -5,7 +5,7 @@ using Static = projectDirectory.Scens.Static;
 
 public class BattleGround : Node2D
 {
-    // Этот класс управляет поялением персонажей и их 
+    // Этот класс управляет поялением персонажей и их
     // сражением + оповещает о проигрыще или выигрыше.
 
     [Signal]
@@ -17,32 +17,24 @@ public class BattleGround : Node2D
     [Signal]
     public delegate void EnemyDeath(int moneyDrop); // При использовании MoneyNode, может не понадобиться.
 
-    private int _wavesNum = 3;
-    private int _enemyOnWave = 3;
-    private List<Enemy> _enemies = new List<Enemy>();
-    private Random _random = new Random();
     private Character _crystal;
-    private PathFollow2D _enemySpawnLocation;
-    private Timer _waveSpawnTimer;
+    private WaveSpawner _waveSpawner;
+    private EnemyContainer _enemyContainer;
     private MoneyNode _moneyNode;
     private Label _moneyLabel; // Test !!!
 
     public override void _Ready()
     {
         _crystal = GetNode<Character>("Crystal");
-        _enemySpawnLocation = GetNode<PathFollow2D>("EnemyPath/EnemySpawnLocation");
-        _waveSpawnTimer = GetNode<Timer>("WaveSpawnTimer");
+        _waveSpawner = GetNode<WaveSpawner>("WaveSpawner");
+        _enemyContainer = _waveSpawner.GetEnemyContainer();
         _moneyLabel = GetNode<Label>("TestMoneyLable/Money"); // Test !!!
         _moneyNode = GetNode<MoneyNode>("MoneyNode");
 
-        _crystal.Connect(nameof(Character.Death), this, nameof(OnLose));
-        AddDefenders();
-    }
+        _enemyContainer.Connect(nameof(EnemyContainer.Updated), this, nameof(_OnEnemyContainerUpdated));
+        _enemyContainer.Connect(nameof(EnemyContainer.EnemyDeath), this, nameof(_OnEnemyDeath));
 
-    public void _OnWaveSpawnTimerTimeout()
-    {
-        for (int i = 0; i < _enemyOnWave; i++)
-            AddEnemy();
+        Start(3, 15);
     }
 
     public void _OnMoneyChange() // Test !!!
@@ -50,10 +42,36 @@ public class BattleGround : Node2D
         _moneyLabel.Text = _moneyNode.Get().ToString();
     }
 
+    public void _OnCrystalBroke(Character character)
+    {
+        EmitSignal(nameof(Lose));
+        QueueFree();
+    }
+
+    public void _OnWavesEnd()
+    {
+        EmitSignal(nameof(Win));
+        QueueFree();
+    }
+
+    private void _OnEnemyContainerUpdated()
+    {
+        if (!_enemyContainer.IsEmpty())
+        {
+            GetTree().CallGroup("Defender", "SetTarget", _enemyContainer.GetActual());
+        }
+    }
+
+    private void _OnEnemyDeath(Enemy enemy)
+    {
+        EmitSignal(nameof(EnemyDeath), 0); // При использовании MoneyNode, может не понадобиться.
+        _moneyNode.Add(enemy.GetCost());
+    }
+
     public void Start(int waveNum, int enemyOnWave)
     {
-        _wavesNum = waveNum;
-        _enemyOnWave = enemyOnWave;
+        AddDefenders();
+        _waveSpawner.Start(waveNum, enemyOnWave, this, GetNode<PathFollow2D>("EnemyPath/EnemySpawnLocation"), _crystal);
     }
 
     private void AddDefenders()
@@ -63,66 +81,7 @@ public class BattleGround : Node2D
         {
             var defenderNode = (Defender)ObjectCreator.Create(defenders[i]);
             AddChild(defenderNode);
-            defenderNode.Position = GetNode<Position2D>($"DefendersSpawnPoint{i}").Position;
+            defenderNode.Position = GetNode<Position2D>($"DefenderSpawnPoint/{i}").GlobalPosition;
         }
-    }
-
-    private void AddEnemy()
-    {
-        var enemy = (Enemy)ObjectCreator.Create(ObjectCreator.Objects.ENEMYNEAR);
-        AddChild(enemy);
-        _enemySpawnLocation.Offset = _random.Next();
-        enemy.Position = _enemySpawnLocation.Position;
-        enemy.SetTarget(_crystal);
-
-        _enemies.Add(enemy);
-        enemy.Connect(nameof(Enemy.Death), this, nameof(OnEnemyDeath));
-        UpdateDefendersTarget();
-    }
-
-    private void UpdateDefendersTarget()
-    {
-        if (_enemies.Count > 0)
-        {
-            GetTree().CallGroup("Defender", "SetTarget", _enemies[0]);
-        }
-        else
-        {
-            AddWave();
-        }
-    }
-
-    private void AddWave()
-    {
-        if (_wavesNum > 0)
-        {
-            _wavesNum--;
-            _waveSpawnTimer.Start();
-        }
-        else
-        {
-            OnWin();
-        }
-    }
-
-    private void OnEnemyDeath(Enemy enemy)
-    {
-        EmitSignal(nameof(EnemyDeath), 0); // При использовании MoneyNode, может не понадобиться.
-        _enemies.Remove(enemy);
-        _moneyNode.Add(enemy.GetCost());
-        enemy.Disconnect(nameof(Enemy.Death), this, nameof(OnEnemyDeath));
-        UpdateDefendersTarget();
-    }
-
-    private void OnLose()
-    {
-        EmitSignal(nameof(Lose));
-        QueueFree();
-    }
-
-    private void OnWin()
-    {
-        EmitSignal(nameof(Win));
-        QueueFree();
     }
 }
