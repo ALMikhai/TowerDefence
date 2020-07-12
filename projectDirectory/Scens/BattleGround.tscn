@@ -7,7 +7,7 @@
 [ext_resource path="res://Assets/Font/Silver.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://Scens/WaveSpawner.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scens/Charecters/PlayerDefender.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scens/Shells/Shell.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scens/Shells/IceBall.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scens/ShellsBorder.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=1]

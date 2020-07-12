@@ -12,7 +12,7 @@
 [ext_resource path="res://Assets/Defender/Atack/Action_09.png" type="Texture" id=10]
 [ext_resource path="res://Assets/Defender/Atack/Action_04.png" type="Texture" id=11]
 [ext_resource path="res://Scens/Charecters/Defender.cs" type="Script" id=12]
-[ext_resource path="res://Scens/Shells/Shell.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scens/Shells/FireBall.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Assets/Defender/Atack/Action_16.png" type="Texture" id=14]
 [ext_resource path="res://Assets/Defender/Atack/Action_11.png" type="Texture" id=15]
 [ext_resource path="res://Assets/Defender/Atack/Action_12.png" type="Texture" id=16]
@@ -67,7 +67,7 @@ Shell = ExtResource( 13 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 1 )
 animation = "Attack"
-frame = 15
+frame = 7
 speed_scale = 2.0
 playing = true
 

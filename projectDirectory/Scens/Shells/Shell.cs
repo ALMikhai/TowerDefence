@@ -8,12 +8,10 @@ public class Shell : RigidBody2D
     public int Speed = 1000;
 
     private DamageNode _damageNode;
-    private AnimatedSprite _animatedSprite;
 
     public override void _Ready()
     {
         _damageNode = GetNode<DamageNode>("DamageNode");
-        _animatedSprite = GetNode<AnimatedSprite>("AnimatedSprite");
     }
     
     public void _OnShellBodyEntered(Node body)
@@ -27,6 +25,7 @@ public class Shell : RigidBody2D
     public void SetTarget(Vector2 target)
     {
         LinearVelocity = GlobalPosition.DirectionTo(target) * Speed;
+        Rotation = GlobalPosition.AngleToPoint(target);
         LinearDamp = 0;
     }
 }

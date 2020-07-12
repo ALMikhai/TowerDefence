@@ -1,32 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scens/Shells/Shell.cs" type="Script" id=1]
 [ext_resource path="res://Scens/Сharacteristics/DamageNode.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/Fireball/Falling/5.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Fireball/Default/2.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Fireball/Default/3.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Fireball/Default/4.png" type="Texture" id=6]
-[ext_resource path="res://Assets/Fireball/Falling/3.png" type="Texture" id=7]
-[ext_resource path="res://Assets/Fireball/Falling/2.png" type="Texture" id=8]
-[ext_resource path="res://Assets/Fireball/Falling/1.png" type="Texture" id=9]
-[ext_resource path="res://Assets/Fireball/Falling/4.png" type="Texture" id=10]
-[ext_resource path="res://Assets/Fireball/Default/1.png" type="Texture" id=11]
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 11 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "Falling",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 11 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "Default",
-"speed": 15.0
-} ]
-
-[sub_resource type="CircleShape2D" id=2]
-radius = 5.12538
+[sub_resource type="CircleShape2D" id=62]
+radius = 8.33563
 
 [node name="Shell" type="RigidBody2D"]
 collision_layer = 4
@@ -38,14 +16,8 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 1 )
-animation = "Default"
-frame = 2
-playing = true
-
 [node name="DamageNode" parent="." instance=ExtResource( 2 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 2 )
+shape = SubResource( 62 )
 [connection signal="body_entered" from="." to="." method="_OnShellBodyEntered"]
