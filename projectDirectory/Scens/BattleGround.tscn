@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scens/BattleGround.cs" type="Script" id=1]
 [ext_resource path="res://Scens/Crystal.tscn" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Scens/Сharacteristics/MoneyNode.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Font/Silver.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://Scens/WaveSpawner.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scens/Charecters/PlayerDefender.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scens/Shells/Shell.tscn" type="PackedScene" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 65
@@ -296,6 +298,10 @@ curve = SubResource( 8 )
 
 [node name="EnemySpawnLocation" type="PathFollow2D" parent="EnemyPath"]
 position = Vector2( 1280, 0 )
+
+[node name="PlayerDefender" parent="." instance=ExtResource( 7 )]
+position = Vector2( 288, 328 )
+Shell = ExtResource( 8 )
 
 [node name="Crystal" parent="." instance=ExtResource( 2 )]
 position = Vector2( 286.869, 327.851 )

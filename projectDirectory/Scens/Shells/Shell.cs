@@ -24,9 +24,9 @@ public class Shell : RigidBody2D
         CallDeferred("queue_free");
     }
 
-    public void SetTarget(Character target)
+    public void SetTarget(Vector2 target)
     {
-        LinearVelocity = GlobalPosition.DirectionTo(target.GlobalPosition) * Speed;
+        LinearVelocity = GlobalPosition.DirectionTo(target) * Speed;
         LinearDamp = 0;
     }
 }

@@ -9,8 +9,8 @@ public class Defender : Character
 
     public override void Attack()
     {
-        var fireBall = (Shell)Shell.Instance();
-        AddChild(fireBall);
-        fireBall.SetTarget(_target);
+        var shell = (Shell)Shell.Instance();
+        AddChild(shell);
+        shell.SetTarget(_target.GlobalPosition);
     }
 }
