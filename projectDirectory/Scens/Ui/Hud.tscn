@@ -1,0 +1,134 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Assets/Ui/BattleGround/Borders.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Font/Silver.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/Ui/Hud/EmptyBar.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Ui/Hud/FillBar.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Ui/Hud/WindButton.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Ui/Hud/FireButton.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 65
+font_data = ExtResource( 2 )
+
+[node name="Hud" type="Control"]
+margin_right = 1280.0
+margin_bottom = 720.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Borders" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HpBar" type="TextureProgress" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 488.0
+margin_bottom = 56.0
+value = 80.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stats" type="HBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -544.0
+margin_bottom = 73.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Money" type="Label" parent="Stats"]
+margin_right = 270.0
+margin_bottom = 73.0
+rect_min_size = Vector2( 270, 0 )
+custom_fonts/font = SubResource( 1 )
+text = "Money"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Current" type="Label" parent="Stats/Money"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -36.5
+margin_bottom = 36.5
+rect_min_size = Vector2( 100, 0 )
+custom_fonts/font = SubResource( 1 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shells" type="Label" parent="Stats"]
+margin_left = 274.0
+margin_right = 544.0
+margin_bottom = 73.0
+rect_min_size = Vector2( 270, 0 )
+custom_fonts/font = SubResource( 1 )
+text = "Shells"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Current" type="Label" parent="Stats/Shells"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -36.5
+margin_bottom = 36.5
+rect_min_size = Vector2( 100, 0 )
+custom_fonts/font = SubResource( 1 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -67.0
+margin_top = -64.0
+margin_right = 67.0
+margin_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wind" type="TextureButton" parent="Buttons"]
+margin_right = 65.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 65, 65 )
+texture_normal = ExtResource( 5 )
+expand = true
+
+[node name="Fire" type="TextureButton" parent="Buttons"]
+margin_left = 69.0
+margin_right = 134.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 65, 65 )
+texture_normal = ExtResource( 6 )
+expand = true

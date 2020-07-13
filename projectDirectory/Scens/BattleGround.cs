@@ -21,25 +21,18 @@ public class BattleGround : Node2D
     private WaveSpawner _waveSpawner;
     private EnemyContainer _enemyContainer;
     private MoneyNode _moneyNode;
-    private Label _moneyLabel; // Test !!!
 
     public override void _Ready()
     {
         _crystal = GetNode<Character>("Crystal");
         _waveSpawner = GetNode<WaveSpawner>("WaveSpawner");
         _enemyContainer = _waveSpawner.GetEnemyContainer();
-        _moneyLabel = GetNode<Label>("TestMoneyLable/Money"); // Test !!!
         _moneyNode = GetNode<MoneyNode>("MoneyNode");
 
         _enemyContainer.Connect(nameof(EnemyContainer.Updated), this, nameof(_OnEnemyContainerUpdated));
         _enemyContainer.Connect(nameof(EnemyContainer.EnemyDeath), this, nameof(_OnEnemyDeath));
 
         Start(3, 15);
-    }
-
-    public void _OnMoneyChange() // Test !!!
-    {
-        _moneyLabel.Text = _moneyNode.Get().ToString();
     }
 
     public void _OnCrystalBroke(Character character)
@@ -65,7 +58,7 @@ public class BattleGround : Node2D
     private void _OnEnemyDeath(Enemy enemy)
     {
         EmitSignal(nameof(EnemyDeath), 0); // При использовании MoneyNode, может не понадобиться.
-        _moneyNode.Add(enemy.GetCost());
+        //_moneyNode.Add(enemy.GetCost());
     }
 
     public void Start(int waveNum, int enemyOnWave)
