@@ -13,6 +13,9 @@ public class Character : RigidBody2D
     [Export]
     public int Cost = 25;
 
+    [Signal]
+    public delegate void HpUpdate(int max, int current);
+
     public StateMachine StateMachine;
     public IdleState _idleState;
     public MoveState _moveState;
@@ -56,6 +59,11 @@ public class Character : RigidBody2D
     private void _OnAnimationFinished()
     {
         StateMachine.CurrentState.AnimationFinished();
+    }
+
+    private void _OnHpValueUpdate(int max, int current)
+    {
+        EmitSignal(nameof(HpUpdate), max, current);
     }
 
     public void SetAnimation(Static.Character animation)

@@ -28,3 +28,4 @@ __meta__ = {
 [node name="HealthNode" parent="." instance=ExtResource( 3 )]
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_OnAnimationFinished"]
 [connection signal="Death" from="HealthNode" to="." method="_OnDeath"]
+[connection signal="ValueUpdate" from="HealthNode" to="." method="_OnHpValueUpdate"]

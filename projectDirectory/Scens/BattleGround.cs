@@ -14,8 +14,6 @@ public class BattleGround : Node2D
     public delegate void Lose();
     [Signal]
     public delegate void OnWaveEnd();
-    [Signal]
-    public delegate void EnemyDeath(int moneyDrop); // При использовании MoneyNode, может не понадобиться.
 
     private Character _crystal;
     private WaveSpawner _waveSpawner;
@@ -57,8 +55,7 @@ public class BattleGround : Node2D
 
     private void _OnEnemyDeath(Enemy enemy)
     {
-        EmitSignal(nameof(EnemyDeath), 0); // При использовании MoneyNode, может не понадобиться.
-        //_moneyNode.Add(enemy.GetCost());
+        _moneyNode.Add(enemy.GetCost());
     }
 
     public void Start(int waveNum, int enemyOnWave)

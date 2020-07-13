@@ -7,7 +7,7 @@ public class PlayerDefender : Node2D
     public PackedScene Shell;
 
     [Signal]
-    public delegate void ShellsUpdate();
+    public delegate void ShellsUpdate(int max, int current);
 
     private int _maxShellsNum = 5;
     private int _shellsNum = 5;
@@ -29,7 +29,7 @@ public class PlayerDefender : Node2D
     public void _OnReloadTimerTimeout()
     {
         _shellsNum = _maxShellsNum;
-        EmitSignal(nameof(ShellsUpdate));
+        EmitSignal(nameof(ShellsUpdate), _maxShellsNum, _shellsNum);
     }
 
     private void Attack(Vector2 destination)
@@ -39,7 +39,7 @@ public class PlayerDefender : Node2D
             if (_shellsNum > 0)
             {
                 _shellsNum--;
-                EmitSignal(nameof(ShellsUpdate));
+                EmitSignal(nameof(ShellsUpdate), _maxShellsNum, _shellsNum);
                 var shell = (Shell)Shell.Instance();
                 AddChild(shell);
                 shell.SetTarget(destination);

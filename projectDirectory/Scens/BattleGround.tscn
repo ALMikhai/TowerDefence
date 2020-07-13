@@ -291,5 +291,8 @@ position = Vector2( 286.869, 327.851 )
 mode = 1
 
 [node name="Hud" parent="." instance=ExtResource( 5 )]
+[connection signal="MoneyChange" from="MoneyNode" to="Hud" method="_OnMoneyUpdate"]
 [connection signal="WavesEnd" from="WaveSpawner" to="." method="_OnWavesEnd"]
+[connection signal="ShellsUpdate" from="PlayerDefender" to="Hud" method="_OnShellsUpdate"]
 [connection signal="Death" from="Crystal" to="." method="_OnCrystalBroke"]
+[connection signal="HpUpdate" from="Crystal" to="Hud" method="_OnCrystalHpUpdate"]

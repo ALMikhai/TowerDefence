@@ -8,7 +8,7 @@ public class MoneyNode : Node2D
     [Signal]
     public delegate void GoodTransaction(); // Звуковой сигнал.
     [Signal]
-    public delegate void MoneyChange();
+    public delegate void MoneyChange(int current);
 
     private int _money = 0;
 
@@ -17,7 +17,7 @@ public class MoneyNode : Node2D
     public void Add(int money)
     {
         _money += money;
-        EmitSignal(nameof(MoneyChange));
+        EmitSignal(nameof(MoneyChange), _money);
     }
 
     public bool TrySpend(int money)
@@ -26,7 +26,7 @@ public class MoneyNode : Node2D
         {
             _money -= money;
             EmitSignal(nameof(GoodTransaction));
-            EmitSignal(nameof(MoneyChange));
+            EmitSignal(nameof(MoneyChange), _money);
             return true;
         }
         else
