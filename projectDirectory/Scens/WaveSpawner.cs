@@ -9,7 +9,6 @@ public class WaveSpawner : Node2D
     private EnemyContainer _enemyContainer;
     private Character _target;
     private PathFollow2D _spawnLocation;
-    private Node2D _spawnNode;
     private Timer _waveSpawnTimer;
     private int _wavesNum = 3;
     private int _enemyOnWave = 3;
@@ -23,12 +22,10 @@ public class WaveSpawner : Node2D
 
     public void _OnWaveSpawnTimerTimeout()
     {
-        _wavesNum--;
-
         for (int i = 0; i < _enemyOnWave; i++)
         {
             var enemy = _enemyContainer.Add();
-            _spawnNode.AddChild(enemy);
+            AddChild(enemy);
             _spawnLocation.Offset = _random.Next();
             enemy.GlobalPosition = _spawnLocation.GlobalPosition;
             enemy.SetTarget(_target);
@@ -43,14 +40,14 @@ public class WaveSpawner : Node2D
         }
         else
         {
+            _wavesNum--;
             _waveSpawnTimer.Start();
         }
     }
 
-    public void Start(int waveNum, int enemyOnWave, Node2D spawnNode, PathFollow2D spawnLocation, Character target)
+    public void Start(int waveNum, int enemyOnWave, PathFollow2D spawnLocation, Character target)
     {
         _target = target;
-        _spawnNode = spawnNode;
         _spawnLocation = spawnLocation;
         _wavesNum = waveNum;
         _enemyOnWave = enemyOnWave;

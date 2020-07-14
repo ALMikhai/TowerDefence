@@ -73,6 +73,6 @@ public class BattleGround : Node2D
 
     public void Start(int waveNum, int enemyOnWave)
     {
-        _waveSpawner.Start(waveNum, enemyOnWave, this, GetNode<PathFollow2D>("EnemyPath/EnemySpawnLocation"), _crystal);
+        _waveSpawner.Start(waveNum, enemyOnWave, GetNode<PathFollow2D>("EnemyPath/EnemySpawnLocation"), _crystal);
     }
 }
