@@ -71,6 +71,16 @@ public class BattleGround : Node2D
         _moneyNode.Add(enemy.GetCost());
     }
 
+    private void _OnContinueButtonPressed()
+    {
+        _stateMachine.ChangeState(_playerAttackState);  
+    }
+
+    private void _OnExitButtonPressed()
+    {
+        GetTree().Quit();
+    }
+
     public void Start(int waveNum, int enemyOnWave)
     {
         _waveSpawner.Start(waveNum, enemyOnWave, GetNode<PathFollow2D>("EnemyPath/EnemySpawnLocation"), _crystal);
