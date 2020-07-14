@@ -83,6 +83,10 @@
     <Compile Include="Scens\Charecters\SM\State.cs" />
     <Compile Include="Scens\Charecters\SM\StateMachine.cs" />
     <Compile Include="Scens\Сharacteristics\MoneyNode.cs" />
+    <Compile Include="Scens\GameSM\State.cs" />
+    <Compile Include="Scens\GameSM\StateMachine.cs" />
+    <Compile Include="Scens\GameSM\PauseState.cs" />
+    <Compile Include="Scens\GameSM\PlayerAttackState.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

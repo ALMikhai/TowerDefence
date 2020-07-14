@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using Static = projectDirectory.Scens.Static;
+using projectDirectory.Scens.GameSM;
 
 public class BattleGround : Node2D
 {
@@ -17,6 +18,10 @@ public class BattleGround : Node2D
     private EnemyContainer _enemyContainer;
     private MoneyNode _moneyNode;
 
+    private StateMachine _stateMachine;
+    public PauseState _pauseState;
+    public PlayerAttackState _playerAttackState;
+
     public override void _Ready()
     {
         _crystal = GetNode<Character>("Crystal");
@@ -27,7 +32,18 @@ public class BattleGround : Node2D
         _enemyContainer.Connect(nameof(EnemyContainer.Updated), this, nameof(_OnEnemyContainerUpdated));
         _enemyContainer.Connect(nameof(EnemyContainer.EnemyDeath), this, nameof(_OnEnemyDeath));
 
+        _stateMachine = new StateMachine();
+        _pauseState = new PauseState(this, _stateMachine);
+        _playerAttackState = new PlayerAttackState(this, _stateMachine);
+
+        _stateMachine.Initialize(_playerAttackState);
+
         Start(3, 15);
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        _stateMachine.CurrentState.HandleInput(@event);
     }
 
     public void _OnCrystalBroke(Character character)

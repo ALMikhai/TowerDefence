@@ -18,21 +18,13 @@ public class PlayerDefender : Node2D
         _reloadTimer = GetNode<Timer>("ReloadTimer");
     }
 
-    public override void _Input(InputEvent @event) // Возможно придется перенести при добавлении меню.
-    {
-        if (@event is InputEventScreenTouch screenTouchEvent && screenTouchEvent.IsPressed())
-        {
-            Attack(screenTouchEvent.Position);
-        }
-    }
-
     public void _OnReloadTimerTimeout()
     {
         _shellsNum = _maxShellsNum;
         EmitSignal(nameof(ShellsUpdate), _maxShellsNum, _shellsNum);
     }
 
-    private void Attack(Vector2 destination)
+    public void Attack(Vector2 destination)
     {
         if (_reloadTimer.IsStopped())
         {

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scens/BattleGround.cs" type="Script" id=1]
 [ext_resource path="res://Scens/Crystal.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Scens/Shells/IceBall.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scens/ShellsBorder.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scens/DefenderSpawnPoint.cs" type="Script" id=10]
+[ext_resource path="res://Scens/Ui/PauseMenu.tscn" type="PackedScene" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 10.0278, 2.18791, 16.4234, 5.48263, 23.7881, 10.3278, 30.9589, 19.4367, 31.3465, 32, 22.4314, 31.8403, 22.0438, 30.2899, 19.7181, 23.5066, 12.9349, 16.5296, 5.37643, 11.8783, 0, 9.94019 )
@@ -293,6 +294,10 @@ position = Vector2( 286.869, 327.851 )
 mode = 1
 
 [node name="Hud" parent="." instance=ExtResource( 5 )]
+
+[node name="PauseMenu" parent="." instance=ExtResource( 11 )]
+pause_mode = 2
+visible = false
 [connection signal="MoneyChange" from="MoneyNode" to="Hud" method="_OnMoneyUpdate"]
 [connection signal="WavesEnd" from="WaveSpawner" to="." method="_OnWavesEnd"]
 [connection signal="ShellsUpdate" from="PlayerDefender" to="Hud" method="_OnShellsUpdate"]
