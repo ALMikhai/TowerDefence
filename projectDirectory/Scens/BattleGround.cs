@@ -5,9 +5,6 @@ using Static = projectDirectory.Scens.Static;
 
 public class BattleGround : Node2D
 {
-    // Этот класс управляет поялением персонажей и их
-    // сражением + оповещает о проигрыще или выигрыше.
-
     [Signal]
     public delegate void Win();
     [Signal]
@@ -60,18 +57,6 @@ public class BattleGround : Node2D
 
     public void Start(int waveNum, int enemyOnWave)
     {
-        AddDefenders();
         _waveSpawner.Start(waveNum, enemyOnWave, this, GetNode<PathFollow2D>("EnemyPath/EnemySpawnLocation"), _crystal);
-    }
-
-    private void AddDefenders()
-    {
-        var defenders = Static.SelectedDefenders.GetDefenders();
-        for (int i = 0; i < defenders.Count; i++)
-        {
-            var defenderNode = (Defender)ObjectCreator.Create(defenders[i]);
-            AddChild(defenderNode);
-            defenderNode.Position = GetNode<Position2D>($"DefenderSpawnPoint/{i}").GlobalPosition;
-        }
     }
 }

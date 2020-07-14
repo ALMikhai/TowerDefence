@@ -22,10 +22,10 @@ public class Shell : RigidBody2D
         CallDeferred("queue_free");
     }
 
-    public void SetTarget(Vector2 target)
+    public void SetDestination(Vector2 point)
     {
-        LinearVelocity = GlobalPosition.DirectionTo(target) * Speed;
-        Rotation = GlobalPosition.AngleToPoint(target);
+        LinearVelocity = GlobalPosition.DirectionTo(point) * Speed;
+        Rotation = GlobalPosition.AngleToPoint(point);
         LinearDamp = 0;
     }
 }

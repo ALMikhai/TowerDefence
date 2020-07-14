@@ -60,6 +60,7 @@
     <Compile Include="Scens\BattleGround.cs" />
     <Compile Include="Scens\Charecters\Character.cs" />
     <Compile Include="Scens\Charecters\PlayerDefender.cs" />
+    <Compile Include="Scens\DefenderSpawnPoint.cs" />
     <Compile Include="Scens\EnemyContainer.cs" />
     <Compile Include="Scens\ShellsBorder.cs" />
     <Compile Include="Scens\Shells\Shell.cs" />

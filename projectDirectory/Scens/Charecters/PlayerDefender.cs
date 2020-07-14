@@ -36,15 +36,13 @@ public class PlayerDefender : Node2D
     {
         if (_reloadTimer.IsStopped())
         {
-            if (_shellsNum > 0)
-            {
-                _shellsNum--;
-                EmitSignal(nameof(ShellsUpdate), _maxShellsNum, _shellsNum);
-                var shell = (Shell)Shell.Instance();
-                AddChild(shell);
-                shell.SetTarget(destination);
-            }
-            else
+            _shellsNum--;
+            EmitSignal(nameof(ShellsUpdate), _maxShellsNum, _shellsNum);
+            var shell = (Shell)Shell.Instance();
+            AddChild(shell);
+            shell.SetDestination(destination);
+
+            if (_shellsNum == 0)
             {
                 _reloadTimer.Start();
             }

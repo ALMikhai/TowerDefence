@@ -11,6 +11,6 @@ public class Defender : Character
     {
         var shell = (Shell)Shell.Instance();
         AddChild(shell);
-        shell.SetTarget(_target.GlobalPosition);
+        shell.SetDestination(_target.GlobalPosition);
     }
 }
