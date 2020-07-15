@@ -1,7 +1,6 @@
 using Godot;
 using System;
 using System.Collections.Generic;
-using Static = projectDirectory.Scens.Static;
 using projectDirectory.Scens.GameSM;
 
 public class BattleGround : Node2D
