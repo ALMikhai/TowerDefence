@@ -25,8 +25,8 @@ public class Global : Node
     {
             { ObjectCreator.Objects.DEFENDERGINO, new CharacterStats(100, 10) },
             { ObjectCreator.Objects.DEFENDER, new CharacterStats(100, 10) },
-            { ObjectCreator.Objects.CRYSTAL, new CharacterStats(100, 10) },
-            { ObjectCreator.Objects.ENEMYNEAR, new CharacterStats(100, 25) }
+            { ObjectCreator.Objects.CRYSTAL, new CharacterStats(100, 100) },
+            { ObjectCreator.Objects.ENEMYNEAR, new CharacterStats(1000, 25) }
     };
 
     public CharacterStats GetCharacterStats(ObjectCreator.Objects obj)

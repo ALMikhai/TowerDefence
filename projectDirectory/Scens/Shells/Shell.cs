@@ -28,4 +28,9 @@ public class Shell : RigidBody2D
         Rotation = GlobalPosition.AngleToPoint(point);
         LinearDamp = 0;
     }
+
+    public void SetDamage(int damage)
+    {
+        _damageNode.SetDamage(damage);
+    }
 }

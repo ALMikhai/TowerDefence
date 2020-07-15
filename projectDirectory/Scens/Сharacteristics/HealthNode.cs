@@ -11,6 +11,12 @@ public class HealthNode : Node2D
     private int _current = 100;
     private int _max = 100;
 
+    public void SetHealth(int hp)
+    {
+        _max = hp;
+        _current = hp;
+    }
+
     public void GetDamage(int damage)
     {
         _current -= damage;

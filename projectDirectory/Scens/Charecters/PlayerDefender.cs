@@ -13,9 +13,12 @@ public class PlayerDefender : Node2D
     private int _shellsNum = 5;
     private Timer _reloadTimer;
 
+    private Global _global;
+
     public override void _Ready()
     {
         _reloadTimer = GetNode<Timer>("ReloadTimer");
+        _global = GetTree().Root.GetNode<Global>("Global");
     }
 
     public void _OnReloadTimerTimeout()
@@ -32,6 +35,7 @@ public class PlayerDefender : Node2D
             EmitSignal(nameof(ShellsUpdate), _maxShellsNum, _shellsNum);
             var shell = (Shell)Shell.Instance();
             AddChild(shell);
+            shell.SetDamage(_global.GetCharacterStats(ObjectCreator.Objects.CRYSTAL).Damage);
             shell.SetDestination(destination);
 
             if (_shellsNum == 0)

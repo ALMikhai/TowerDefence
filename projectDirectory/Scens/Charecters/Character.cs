@@ -12,6 +12,8 @@ public class Character : RigidBody2D
     public int AttackRange = 10;
     [Export]
     public int Cost = 25;
+    [Export]
+    public ObjectCreator.Objects Object;
 
     [Signal]
     public delegate void HpUpdate(int max, int current);
@@ -27,6 +29,8 @@ public class Character : RigidBody2D
     protected HealthNode _healthNode;
     protected Character _target;
 
+    private Global _global;
+
     [Signal]
     public delegate void Death(Character character);
 
@@ -35,12 +39,17 @@ public class Character : RigidBody2D
         _animatedSprite = GetNode<AnimatedSprite>("AnimatedSprite");
         _damageNode = GetNode<DamageNode>("DamageNode");
         _healthNode = GetNode<HealthNode>("HealthNode");
+        _global = GetTree().Root.GetNode<Global>("Global");
 
         StateMachine = new StateMachine();
         _idleState = new IdleState(this, StateMachine);
         _moveState = new MoveState(this, StateMachine);
         _attackState = new AttackState(this, StateMachine);
         _deathState = new DeathState(this, StateMachine);
+
+        var state = _global.GetCharacterStats(Object);
+        _healthNode.SetHealth(state.Hp);
+        _damageNode.SetDamage(state.Damage);
 
         StateMachine.Initialize(_idleState);
     }

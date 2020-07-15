@@ -3,8 +3,7 @@ using System;
 
 public class DamageNode : Node2D
 {
-    [Export]
-    public int Damage = 25;
+    private int _damage = 25;
     private HealthNode _target;
 
     public void SetTarget(HealthNode target)
@@ -14,6 +13,16 @@ public class DamageNode : Node2D
         _target = target;
     }
 
+    public void SetDamage(int damage)
+    {
+        _damage = damage;
+    }
+
+    public int GetDamage()
+    {
+        return _damage;
+    }
+
     public HealthNode GetTarget()
     {
         return _target;
@@ -21,6 +30,6 @@ public class DamageNode : Node2D
 
     public void ApplyDamage()
     {
-        _target.GetDamage(Damage);
+        _target.GetDamage(_damage);
     }
 }
