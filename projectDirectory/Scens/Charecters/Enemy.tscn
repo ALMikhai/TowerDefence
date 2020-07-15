@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scens/Charecters/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Ui/EnemyHpBar/FillBarEnemy.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Ui/EnemyHpBar/EmptyBarEnemy.png" type="Texture" id=3]
 
 [sub_resource type="CSharpScript" id=1]
 resource_name = "Enemy"
@@ -36,3 +38,14 @@ script = SubResource( 1 )
 
 [node name="DamageNode" parent="." index="2"]
 Damage = 1
+
+[node name="HpBar" type="TextureProgress" parent="." index="4"]
+margin_right = 60.0
+margin_bottom = 6.0
+value = 100.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 3 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
