@@ -21,12 +21,15 @@ public class BattleGround : Node2D
     public PauseState _pauseState;
     public PlayerAttackState _playerAttackState;
 
+    public Global _global;
+
     public override void _Ready()
     {
         _crystal = GetNode<Character>("Crystal");
         _waveSpawner = GetNode<WaveSpawner>("WaveSpawner");
         _enemyContainer = _waveSpawner.GetEnemyContainer();
         _moneyNode = GetNode<MoneyNode>("MoneyNode");
+        _global = GetTree().Root.GetNode<Global>("Global");
 
         _enemyContainer.Connect(nameof(EnemyContainer.Updated), this, nameof(_OnEnemyContainerUpdated));
         _enemyContainer.Connect(nameof(EnemyContainer.EnemyDeath), this, nameof(_OnEnemyDeath));
@@ -37,7 +40,7 @@ public class BattleGround : Node2D
 
         _stateMachine.Initialize(_playerAttackState);
 
-        Start(3, 15);
+        Start(2, 2);
     }
 
     public override void _Input(InputEvent @event)
@@ -54,6 +57,7 @@ public class BattleGround : Node2D
     public void _OnWavesEnd()
     {
         EmitSignal(nameof(Win));
+        _global.Save();
         QueueFree();
     }
 

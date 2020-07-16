@@ -6,8 +6,8 @@ public class HealthNode : Node2D
     [Signal]
     public delegate void Death();
     [Signal]
-
     public delegate void ValueUpdate(int max, int current);
+    
     private int _current = 100;
     private int _max = 100;
 
