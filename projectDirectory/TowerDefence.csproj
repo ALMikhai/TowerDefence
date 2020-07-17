@@ -62,6 +62,9 @@
     <Compile Include="Scens\Charecters\PlayerDefender.cs" />
     <Compile Include="Scens\DefenderSpawnPoint.cs" />
     <Compile Include="Scens\EnemyContainer.cs" />
+    <Compile Include="Scens\MainMenu\DefenderCell.cs" />
+    <Compile Include="Scens\MainMenu\Menu.cs" />
+    <Compile Include="Scens\MainMenu\Strore.cs" />
     <Compile Include="Scens\ShellsBorder.cs" />
     <Compile Include="Scens\Shells\Shell.cs" />
     <Compile Include="Scens\Static\Global.cs" />

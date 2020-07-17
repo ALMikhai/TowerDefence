@@ -1,0 +1,234 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Assets/Ui/Menu/Back_Menu.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Ui/Menu/Button_Empty.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Ui/Menu/Background.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Font/Silver.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Scens/MainMenu/DefenderCell.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scens/MainMenu/Strore.cs" type="Script" id=6]
+[ext_resource path="res://Scens/MainMenu/Menu.cs" type="Script" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 74
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 50
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 50
+font_data = ExtResource( 4 )
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -640.0
+margin_top = -400.0
+margin_right = 640.0
+margin_bottom = 400.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuPanel" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -296.0
+margin_top = -316.0
+margin_right = 296.0
+margin_bottom = 316.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="VBoxContainer" parent="MenuPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -188.5
+margin_top = -157.0
+margin_right = 188.5
+margin_bottom = 157.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="TextureButton" parent="MenuPanel/Buttons"]
+margin_right = 377.0
+margin_bottom = 102.0
+texture_normal = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="MenuPanel/Buttons/Play"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -44.0
+margin_top = -41.5
+margin_right = 44.0
+margin_bottom = 41.5
+custom_fonts/font = SubResource( 1 )
+text = "Play"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Store" type="TextureButton" parent="MenuPanel/Buttons"]
+margin_top = 106.0
+margin_right = 377.0
+margin_bottom = 208.0
+texture_normal = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="MenuPanel/Buttons/Store"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -60.0
+margin_top = -41.5
+margin_right = 60.0
+margin_bottom = 41.5
+custom_fonts/font = SubResource( 1 )
+text = "Store"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="TextureButton" parent="MenuPanel/Buttons"]
+margin_top = 212.0
+margin_right = 377.0
+margin_bottom = 314.0
+texture_normal = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="MenuPanel/Buttons/Exit"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -44.0
+margin_top = -41.5
+margin_right = 44.0
+margin_bottom = 41.5
+custom_fonts/font = SubResource( 1 )
+text = "Exit"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level" type="Label" parent="MenuPanel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -72.0
+margin_top = 36.0
+margin_right = 74.0
+margin_bottom = 119.0
+custom_fonts/font = SubResource( 1 )
+text = "Level 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Strore" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="Strore"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0901961, 0.0901961, 0.0901961, 0.866667 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Defenders" type="HBoxContainer" parent="Strore"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -152.0
+margin_right = 152.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Defender" parent="Strore/Defenders" instance=ExtResource( 5 )]
+margin_right = 300.0
+rect_min_size = Vector2( 300, 0 )
+
+[node name="DefenderGino" parent="Strore/Defenders" instance=ExtResource( 5 )]
+margin_left = 304.0
+margin_right = 304.0
+Type = 3
+
+[node name="Money" type="Label" parent="Strore"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -56.0
+margin_top = 40.0
+margin_right = 24.0
+margin_bottom = 96.0
+custom_fonts/font = SubResource( 2 )
+text = "Money"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="Label" parent="Strore/Money"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 16.0
+margin_right = 96.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 3 )
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back" type="Button" parent="Strore"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 232.0
+margin_bottom = 94.0
+custom_fonts/font = SubResource( 4 )
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="MenuPanel/Buttons/Play" to="." method="_OnPlayPressed"]
+[connection signal="pressed" from="MenuPanel/Buttons/Store" to="." method="_OnStorePressed"]
+[connection signal="pressed" from="MenuPanel/Buttons/Exit" to="." method="_OnExitPressed"]
+[connection signal="pressed" from="Strore/Back" to="." method="_OnBackPressed"]

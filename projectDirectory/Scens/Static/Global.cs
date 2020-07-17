@@ -15,18 +15,23 @@ public class CharacterStats
 
 public class Global : Node
 {
+    public enum Stats { HP, DAMAGE }
+
+    [Signal]
+    public delegate void Update();
+
     private MoneyNode _moneyNode;
-
     private Dictionary<ObjectCreator.Objects, bool> _defenderAvailable;
-
     private Dictionary<ObjectCreator.Objects, CharacterStats> _characterStats;
+    private int _hpPrice = 100;
+    private int _damagePrice = 200;
 
     public override void _Ready()
     {
         _defenderAvailable = new Dictionary<ObjectCreator.Objects, bool>
         {
             { ObjectCreator.Objects.DEFENDERGINO, true },
-            { ObjectCreator.Objects.DEFENDER, false }
+            { ObjectCreator.Objects.DEFENDER, true }
         };
 
         _characterStats = new Dictionary<ObjectCreator.Objects, CharacterStats>
@@ -40,6 +45,34 @@ public class Global : Node
         _moneyNode = (MoneyNode)(GD.Load<PackedScene>("res://Scens/Сharacteristics/MoneyNode.tscn").Instance());
         AddChild(_moneyNode);
         Load();
+    }
+
+    public void TryBuy(ObjectCreator.Objects obj, Stats stat)
+    {
+        var cost = 0;
+
+        if (stat == Stats.HP)
+        {
+            cost = _hpPrice;
+        }
+        else
+        {
+            cost = _damagePrice;
+        }
+
+        if (_moneyNode.TrySpend(cost))
+        {
+            if (stat == Stats.HP)
+            {
+                _characterStats[obj].Hp += 25;
+            }
+            else
+            {
+                _characterStats[obj].Damage += 25;
+            }
+
+            EmitSignal(nameof(Update));
+        }
     }
 
     public CharacterStats GetCharacterStats(ObjectCreator.Objects obj)
@@ -63,6 +96,11 @@ public class Global : Node
                 result.Add(defender.Key);
         }
         return result;
+    }
+
+    public int GetMoney()
+    {
+        return _moneyNode.Get();
     }
 
     public void Save()
@@ -89,7 +127,7 @@ public class Global : Node
         saveFile.Close();
     }
 
-    public void Load()
+    private void Load()
     {
         var saveGame = new File();
         if (!saveGame.FileExists("user://savegame.save"))
@@ -108,7 +146,7 @@ public class Global : Node
         _defenderAvailable[ObjectCreator.Objects.DEFENDER] = (bool)saveData["DEFENDER_OPEN"];
 
         _moneyNode.Add(saveData["MONEY"].ToString().ToInt());
-
+        _moneyNode.Add(10000);
         saveGame.Close();
     }
 }
