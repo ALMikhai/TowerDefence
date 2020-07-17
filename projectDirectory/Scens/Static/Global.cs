@@ -37,10 +37,10 @@ public class Global : Node
 
         _characterStats = new Dictionary<ObjectCreator.Objects, CharacterStats>
         {
-            { ObjectCreator.Objects.DEFENDERGINO, new CharacterStats(100, 25) },
-            { ObjectCreator.Objects.DEFENDER, new CharacterStats(100, 25) },
+            { ObjectCreator.Objects.DEFENDERGINO, new CharacterStats(100, 15) },
+            { ObjectCreator.Objects.DEFENDER, new CharacterStats(100, 15) },
             { ObjectCreator.Objects.CRYSTAL, new CharacterStats(100, 15) },
-            { ObjectCreator.Objects.ENEMYNEAR, new CharacterStats(100, 25) }
+            { ObjectCreator.Objects.ENEMYNEAR, new CharacterStats(100, 15) }
         };
 
         _moneyNode = (MoneyNode)(GD.Load<PackedScene>("res://Scens/Characteristics/MoneyNode.tscn").Instance());
@@ -65,11 +65,11 @@ public class Global : Node
         {
             if (stat == Stats.HP)
             {
-                _characterStats[obj].Hp += 25;
+                _characterStats[obj].Hp += 10;
             }
             else
             {
-                _characterStats[obj].Damage += 25;
+                _characterStats[obj].Damage += 5;
             }
 
             EmitSignal(nameof(Update));
@@ -137,7 +137,8 @@ public class Global : Node
             { "ENEMYNEAR_DAMAGE", _characterStats[ObjectCreator.Objects.ENEMYNEAR].Damage },
             { "DEFENDERGINO_OPEN", _defenderAvailable[ObjectCreator.Objects.DEFENDERGINO] },
             { "DEFENDER_OPEN", _defenderAvailable[ObjectCreator.Objects.DEFENDER] },
-            { "MONEY", _moneyNode.Get() }
+            { "MONEY", _moneyNode.Get() },
+            { "LEVEL", _level }
         };
 
         saveFile.StoreLine(JSON.Print(saveData));
@@ -163,6 +164,7 @@ public class Global : Node
         _defenderAvailable[ObjectCreator.Objects.DEFENDER] = (bool)saveData["DEFENDER_OPEN"];
 
         _moneyNode.Add(saveData["MONEY"].ToString().ToInt());
+        _level = saveData["LEVEL"].ToString().ToInt();
 
         saveGame.Close();
     }
