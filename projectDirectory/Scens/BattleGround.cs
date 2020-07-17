@@ -6,10 +6,6 @@ using projectDirectory.Scens.GameSM;
 public class BattleGround : Node2D
 {
     [Signal]
-    public delegate void Win();
-    [Signal]
-    public delegate void Lose();
-    [Signal]
     public delegate void OnWaveEnd();
 
     private Character _crystal;
@@ -52,14 +48,13 @@ public class BattleGround : Node2D
 
     public void _OnCrystalBroke(Character character)
     {
-        EmitSignal(nameof(Lose));
-        QueueFree();
+        _sceneChanger._stateMachine.ChangeState(_sceneChanger._menuState);
     }
 
     public void _OnWavesEnd()
     {
-        EmitSignal(nameof(Win));
-        QueueFree();
+        _global.AddMoney(_moneyNode.Get());
+        _sceneChanger._stateMachine.ChangeState(_sceneChanger._menuState);
     }
 
     private void _OnEnemyContainerUpdated()

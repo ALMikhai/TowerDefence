@@ -103,6 +103,11 @@ public class Global : Node
         return _moneyNode.Get();
     }
 
+    public void AddMoney(int money)
+    {
+        _moneyNode.Add(money);
+    }
+
     public void Save()
     {
         var saveFile = new File();
@@ -144,7 +149,6 @@ public class Global : Node
 
         _defenderAvailable[ObjectCreator.Objects.DEFENDERGINO] = (bool)saveData["DEFENDERGINO_OPEN"];
         _defenderAvailable[ObjectCreator.Objects.DEFENDER] = (bool)saveData["DEFENDER_OPEN"];
-        _defenderAvailable[ObjectCreator.Objects.DEFENDER] = true;
 
         _moneyNode.Add(saveData["MONEY"].ToString().ToInt());
 
