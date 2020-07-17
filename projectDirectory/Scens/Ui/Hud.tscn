@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Font/Silver.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Assets/Ui/Hud/EmptyBar.png" type="Texture" id=3]
@@ -7,7 +7,11 @@
 [ext_resource path="res://Assets/Ui/Hud/FireButton.png" type="Texture" id=6]
 [ext_resource path="res://Scens/Ui/Hud.cs" type="Script" id=7]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=4]
+size = 59
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
 size = 74
 font_data = ExtResource( 2 )
 
@@ -24,11 +28,11 @@ __meta__ = {
 }
 
 [node name="HpBar" type="TextureProgress" parent="."]
-anchor_left = 0.169
-anchor_right = 0.169
-margin_left = -0.320023
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -184.0
 margin_top = 16.0
-margin_right = 375.68
+margin_right = 192.0
 margin_bottom = 56.0
 value = 100.0
 texture_under = ExtResource( 3 )
@@ -38,12 +42,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Stats" type="HBoxContainer" parent="."]
+[node name="PauseButton" type="Button" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -600.0
-margin_right = -56.0
-margin_bottom = 83.0
+margin_left = -160.0
+margin_top = 16.0
+margin_right = -32.0
+margin_bottom = 88.0
+custom_fonts/font = SubResource( 4 )
+text = "Pause"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stats" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -272.0
+margin_top = -104.0
+margin_right = 272.0
+margin_bottom = -21.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -52,7 +72,7 @@ __meta__ = {
 margin_right = 270.0
 margin_bottom = 83.0
 rect_min_size = Vector2( 270, 0 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Money"
 valign = 1
 __meta__ = {
@@ -130,3 +150,4 @@ margin_bottom = 65.0
 rect_min_size = Vector2( 65, 65 )
 texture_normal = ExtResource( 6 )
 expand = true
+[connection signal="pressed" from="PauseButton" to="." method="_OnPauseButtonPressed"]

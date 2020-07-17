@@ -310,5 +310,6 @@ visible = false
 [connection signal="ShellsUpdate" from="PlayerDefender" to="Hud" method="_OnShellsUpdate"]
 [connection signal="Death" from="Crystal" to="." method="_OnCrystalBroke"]
 [connection signal="HpUpdate" from="Crystal" to="Hud" method="_OnCrystalHpUpdate"]
+[connection signal="PauseButtonPressed" from="Hud" to="." method="_OnPauseButtonPressed"]
 [connection signal="ContinueButtonPressed" from="PauseMenu" to="." method="_OnContinueButtonPressed"]
 [connection signal="ExitButtonPressed" from="PauseMenu" to="." method="_OnExitButtonPressed"]

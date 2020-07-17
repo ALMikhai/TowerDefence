@@ -7,6 +7,8 @@ public class Hud : Control
     public delegate void OnFireButtonTouch();
     [Signal]
     public delegate void OnWindButtonTouch();
+    [Signal]
+    public delegate void PauseButtonPressed();
 
     private Label _moneyLabel;
     private Label _shellsLabel;
@@ -33,5 +35,10 @@ public class Hud : Control
     {
         _hpBar.MaxValue = max;
         _hpBar.Value = current;
+    }
+
+    public void _OnPauseButtonPressed()
+    {
+        EmitSignal(nameof(PauseButtonPressed));
     }
 }

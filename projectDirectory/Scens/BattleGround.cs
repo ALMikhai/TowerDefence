@@ -75,6 +75,11 @@ public class BattleGround : Node2D
         _stateMachine.ChangeState(_playerAttackState);  
     }
 
+    private void _OnPauseButtonPressed()
+    {
+        _stateMachine.ChangeState(_pauseState);
+    }
+
     private void _OnExitButtonPressed()
     {
         _stateMachine.ChangeState(_playerAttackState);
