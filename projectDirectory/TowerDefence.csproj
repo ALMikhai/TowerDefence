@@ -90,6 +90,11 @@
     <Compile Include="Scens\GameSM\StateMachine.cs" />
     <Compile Include="Scens\GameSM\PauseState.cs" />
     <Compile Include="Scens\GameSM\PlayerAttackState.cs" />
+    <Compile Include="Scens\MainMenu\SM\MenuState.cs" />
+    <Compile Include="Scens\MainMenu\SM\State.cs" />
+    <Compile Include="Scens\MainMenu\SM\StateMachine.cs" />
+    <Compile Include="Scens\MainMenu\SM\StoreState.cs" />
+
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
