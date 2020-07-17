@@ -15,6 +15,9 @@ namespace projectDirectory.Scens.Static.SceneSM
 
         public virtual void Enter() { }
 
-        async public virtual void Exit() { }
+        async public virtual void Exit()
+        {
+            await _sceneChanger.ToSignal(_sceneChanger.GetTree().CreateTimer(3), "timeout");
+        }
     }
 }

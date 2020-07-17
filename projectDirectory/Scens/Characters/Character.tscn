@@ -1,11 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scens/Characters/Character.cs" type="Script" id=1]
 [ext_resource path="res://Scens/Characteristics/DamageNode.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scens/Characteristics/HealthNode.tscn" type="PackedScene" id=3]
-
-
-
+[ext_resource path="res://Sounds/swish_2.wav" type="AudioStream" id=4]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.0
@@ -21,6 +19,9 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
+
+[node name="AttackSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 
