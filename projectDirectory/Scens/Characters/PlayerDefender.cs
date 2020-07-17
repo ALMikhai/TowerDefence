@@ -12,6 +12,7 @@ public class PlayerDefender : Node2D
     private int _maxShellsNum = 5;
     private int _shellsNum = 5;
     private Timer _reloadTimer;
+    private AudioStreamPlayer _attackSound;
 
     private Global _global;
 
@@ -19,6 +20,7 @@ public class PlayerDefender : Node2D
     {
         _reloadTimer = GetNode<Timer>("ReloadTimer");
         _global = GetTree().Root.GetNode<Global>("Global");
+        _attackSound = GetNode<AudioStreamPlayer>("AttackSound");
     }
 
     public void _OnReloadTimerTimeout()
@@ -37,6 +39,7 @@ public class PlayerDefender : Node2D
             AddChild(shell);
             shell.SetDamage(_global.GetCharacterStats(ObjectCreator.Objects.CRYSTAL).Damage);
             shell.SetDestination(destination);
+            _attackSound.Play();
 
             if (_shellsNum == 0)
             {
