@@ -1,0 +1,19 @@
+using Godot;
+
+namespace projectDirectory.Scens.Static.SceneSM
+{
+    public class MenuState : State
+    {
+        public MenuState(SceneChanger sceneChanger, StateMachine stateMachine) : base(sceneChanger, stateMachine) { }
+
+        public override void Enter() 
+        {
+            _sceneChanger.GetTree().ChangeScene("res://Scens/MainMenu/Menu.tscn");
+        }
+
+        async public override void Exit() 
+        {
+            await _sceneChanger.ToSignal(_sceneChanger.GetTree().CreateTimer(1), "timeout");
+        }
+    }
+}

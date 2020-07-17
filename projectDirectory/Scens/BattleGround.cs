@@ -22,6 +22,7 @@ public class BattleGround : Node2D
     public PlayerAttackState _playerAttackState;
 
     public Global _global;
+    private SceneChanger _sceneChanger;
 
     public override void _Ready()
     {
@@ -30,6 +31,7 @@ public class BattleGround : Node2D
         _enemyContainer = _waveSpawner.GetEnemyContainer();
         _moneyNode = GetNode<MoneyNode>("MoneyNode");
         _global = GetTree().Root.GetNode<Global>("Global");
+        _sceneChanger = GetTree().Root.GetNode<SceneChanger>("SceneChanger");
 
         _enemyContainer.Connect(nameof(EnemyContainer.Updated), this, nameof(_OnEnemyContainerUpdated));
         _enemyContainer.Connect(nameof(EnemyContainer.EnemyDeath), this, nameof(_OnEnemyDeath));
@@ -57,7 +59,6 @@ public class BattleGround : Node2D
     public void _OnWavesEnd()
     {
         EmitSignal(nameof(Win));
-        _global.Save();
         QueueFree();
     }
 
@@ -81,7 +82,8 @@ public class BattleGround : Node2D
 
     private void _OnExitButtonPressed()
     {
-        GetTree().Quit();
+        _stateMachine.ChangeState(_playerAttackState);
+        _sceneChanger._stateMachine.ChangeState(_sceneChanger._menuState);
     }
 
     public void Start(int waveNum, int enemyOnWave)
