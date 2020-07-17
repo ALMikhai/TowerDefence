@@ -7,27 +7,28 @@
 [ext_resource path="res://Assets/Ui/Hud/FireButton.png" type="Texture" id=6]
 [ext_resource path="res://Scens/Ui/Hud.cs" type="Script" id=7]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 74
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 74
 font_data = ExtResource( 2 )
 
 [node name="Hud" type="Control"]
 margin_right = 1280.0
-margin_bottom = 800.0
+margin_bottom = 720.0
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HpBar" type="TextureProgress" parent="."]
-anchor_left = 0.225
-anchor_right = 0.225
+anchor_left = 0.169
+anchor_right = 0.169
+margin_left = -0.320023
 margin_top = 16.0
-margin_right = 376.0
+margin_right = 375.68
 margin_bottom = 56.0
 value = 100.0
 texture_under = ExtResource( 3 )
@@ -40,8 +41,9 @@ __meta__ = {
 [node name="Stats" type="HBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -544.0
-margin_bottom = 73.0
+margin_left = -600.0
+margin_right = -56.0
+margin_bottom = 83.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -50,7 +52,7 @@ __meta__ = {
 margin_right = 270.0
 margin_bottom = 83.0
 rect_min_size = Vector2( 270, 0 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Money"
 valign = 1
 __meta__ = {
@@ -66,7 +68,7 @@ margin_left = -100.0
 margin_top = -36.5
 margin_bottom = 36.5
 rect_min_size = Vector2( 100, 0 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "0"
 valign = 1
 __meta__ = {
@@ -78,7 +80,7 @@ margin_left = 274.0
 margin_right = 544.0
 margin_bottom = 83.0
 rect_min_size = Vector2( 270, 0 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Shells"
 valign = 1
 __meta__ = {
@@ -94,8 +96,8 @@ margin_left = -100.0
 margin_top = -36.5
 margin_bottom = 36.5
 rect_min_size = Vector2( 100, 0 )
-custom_fonts/font = SubResource( 1 )
-text = "0"
+custom_fonts/font = SubResource( 2 )
+text = "5 / 5"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -106,10 +108,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -168.0
-margin_top = -88.0
-margin_right = -34.0
-margin_bottom = -23.0
+margin_left = -176.0
+margin_top = -96.0
+margin_right = -42.0
+margin_bottom = -31.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

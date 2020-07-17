@@ -283,7 +283,7 @@ position = Vector2( 88, 472 )
 position = Vector2( 88, 568 )
 
 [node name="EnemyPath" type="Path2D" parent="."]
-position = Vector2( 72, 48 )
+position = Vector2( 24, 0 )
 curve = SubResource( 7 )
 __meta__ = {
 "_edit_group_": true
