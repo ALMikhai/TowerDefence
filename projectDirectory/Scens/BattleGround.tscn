@@ -3,14 +3,17 @@
 [ext_resource path="res://Scens/BattleGround.cs" type="Script" id=1]
 [ext_resource path="res://Scens/Crystal.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Map/Tiles/tf_dd_A5_2.png" type="Texture" id=3]
-[ext_resource path="res://Scens/Сharacteristics/MoneyNode.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scens/Characteristics/MoneyNode.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scens/Ui/Hud.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scens/WaveSpawner.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scens/Charecters/PlayerDefender.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scens/Characters/PlayerDefender.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scens/Shells/IceBall.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scens/ShellsBorder.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scens/DefenderSpawnPoint.cs" type="Script" id=10]
 [ext_resource path="res://Scens/Ui/PauseMenu.tscn" type="PackedScene" id=11]
+
+
+
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 10.0278, 2.18791, 16.4234, 5.48263, 23.7881, 10.3278, 30.9589, 19.4367, 31.3465, 32, 22.4314, 31.8403, 22.0438, 30.2899, 19.7181, 23.5066, 12.9349, 16.5296, 5.37643, 11.8783, 0, 9.94019 )

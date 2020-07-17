@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scens/Characters/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Ui/EnemyHpBar/FillBarEnemy.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Ui/EnemyHpBar/EmptyBarEnemy.png" type="Texture" id=3]
+
+
+
+[sub_resource type="CSharpScript" id=1]
+resource_name = "Enemy"
+script/source = "using Godot;
+using System;
+
+public class Enemy : Area2D
+{
+    // Declare member variables here. Examples:
+    // private int a = 2;
+    // private string b = \"text\";
+
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
+    {
+        
+    }
+
+//  // Called every frame. 'delta' is the elapsed time since the previous frame.
+//  public override void _Process(float delta)
+//  {
+//      
+//  }
+}
+"
+
+[node name="Enemy" groups=[
+"Enemy",
+] instance=ExtResource( 1 )]
+collision_layer = 1
+collision_mask = 2
+script = SubResource( 1 )
+
+[node name="DamageNode" parent="." index="2"]
+Damage = 1
+
+[node name="HpBar" type="TextureProgress" parent="." index="4"]
+margin_right = 60.0
+margin_bottom = 6.0
+value = 100.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 3 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

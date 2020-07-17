@@ -58,8 +58,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Scens\BattleGround.cs" />
-    <Compile Include="Scens\Charecters\Character.cs" />
-    <Compile Include="Scens\Charecters\PlayerDefender.cs" />
+    <Compile Include="Scens\Characters\Character.cs" />
+    <Compile Include="Scens\Characters\PlayerDefender.cs" />
     <Compile Include="Scens\DefenderSpawnPoint.cs" />
     <Compile Include="Scens\EnemyContainer.cs" />
     <Compile Include="Scens\MainMenu\DefenderCell.cs" />
@@ -72,21 +72,21 @@
     <Compile Include="Scens\Ui\Hud.cs" />
     <Compile Include="Scens\Ui\PauseMenu.cs" />
     <Compile Include="Scens\WaveSpawner.cs" />
-    <Compile Include="Scens\Сharacteristics\DamageNode.cs" />
-    <Compile Include="Scens\Charecters\Defender.cs" />
-    <Compile Include="Scens\Charecters\Enemy.cs" />
-    <Compile Include="Scens\Charecters\EnemyNear.cs" />
-    <Compile Include="Scens\Сharacteristics\HealthNode.cs" />
+    <Compile Include="Scens\Characteristics\DamageNode.cs" />
+    <Compile Include="Scens\Characters\Defender.cs" />
+    <Compile Include="Scens\Characters\Enemy.cs" />
+    <Compile Include="Scens\Characters\EnemyNear.cs" />
+    <Compile Include="Scens\Characteristics\HealthNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scens\Static\ObjectCreator.cs" />
     <Compile Include="Scens\Static\AnimationNames.cs" />
-    <Compile Include="Scens\Charecters\SM\AttackState.cs" />
-    <Compile Include="Scens\Charecters\SM\DeathState.cs" />
-    <Compile Include="Scens\Charecters\SM\MoveState.cs" />
-    <Compile Include="Scens\Charecters\SM\IdleState.cs" />
-    <Compile Include="Scens\Charecters\SM\State.cs" />
-    <Compile Include="Scens\Charecters\SM\StateMachine.cs" />
-    <Compile Include="Scens\Сharacteristics\MoneyNode.cs" />
+    <Compile Include="Scens\Characters\SM\AttackState.cs" />
+    <Compile Include="Scens\Characters\SM\DeathState.cs" />
+    <Compile Include="Scens\Characters\SM\MoveState.cs" />
+    <Compile Include="Scens\Characters\SM\IdleState.cs" />
+    <Compile Include="Scens\Characters\SM\State.cs" />
+    <Compile Include="Scens\Characters\SM\StateMachine.cs" />
+    <Compile Include="Scens\Characteristics\MoneyNode.cs" />
     <Compile Include="Scens\GameSM\State.cs" />
     <Compile Include="Scens\GameSM\StateMachine.cs" />
     <Compile Include="Scens\GameSM\PauseState.cs" />

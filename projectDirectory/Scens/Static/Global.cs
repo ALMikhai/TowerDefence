@@ -42,7 +42,7 @@ public class Global : Node
             { ObjectCreator.Objects.ENEMYNEAR, new CharacterStats(100, 25) }
         };
 
-        _moneyNode = (MoneyNode)(GD.Load<PackedScene>("res://Scens/Сharacteristics/MoneyNode.tscn").Instance());
+        _moneyNode = (MoneyNode)(GD.Load<PackedScene>("res://Scens/Characteristics/MoneyNode.tscn").Instance());
         AddChild(_moneyNode);
         Load();
     }

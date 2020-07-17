@@ -6,10 +6,10 @@ public static class ObjectCreator
     public enum Objects : int { DEFENDER = 0, ENEMYNEAR = 1, CRYSTAL = 2, DEFENDERGINO = 3 }
     private static string[] _objectsPaths =
     {
-        "res://Scens/Charecters/Defender.tscn",
-        "res://Scens/Charecters/EnemyNear.tscn",
+        "res://Scens/Characters/Defender.tscn",
+        "res://Scens/Characters/EnemyNear.tscn",
         "res://Scens/Crystal.tscn",
-        "res://Scens/Charecters/DefenderGino.tscn"
+        "res://Scens/Characters/DefenderGino.tscn"
     };
 
     public static Node Create(Objects obj)
