@@ -25,6 +25,7 @@ public class Global : Node
     private Dictionary<ObjectCreator.Objects, CharacterStats> _characterStats;
     private int _hpPrice = 100;
     private int _damagePrice = 200;
+    private int _level = 1;
 
     public override void _Ready()
     {
@@ -106,6 +107,17 @@ public class Global : Node
     public void AddMoney(int money)
     {
         _moneyNode.Add(money);
+    }
+
+    public int GetLevel()
+    {
+        return _level;
+    }
+
+    public void NextLevel()
+    {
+        _level++;
+        EmitSignal(nameof(Update));
     }
 
     public void Save()

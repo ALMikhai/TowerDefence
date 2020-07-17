@@ -38,7 +38,7 @@ public class BattleGround : Node2D
 
         _stateMachine.Initialize(_playerAttackState);
 
-        Start(2, 2);
+        Start(3, _global.GetLevel());
     }
 
     public override void _Input(InputEvent @event)
@@ -53,6 +53,7 @@ public class BattleGround : Node2D
 
     public void _OnWavesEnd()
     {
+        _global.NextLevel();
         _global.AddMoney(_moneyNode.Get());
         _sceneChanger._stateMachine.ChangeState(_sceneChanger._menuState);
     }
