@@ -3,22 +3,23 @@ using System;
 
 public class Strore : Control
 {
-    private Label _money;
     private Global _global;
+    private HBoxContainer _moneyContainer;
 
     public override void _Ready()
     {
         _global = GetTree().Root.GetNode<Global>("Global");
-        _money = GetNode<Label>("Money/Value");
-
-
-        _global.Connect(nameof(Global.Update), this, nameof(_OnGlobalUpdate));
-
-        _OnGlobalUpdate();
+        _moneyContainer = GetNode<HBoxContainer>("MoneyContainer");
+        Enter();
     }
 
-    private void _OnGlobalUpdate()
+    public void Enter()
     {
-        _money.Text = _global.GetMoney().ToString();
+        _moneyContainer.AddChild(_global.GetMoneyNode());
+    }
+
+    public void Exit()
+    {
+        _moneyContainer.RemoveChild(_global.GetMoneyNode());
     }
 }

@@ -10,6 +10,7 @@ public class MoneyNode : Node2D
     [Signal]
     public delegate void MoneyChange(int current);
 
+    private Label _valueLabel;
     private int _money = 0;
 
     public int Get() => _money;
@@ -17,7 +18,7 @@ public class MoneyNode : Node2D
     public void Add(int money)
     {
         _money += money;
-        EmitSignal(nameof(MoneyChange), _money);
+        UpdateLabel();
     }
 
     public bool TrySpend(int money)
@@ -26,7 +27,7 @@ public class MoneyNode : Node2D
         {
             _money -= money;
             EmitSignal(nameof(GoodTransaction));
-            EmitSignal(nameof(MoneyChange), _money);
+            UpdateLabel();
             return true;
         }
         else
@@ -34,5 +35,14 @@ public class MoneyNode : Node2D
             EmitSignal(nameof(BadTransaction));
             return false;
         }
+    }
+
+    private void UpdateLabel()
+    {
+        if (_valueLabel == null)
+            _valueLabel = GetNode<Label>("Coin/Value");
+
+        _valueLabel.Text = _money.ToString();
+        EmitSignal(nameof(MoneyChange));
     }
 }

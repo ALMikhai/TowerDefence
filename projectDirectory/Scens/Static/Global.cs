@@ -44,7 +44,6 @@ public class Global : Node
         };
 
         _moneyNode = (MoneyNode)(GD.Load<PackedScene>("res://Scens/Characteristics/MoneyNode.tscn").Instance());
-        AddChild(_moneyNode);
         Load();
     }
 
@@ -99,14 +98,9 @@ public class Global : Node
         return result;
     }
 
-    public int GetMoney()
+    public MoneyNode GetMoneyNode()
     {
-        return _moneyNode.Get();
-    }
-
-    public void AddMoney(int money)
-    {
-        _moneyNode.Add(money);
+        return _moneyNode;
     }
 
     public int GetLevel()

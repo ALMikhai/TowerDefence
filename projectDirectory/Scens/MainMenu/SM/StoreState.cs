@@ -7,11 +7,13 @@ namespace projectDirectory.Scens.MainMenu.SM
         public override void Enter()
         {
             _store.Visible = true;
+            _store.Enter();
         }
 
         public override void Exit()
         {
             _store.Visible = false;
+            _store.Exit();
         }
     }
 }

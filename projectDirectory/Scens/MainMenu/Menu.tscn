@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Ui/Menu/Back_Menu.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Ui/Menu/Button_Empty.png" type="Texture" id=2]
@@ -14,14 +14,6 @@ size = 74
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 50
-font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 50
-font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=4]
 size = 50
 font_data = ExtResource( 4 )
 
@@ -155,7 +147,6 @@ __meta__ = {
 }
 
 [node name="Strore" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 6 )
@@ -170,6 +161,14 @@ color = Color( 0.0901961, 0.0901961, 0.0901961, 0.866667 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MoneyContainer" type="HBoxContainer" parent="Strore"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -24.0
+margin_top = 40.0
+margin_right = 24.0
+margin_bottom = 80.0
 
 [node name="Defenders" type="HBoxContainer" parent="Strore"]
 anchor_left = 0.5
@@ -192,37 +191,12 @@ margin_left = 304.0
 margin_right = 304.0
 Type = 3
 
-[node name="Money" type="Label" parent="Strore"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -56.0
-margin_top = 40.0
-margin_right = 24.0
-margin_bottom = 96.0
-custom_fonts/font = SubResource( 2 )
-text = "Money"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Value" type="Label" parent="Strore/Money"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = 16.0
-margin_right = 96.0
-margin_bottom = 56.0
-custom_fonts/font = SubResource( 3 )
-text = "1"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Back" type="Button" parent="Strore"]
 margin_left = 32.0
 margin_top = 32.0
 margin_right = 232.0
 margin_bottom = 94.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false

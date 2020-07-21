@@ -25,7 +25,7 @@ public class BattleGround : Node2D
         _crystal = GetNode<Character>("Crystal");
         _waveSpawner = GetNode<WaveSpawner>("WaveSpawner");
         _enemyContainer = _waveSpawner.GetEnemyContainer();
-        _moneyNode = GetNode<MoneyNode>("MoneyNode");
+        _moneyNode = GetNode<MoneyNode>("Hud/Money");
         _global = GetTree().Root.GetNode<Global>("Global");
         _sceneChanger = GetTree().Root.GetNode<SceneChanger>("SceneChanger");
 
@@ -54,7 +54,7 @@ public class BattleGround : Node2D
     public void _OnWavesEnd()
     {
         _global.NextLevel();
-        _global.AddMoney(_moneyNode.Get());
+        _global.GetMoneyNode().Add(_moneyNode.Get());
         _sceneChanger._stateMachine.ChangeState(_sceneChanger._menuState);
     }
 

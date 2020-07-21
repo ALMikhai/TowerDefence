@@ -9,21 +9,13 @@ public class Hud : Control
     public delegate void OnWindButtonTouch();
     [Signal]
     public delegate void PauseButtonPressed();
-
-    private Label _moneyLabel;
     private Label _shellsLabel;
     private TextureProgress _hpBar;
 
     public override void _Ready()
     {
-        _moneyLabel = GetNode<Label>("Stats/Money/Current");
         _shellsLabel = GetNode<Label>("Stats/Shells/Current");
         _hpBar = GetNode<TextureProgress>("HpBar");
-    }
-
-    public void _OnMoneyUpdate(int current)
-    {
-        _moneyLabel.Text = current.ToString();
     }
 
     public void _OnShellsUpdate(int max, int current)

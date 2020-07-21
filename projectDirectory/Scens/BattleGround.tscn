@@ -1,9 +1,8 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scens/BattleGround.cs" type="Script" id=1]
 [ext_resource path="res://Scens/Crystal.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Map/Tiles/tf_dd_A5_2.png" type="Texture" id=3]
-[ext_resource path="res://Scens/Characteristics/MoneyNode.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scens/Ui/Hud.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scens/WaveSpawner.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scens/Characters/PlayerDefender.tscn" type="PackedScene" id=7]
@@ -23,22 +22,22 @@ points = PoolVector2Array( 32, 32, 22.0438, 32, 22.0438, 0.227943, 32, 0.227943 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 0, 22.6876, 6.73309, 22.8814, 12.1597, 18.4239, 17.5863, 12.2221, 21.0748, 5.43883, 21.0748, 0, 31.7341, 0.0122375, 27.6642, 20.9434, 24.3695, 27.1452, 19.7181, 31.9903, 0.337463, 31.6027 )
 
-[sub_resource type="ConvexPolygonShape2D" id=9]
+[sub_resource type="ConvexPolygonShape2D" id=4]
 points = PoolVector2Array( 31.7965, 10.9577, 25.5947, 12.3143, 17.6486, 17.7409, 13.1911, 23.9427, 9.89639, 28.0127, 10.284, 31.8888, -0.375374, 31.695, 0.593651, 20.648, 8.73354, 11.5391, 17.4548, 5.53108, 24.8195, 1.26733, 31.6027, 0.298302 )
 
-[sub_resource type="ConvexPolygonShape2D" id=10]
+[sub_resource type="ConvexPolygonShape2D" id=5]
 points = PoolVector2Array( 0, 0, 11.253, -0.256569, 12.0283, 31.9153, 0, 32 )
 
-[sub_resource type="ConvexPolygonShape2D" id=4]
+[sub_resource type="ConvexPolygonShape2D" id=6]
 points = PoolVector2Array( 32.1841, 30.343, 27.339, 29.9554, 20.3619, 28.4049, 12.8035, 24.9164, 7.37688, 20.265, 3.88837, 9.41186, 1.75649, -0.0846634, 11.0592, -0.278481, 10.6716, 5.14811, 15.1292, 11.9313, 22.3, 18.9084, 31.9903, 22.0093 )
 
-[sub_resource type="ConvexPolygonShape2D" id=5]
+[sub_resource type="ConvexPolygonShape2D" id=7]
 points = PoolVector2Array( 32, 12.2659, 0, 11.8783, 0, 0, 32, 0 )
 
-[sub_resource type="ConvexPolygonShape2D" id=6]
+[sub_resource type="ConvexPolygonShape2D" id=8]
 points = PoolVector2Array( 32, 32, 0.165558, 32, 0.165558, 21.1372, 32, 21.1372 )
 
-[sub_resource type="TileSet" id=7]
+[sub_resource type="TileSet" id=9]
 0/name = "tf_dd_A5_2.png 0"
 0/texture = ExtResource( 3 )
 0/tex_offset = Vector2( 0, 0 )
@@ -112,14 +111,14 @@ points = PoolVector2Array( 32, 32, 0.165558, 32, 0.165558, 21.1372, 32, 21.1372 
 3/navigation_offset = Vector2( 0, 0 )
 3/shape_offset = Vector2( 0, 0 )
 3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-3/shape = SubResource( 5 )
+3/shape = SubResource( 7 )
 3/shape_one_way = false
 3/shape_one_way_margin = 1.0
 3/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 5 ),
+"shape": SubResource( 7 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 3/z_index = 0
@@ -147,14 +146,14 @@ points = PoolVector2Array( 32, 32, 0.165558, 32, 0.165558, 21.1372, 32, 21.1372 
 5/navigation_offset = Vector2( 0, 0 )
 5/shape_offset = Vector2( 0, 0 )
 5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-5/shape = SubResource( 6 )
+5/shape = SubResource( 8 )
 5/shape_one_way = false
 5/shape_one_way_margin = 1.0
 5/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 6 ),
+"shape": SubResource( 8 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 5/z_index = 0
@@ -373,14 +372,14 @@ points = PoolVector2Array( 32, 32, 0.165558, 32, 0.165558, 21.1372, 32, 21.1372 
 20/navigation_offset = Vector2( 0, 0 )
 20/shape_offset = Vector2( 0, 0 )
 20/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-20/shape = SubResource( 9 )
+20/shape = SubResource( 4 )
 20/shape_one_way = false
 20/shape_one_way_margin = 1.0
 20/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 9 ),
+"shape": SubResource( 4 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 20/z_index = 0
@@ -394,14 +393,14 @@ points = PoolVector2Array( 32, 32, 0.165558, 32, 0.165558, 21.1372, 32, 21.1372 
 21/navigation_offset = Vector2( 0, 0 )
 21/shape_offset = Vector2( 0, 0 )
 21/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-21/shape = SubResource( 10 )
+21/shape = SubResource( 5 )
 21/shape_one_way = false
 21/shape_one_way_margin = 1.0
 21/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 10 ),
+"shape": SubResource( 5 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 21/z_index = 0
@@ -415,14 +414,14 @@ points = PoolVector2Array( 32, 32, 0.165558, 32, 0.165558, 21.1372, 32, 21.1372 
 22/navigation_offset = Vector2( 0, 0 )
 22/shape_offset = Vector2( 0, 0 )
 22/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-22/shape = SubResource( 4 )
+22/shape = SubResource( 6 )
 22/shape_one_way = false
 22/shape_one_way_margin = 1.0
 22/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 4 ),
+"shape": SubResource( 6 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 22/z_index = 0
@@ -595,7 +594,7 @@ points = PoolVector2Array( 32, 32, 0.165558, 32, 0.165558, 21.1372, 32, 21.1372 
 34/shapes = [  ]
 34/z_index = 0
 
-[sub_resource type="Curve2D" id=8]
+[sub_resource type="Curve2D" id=10]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 1288, 0, 0, 0, 0, 0, 1344, 0, 0, 0, 0, 0, 1344, 720, 0, 0, 0, 0, 1408, 720, 0, 0, 0, 0, 1408, 0, 0, 0, 0, 0, 1472, 0, 0, 0, 0, 0, 1472, 720, 0, 0, 0, 0, 1536, 720, 0, 0, 0, 0, 1536, 0, 0, 0, 0, 0, 1600, 0, 0, 0, 0, 0, 1600, 720, 0, 0, 0, 0, 1288, 720, 0, 0, 0, 0, 1288, 0 )
 }
@@ -607,8 +606,6 @@ script = ExtResource( 1 )
 stream = ExtResource( 12 )
 autoplay = true
 
-[node name="MoneyNode" parent="." instance=ExtResource( 4 )]
-
 [node name="ShellsBorder" parent="." instance=ExtResource( 9 )]
 visible = false
 position = Vector2( 632, 368 )
@@ -616,18 +613,18 @@ position = Vector2( 632, 368 )
 [node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -888.0
-margin_top = -80.0
-margin_right = 888.0
-margin_bottom = 1072.0
+margin_left = -912.0
+margin_right = 464.0
+margin_bottom = 880.0
 texture = ExtResource( 13 )
 expand = true
+stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource( 7 )
+tile_set = SubResource( 9 )
 cell_size = Vector2( 32, 32 )
 collision_use_kinematic = true
 collision_layer = 0
@@ -665,7 +662,7 @@ position = Vector2( 88, 568 )
 [node name="EnemyPath" type="Path2D" parent="."]
 position = Vector2( 24, 32 )
 scale = Vector2( 1, 0.922222 )
-curve = SubResource( 8 )
+curve = SubResource( 10 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -682,11 +679,18 @@ position = Vector2( 336, 320 )
 mode = 1
 
 [node name="Hud" parent="." instance=ExtResource( 5 )]
+margin_left = -8.0
+margin_top = 8.0
+margin_right = 1312.0
+margin_bottom = 736.0
 
 [node name="PauseMenu" parent="." instance=ExtResource( 11 )]
 pause_mode = 2
 visible = false
-[connection signal="MoneyChange" from="MoneyNode" to="Hud" method="_OnMoneyUpdate"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1312.0
+margin_bottom = 736.0
 [connection signal="WavesEnd" from="WaveSpawner" to="." method="_OnWavesEnd"]
 [connection signal="ShellsUpdate" from="PlayerDefender" to="Hud" method="_OnShellsUpdate"]
 [connection signal="Death" from="Crystal" to="." method="_OnCrystalBroke"]
