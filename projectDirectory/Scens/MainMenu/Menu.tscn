@@ -147,6 +147,7 @@ __meta__ = {
 }
 
 [node name="Strore" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 6 )
@@ -169,6 +170,7 @@ margin_left = -24.0
 margin_top = 40.0
 margin_right = 24.0
 margin_bottom = 80.0
+alignment = 1
 
 [node name="Defenders" type="HBoxContainer" parent="Strore"]
 anchor_left = 0.5

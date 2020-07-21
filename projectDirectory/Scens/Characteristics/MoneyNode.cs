@@ -4,7 +4,7 @@ using System;
 public class MoneyNode : Node2D
 {
     [Signal]
-    public delegate void BadTransaction(); // Звуковой сигнал.
+    public delegate void BadTransaction(); // Звуковой сигнал. // Добавить звуки прямо в ноду.
     [Signal]
     public delegate void GoodTransaction(); // Звуковой сигнал.
     [Signal]

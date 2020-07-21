@@ -10,7 +10,6 @@ public class Strore : Control
     {
         _global = GetTree().Root.GetNode<Global>("Global");
         _moneyContainer = GetNode<HBoxContainer>("MoneyContainer");
-        Enter();
     }
 
     public void Enter()
