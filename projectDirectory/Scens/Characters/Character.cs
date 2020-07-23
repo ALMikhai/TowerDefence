@@ -11,8 +11,6 @@ public class Character : RigidBody2D
     [Export]
     public int AttackRange = 10;
     [Export]
-    public int Cost = 25;
-    [Export]
     public ObjectCreator.Objects Object;
 
     [Signal]
@@ -92,8 +90,6 @@ public class Character : RigidBody2D
     }
 
     public int GetAttackRange() => AttackRange;
-
-    public int GetCost() => Cost;
 
     public bool IsCloseToTarget() => Position.DistanceTo(GetTarget().Position) < GetAttackRange();
 

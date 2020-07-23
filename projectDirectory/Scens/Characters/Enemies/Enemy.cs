@@ -4,6 +4,8 @@ using Static = projectDirectory.Static;
 
 public class Enemy : Character
 {
+    [Export]
+    public int Cost = 25;
 
     private TextureProgress _hpBar;
 
@@ -12,6 +14,7 @@ public class Enemy : Character
         base._Ready();
         _hpBar = GetNode<TextureProgress>("HpBar");
     }
+    public int GetCost() => Cost;
 
     private void _OnHpValueUpdate(int max, int current)
     {
