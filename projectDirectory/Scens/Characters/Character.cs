@@ -29,23 +29,16 @@ public class Character : RigidBody2D
     protected Character _target;
     protected int _damage = 25;
 
-    private Global _global;    
-
     public override void _Ready()
     {
         _animatedSprite = GetNode<AnimatedSprite>("AnimatedSprite");
         _healthNode = GetNode<HealthNode>("HealthNode");
-        _global = GetTree().Root.GetNode<Global>("Global");
 
         StateMachine = new StateMachine();
         _idleState = new IdleState(this, StateMachine);
         _moveState = new MoveState(this, StateMachine);
         _attackState = new AttackState(this, StateMachine);
         _deathState = new DeathState(this, StateMachine);
-
-        var state = _global.GetCharacterStats(Object);
-        _healthNode.SetHealth(state.Hp);
-        _damage = state.Damage;
 
         StateMachine.Initialize(_idleState);
     }

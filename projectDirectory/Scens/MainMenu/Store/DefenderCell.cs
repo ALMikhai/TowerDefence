@@ -4,44 +4,38 @@ using System;
 public class DefenderCell : Control
 {
     [Export]
-    public ObjectCreator.Objects Type;    
-
+    public ObjectCreator.Objects Type;
     private Position2D _defenderPosition;
-    private Label _hp;
     private Label _damage;
-    private Global _global;
+    private Label _level;
+    private Button _levelUpButton;
+    private DefendersData _defendersData;
 
     public override void _Ready()
     {
         _defenderPosition = GetNode<Position2D>("DefenderPosition");
-        _hp = GetNode<Label>("Hp/Value");
         _damage = GetNode<Label>("Damage/Value");
-        _global = GetTree().Root.GetNode<Global>("Global");
+        _level = GetNode<Label>("Level/Value");
+        _levelUpButton = GetNode<Button>("LevelUp");
+        _defendersData = GetTree().Root.GetNode<DefendersData>("DefendersData");
 
         var defenderNode = (Defender)ObjectCreator.Create(Type);
         AddChild(defenderNode);
         defenderNode.Position = _defenderPosition.Position;
 
-        _global.Connect(nameof(Global.Update), this, nameof(_OnGlobalUpdate));
-
-        _OnGlobalUpdate();
+        UpdateView();
     }
 
-    private void _OnGlobalUpdate()
+    private void UpdateView()
     {
-        var stats = _global.GetCharacterStats(Type);
-
-        _hp.Text = stats.Hp.ToString();
-        _damage.Text = stats.Damage.ToString();
+        _level.Text = _defendersData.GetDefenderLevel(Type).ToString();
+        _damage.Text = _defendersData.GetDefenderDamage(Type).ToString();
+        _levelUpButton.Text = _defendersData.GetNextLevelCost(Type).ToString();
     }
 
-    private void _OnHpPlusPressed()
+    private void _OnLevelUpPressed()
     {
-        _global.TryBuy(Type, Global.Stats.HP);
-    }
-
-    private void _OnDamagePlusPressed()
-    {
-        _global.TryBuy(Type, Global.Stats.DAMAGE);
+        _defendersData.TryBuyLevel(Type);
+        UpdateView();
     }
 }

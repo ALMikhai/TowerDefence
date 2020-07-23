@@ -3,7 +3,6 @@
 [ext_resource path="res://Assets/Font/Silver.ttf" type="DynamicFontData" id=26]
 [ext_resource path="res://Scens/MainMenu/Store/DefenderCell.cs" type="Script" id=27]
 
-
 [sub_resource type="DynamicFont" id=1]
 size = 50
 font_data = ExtResource( 26 )
@@ -17,49 +16,38 @@ size = 50
 font_data = ExtResource( 26 )
 
 [node name="DefenderCell" type="Control"]
+margin_right = 320.0
+margin_bottom = 464.0
 script = ExtResource( 27 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Backbround" type="ColorRect" parent="."]
-margin_left = -128.0
-margin_top = -192.0
-margin_right = 128.0
-margin_bottom = 256.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 24.0
+margin_top = 24.0
+margin_right = -16.0
+margin_bottom = -24.0
 color = Color( 0.188235, 0.188235, 0.188235, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="DefenderPosition" type="Position2D" parent="."]
-position = Vector2( 0, -88 )
-
-[node name="Hp" type="Label" parent="."]
-margin_left = -72.0
-margin_right = 19.0
-margin_bottom = 56.0
-custom_fonts/font = SubResource( 1 )
-text = "Health"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Value" type="Label" parent="Hp"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = 5.0
-margin_right = 53.0
-margin_bottom = 56.0
-custom_fonts/font = SubResource( 2 )
-text = "1"
-align = 1
+position = Vector2( 160, 200 )
 
 [node name="Damage" type="Label" parent="."]
-margin_left = -72.0
-margin_top = 120.0
-margin_right = 24.0
-margin_bottom = 176.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -68.0
+margin_top = 56.0
+margin_right = 28.0
+margin_bottom = 112.0
 custom_fonts/font = SubResource( 1 )
 text = "Damage"
 __meta__ = {
@@ -79,26 +67,46 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HpPlus" type="Button" parent="."]
-margin_left = -88.0
-margin_top = 56.0
-margin_right = 88.0
-margin_bottom = 118.0
-custom_fonts/font = SubResource( 3 )
-text = "Add (100)"
+[node name="Level" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = -184.0
+margin_right = 32.0
+margin_bottom = -128.0
+custom_fonts/font = SubResource( 1 )
+text = "Level"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DamagePlus" type="Button" parent="."]
-margin_left = -88.0
-margin_top = 176.0
-margin_right = 88.0
-margin_bottom = 238.0
-custom_fonts/font = SubResource( 3 )
-text = "Add (200)"
+[node name="Value" type="Label" parent="Level"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 2.0
+margin_right = 50.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 2 )
+text = "1"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="HpPlus" to="." method="_OnHpPlusPressed"]
-[connection signal="pressed" from="DamagePlus" to="." method="_OnDamagePlusPressed"]
+
+[node name="LevelUp" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -84.0
+margin_top = -104.0
+margin_right = 92.0
+margin_bottom = -42.0
+custom_fonts/font = SubResource( 3 )
+text = "LevelUp"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="LevelUp" to="." method="_OnLevelUpPressed"]

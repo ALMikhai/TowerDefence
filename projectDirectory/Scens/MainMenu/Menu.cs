@@ -22,10 +22,8 @@ public class Menu : Control
         _levelLabel = GetNode<Label>("MenuPanel/Level");
         _global = GetTree().Root.GetNode<Global>("Global");
 
-        _global.Connect(nameof(Global.Update), this, nameof(_OnGlobalUpdate));
-
         _stateMachine.Initialize(_menuState);
-        _OnGlobalUpdate();
+        UpdateView();
     }
     
     private void _OnStorePressed()
@@ -48,7 +46,7 @@ public class Menu : Control
         _stateMachine.ChangeState(_menuState);
     }
 
-    private void _OnGlobalUpdate()
+    private void UpdateView()
     {
         _levelLabel.Text = $"Lavel {_global.GetLevel()}";
     }

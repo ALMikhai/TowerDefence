@@ -11,6 +11,7 @@ public class PlayerDefender : Node2D
 
     private int _maxShellsNum = 5;
     private int _shellsNum = 5;
+    private int _damage = 25; // Закинуть в DefendersData.
     private Timer _reloadTimer;
     private AudioStreamPlayer _attackSound;
 
@@ -37,7 +38,7 @@ public class PlayerDefender : Node2D
             EmitSignal(nameof(ShellsUpdate), _maxShellsNum, _shellsNum);
             var shell = (Shell)Shell.Instance();
             AddChild(shell);
-            shell.SetDamage(_global.GetCharacterStats(ObjectCreator.Objects.CRYSTAL).Damage);
+            shell.SetDamage(_damage);
             shell.SetDestination(destination);
             _attackSound.Play();
 

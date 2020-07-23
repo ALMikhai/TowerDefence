@@ -3,17 +3,17 @@ using System;
 
 public class DefenderSpawnPoint : Node2D
 {
-    private Global _global;
+    private DefendersData _defendersData;
 
     public override void _Ready()
     {
-        _global = GetTree().Root.GetNode<Global>("Global");
+        _defendersData = GetTree().Root.GetNode<DefendersData>("DefendersData");
         AddDefenders();
     }
 
     private void AddDefenders()
     {
-        var defenders = _global.GetAvailableDefenderList();
+        var defenders = _defendersData.GetAvailableDefenderList();
         for (int i = 0; i < defenders.Count; i++)
         {
             var defenderNode = (Defender)ObjectCreator.Create(defenders[i]);
