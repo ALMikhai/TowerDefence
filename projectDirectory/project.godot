@@ -22,7 +22,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Global="*res://Scens/Static/Global.cs"
-SceneChanger="*res://Scens/Static/SceneChanger.cs"
+SceneChanger="*res://Scens/Static/SceneChanger/SceneChanger.cs"
 
 [display]
 

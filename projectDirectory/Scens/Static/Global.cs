@@ -20,7 +20,7 @@ public class Global : Node
     [Signal]
     public delegate void Update();
 
-    private MoneyNode _moneyNode;
+    public MoneyNode Money { get; private set; }
     private Dictionary<ObjectCreator.Objects, bool> _defenderAvailable;
     private Dictionary<ObjectCreator.Objects, CharacterStats> _characterStats;
     private int _hpPrice = 100;
@@ -43,7 +43,7 @@ public class Global : Node
             { ObjectCreator.Objects.ENEMYNEAR, new CharacterStats(100, 15) }
         };
 
-        _moneyNode = (MoneyNode)(GD.Load<PackedScene>("res://Scens/Characteristics/MoneyNode.tscn").Instance());
+        Money = (MoneyNode)(GD.Load<PackedScene>("res://Scens/Characteristics/MoneyNode.tscn").Instance());
         Load();
     }
 
@@ -60,7 +60,7 @@ public class Global : Node
             cost = _damagePrice;
         }
 
-        if (_moneyNode.TrySpend(cost))
+        if (Money.TrySpend(cost))
         {
             if (stat == Stats.HP)
             {
@@ -98,11 +98,6 @@ public class Global : Node
         return result;
     }
 
-    public MoneyNode GetMoneyNode()
-    {
-        return _moneyNode;
-    }
-
     public int GetLevel()
     {
         return _level;
@@ -131,7 +126,7 @@ public class Global : Node
             { "ENEMYNEAR_DAMAGE", _characterStats[ObjectCreator.Objects.ENEMYNEAR].Damage },
             { "DEFENDERGINO_OPEN", _defenderAvailable[ObjectCreator.Objects.DEFENDERGINO] },
             { "DEFENDER_OPEN", _defenderAvailable[ObjectCreator.Objects.DEFENDER] },
-            { "MONEY", _moneyNode.Get() },
+            { "MONEY", Money.Get() },
             { "LEVEL", _level }
         };
 
@@ -157,7 +152,7 @@ public class Global : Node
         _defenderAvailable[ObjectCreator.Objects.DEFENDERGINO] = (bool)saveData["DEFENDERGINO_OPEN"];
         _defenderAvailable[ObjectCreator.Objects.DEFENDER] = (bool)saveData["DEFENDER_OPEN"];
 
-        _moneyNode.Add(saveData["MONEY"].ToString().ToInt());
+        Money.Add(saveData["MONEY"].ToString().ToInt());
         _level = saveData["LEVEL"].ToString().ToInt();
 
         saveGame.Close();

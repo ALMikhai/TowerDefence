@@ -13,7 +13,7 @@ namespace projectDirectory.Scens.Static.SceneSM
         public override void Enter()
         {
             _global.Save();
-            _global.GetMoneyNode().QueueFree();
+            _global.Money.QueueFree();
             _sceneChanger.GetTree().Quit();
         }
     }

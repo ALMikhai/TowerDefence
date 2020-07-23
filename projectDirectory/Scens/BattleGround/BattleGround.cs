@@ -54,7 +54,7 @@ public class BattleGround : Node2D
     public void _OnWavesEnd()
     {
         _global.NextLevel();
-        _global.GetMoneyNode().Add(_moneyNode.Get());
+        _global.Money.Add(_moneyNode.Get());
         _sceneChanger._stateMachine.ChangeState(_sceneChanger._menuState);
     }
 

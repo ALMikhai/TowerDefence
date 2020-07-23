@@ -14,11 +14,11 @@ public class Strore : Control
 
     public void Enter()
     {
-        _moneyContainer.AddChild(_global.GetMoneyNode());
+        _moneyContainer.AddChild(_global.Money);
     }
 
     public void Exit()
     {
-        _moneyContainer.RemoveChild(_global.GetMoneyNode());
+        _moneyContainer.RemoveChild(_global.Money);
     }
 }

@@ -6,7 +6,7 @@ namespace projectDirectory.Scens.Static.SceneSM
 
         public override void Enter()
         {
-            _sceneChanger.GetTree().ChangeScene("res://Scens/BattleGround.tscn");
+            _sceneChanger.GetTree().ChangeScene("res://Scens/BattleGround/BattleGround.tscn");
         }
     }
 }
