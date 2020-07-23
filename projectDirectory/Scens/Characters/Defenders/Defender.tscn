@@ -29,12 +29,6 @@
 [ext_resource path="res://Assets/Defenders/Frost/Idle/Idle_05.png" type="Texture" id=27]
 [ext_resource path="res://Assets/Defenders/Frost/Idle/Idle_02.png" type="Texture" id=28]
 
-
-
-
-
-
-
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 24 ), ExtResource( 28 ), ExtResource( 26 ), ExtResource( 25 ), ExtResource( 27 ) ],
@@ -44,7 +38,7 @@ animations = [ {
 }, {
 "frames": [  ],
 "loop": true,
-"name": "Death",
+"name": "Walk",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 20 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 11 ), ExtResource( 23 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 18 ), ExtResource( 10 ), ExtResource( 19 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 14 ), ExtResource( 21 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 22 ) ],
@@ -54,7 +48,7 @@ animations = [ {
 }, {
 "frames": [  ],
 "loop": true,
-"name": "Walk",
+"name": "Death",
 "speed": 5.0
 } ]
 
@@ -69,14 +63,14 @@ script = ExtResource( 12 )
 AttackRange = 5000
 Shell = ExtResource( 13 )
 
-[node name="AnimatedSprite" parent="." index="0"]
+[node name="AnimatedSprite" parent="." index="1"]
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 1 )
 animation = "Attack"
-frame = 15
+frame = 18
 speed_scale = 2.0
 playing = true
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="2"]
 position = Vector2( -1.85405, 9.43781 )
 shape = SubResource( 2 )

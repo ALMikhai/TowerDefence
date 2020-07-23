@@ -17,7 +17,7 @@ public class HealthNode : Node2D
         _current = hp;
     }
 
-    public void GetDamage(int damage)
+    public void ApplyDamage(int damage)
     {
         _current -= damage;
         EmitSignal(nameof(ValueUpdate), _max, _current);

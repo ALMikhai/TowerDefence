@@ -6,6 +6,6 @@ public class EnemyNear : Enemy
 {
     public override void Attack()
     {
-        _damageNode.ApplyDamage();
+        _target.GetNode<HealthNode>("HealthNode").ApplyDamage(_damage);
     }
 }

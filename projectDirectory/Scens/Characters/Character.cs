@@ -17,6 +17,8 @@ public class Character : RigidBody2D
 
     [Signal]
     public delegate void HpUpdate(int max, int current);
+    [Signal]
+    public delegate void Death(Character character);
 
     public StateMachine StateMachine;
     public IdleState _idleState;
@@ -25,19 +27,15 @@ public class Character : RigidBody2D
     public DeathState _deathState;
 
     protected AnimatedSprite _animatedSprite;
-    protected DamageNode _damageNode;
     protected HealthNode _healthNode;
     protected Character _target;
+    protected int _damage = 25;
 
-    private Global _global;
-
-    [Signal]
-    public delegate void Death(Character character);
+    private Global _global;    
 
     public override void _Ready()
     {
         _animatedSprite = GetNode<AnimatedSprite>("AnimatedSprite");
-        _damageNode = GetNode<DamageNode>("DamageNode");
         _healthNode = GetNode<HealthNode>("HealthNode");
         _global = GetTree().Root.GetNode<Global>("Global");
 
@@ -49,7 +47,7 @@ public class Character : RigidBody2D
 
         var state = _global.GetCharacterStats(Object);
         _healthNode.SetHealth(state.Hp);
-        _damageNode.SetDamage(state.Damage);
+        _damage = state.Damage;
 
         StateMachine.Initialize(_idleState);
     }
@@ -83,7 +81,6 @@ public class Character : RigidBody2D
     public void SetTarget(Character target)
     {
         _target = target;
-        _damageNode.SetTarget(target.GetNode<HealthNode>("HealthNode"));
         StateMachine.CurrentState.SetTarget();
     }
 

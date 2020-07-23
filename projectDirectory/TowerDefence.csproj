@@ -72,7 +72,6 @@
     <Compile Include="Scens\Ui\Hud.cs" />
     <Compile Include="Scens\Ui\PauseMenu.cs" />
     <Compile Include="Scens\BattleGround\WaveSpawner.cs" />
-    <Compile Include="Scens\Characteristics\DamageNode.cs" />
     <Compile Include="Scens\Characters\Defenders\Defender.cs" />
     <Compile Include="Scens\Characters\Enemies\Enemy.cs" />
     <Compile Include="Scens\Characters\Enemies\EnemyNear.cs" />

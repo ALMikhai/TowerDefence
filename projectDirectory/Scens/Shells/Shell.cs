@@ -6,19 +6,12 @@ public class Shell : RigidBody2D
 {
     [Export]
     public int Speed = 1000;
+    private int _damage = 25;
 
-    private DamageNode _damageNode;
-
-    public override void _Ready()
-    {
-        _damageNode = GetNode<DamageNode>("DamageNode");
-    }
-    
     public void _OnShellBodyEntered(Node body)
     {
         var enemy = (Enemy)body;
-        _damageNode.SetTarget(enemy.GetNode<HealthNode>("HealthNode"));
-        _damageNode.ApplyDamage();
+        enemy.GetNode<HealthNode>("HealthNode").ApplyDamage(_damage);
         CallDeferred("queue_free");
     }
 
@@ -31,6 +24,6 @@ public class Shell : RigidBody2D
 
     public void SetDamage(int damage)
     {
-        _damageNode.SetDamage(damage);
+        _damage = damage;
     }
 }
