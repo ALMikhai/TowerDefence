@@ -4,14 +4,18 @@ using System;
 public class MoneyNode : Node2D
 {
     [Signal]
-    public delegate void BadTransaction(); // Звуковой сигнал. // Добавить звуки прямо в ноду.
-    [Signal]
-    public delegate void GoodTransaction(); // Звуковой сигнал.
-    [Signal]
     public delegate void MoneyChange(int current);
 
     private Label _valueLabel;
     private int _money = 0;
+    private AudioStreamPlayer _goodTransactionSound;
+    private AudioStreamPlayer _badTransactionSound;
+
+    public override void _Ready()
+    {
+        _goodTransactionSound = GetNode<AudioStreamPlayer>("GoodTransaction");
+        _badTransactionSound = GetNode<AudioStreamPlayer>("BadTransaction");
+    }
 
     public int Get() => _money;
 
@@ -26,13 +30,13 @@ public class MoneyNode : Node2D
         if (money <= _money)
         {
             _money -= money;
-            EmitSignal(nameof(GoodTransaction));
+            _goodTransactionSound.Play();
             UpdateLabel();
             return true;
         }
         else
         {
-            EmitSignal(nameof(BadTransaction));
+            _badTransactionSound.Play();
             return false;
         }
     }
