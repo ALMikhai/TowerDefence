@@ -15,13 +15,13 @@ public class DefendersData : Node
         _defenderAvailable = new Dictionary<ObjectCreator.Objects, bool>
         {
             { ObjectCreator.Objects.DEFENDERGINO, true },
-            { ObjectCreator.Objects.DEFENDER, true }
+            { ObjectCreator.Objects.DEFENDERFROST, true }
         };
 
         _defenderLevels = new Dictionary<ObjectCreator.Objects, int>
         {
             { ObjectCreator.Objects.DEFENDERGINO, 1 },
-            { ObjectCreator.Objects.DEFENDER, 1 }
+            { ObjectCreator.Objects.DEFENDERFROST, 1 }
         };
 
         Load();
@@ -72,9 +72,9 @@ public class DefendersData : Node
         var saveData = new Godot.Collections.Dictionary<string, object>
         {
             { "DEFENDERGINO_LEVEL", _defenderLevels[ObjectCreator.Objects.DEFENDERGINO]},
-            { "DEFENDER_LEVEL", _defenderLevels[ObjectCreator.Objects.DEFENDER]},
+            { "DEFENDERFROST_LEVEL", _defenderLevels[ObjectCreator.Objects.DEFENDERFROST]},
             { "DEFENDERGINO_OPEN", _defenderAvailable[ObjectCreator.Objects.DEFENDERGINO] },
-            { "DEFENDER_OPEN", _defenderAvailable[ObjectCreator.Objects.DEFENDER] }
+            { "DEFENDERFROST_OPEN", _defenderAvailable[ObjectCreator.Objects.DEFENDERFROST] }
         };
 
         saveFile.StoreLine(JSON.Print(saveData));
@@ -92,10 +92,10 @@ public class DefendersData : Node
         var saveData = new Godot.Collections.Dictionary<string, object>((Godot.Collections.Dictionary)JSON.Parse(saveGame.GetLine()).Result);
 
         _defenderLevels[ObjectCreator.Objects.DEFENDERGINO] = saveData["DEFENDERGINO_LEVEL"].ToString().ToInt();
-        _defenderLevels[ObjectCreator.Objects.DEFENDER] = saveData["DEFENDER_LEVEL"].ToString().ToInt();
+        _defenderLevels[ObjectCreator.Objects.DEFENDERFROST] = saveData["DEFENDERFROST_LEVEL"].ToString().ToInt();
 
         _defenderAvailable[ObjectCreator.Objects.DEFENDERGINO] = (bool)saveData["DEFENDERGINO_OPEN"];
-        _defenderAvailable[ObjectCreator.Objects.DEFENDER] = (bool)saveData["DEFENDER_OPEN"];
+        _defenderAvailable[ObjectCreator.Objects.DEFENDERFROST] = (bool)saveData["DEFENDERFROST_OPEN"];
 
         saveGame.Close();
     }
