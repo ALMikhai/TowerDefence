@@ -9,6 +9,7 @@ public class Hud : Control
     public delegate void OnWindButtonTouch();
     [Signal]
     public delegate void PauseButtonPressed();
+    
     private Label _shellsLabel;
     private TextureProgress _hpBar;
 

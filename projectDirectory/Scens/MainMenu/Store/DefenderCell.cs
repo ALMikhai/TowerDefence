@@ -19,7 +19,7 @@ public class DefenderCell : Control
         _levelUpButton = GetNode<Button>("LevelUp");
         _defendersData = GetTree().Root.GetNode<DefendersData>("DefendersData");
 
-        var defenderNode = (Defender)ObjectCreator.Create(Type);
+        var defenderNode = (Character)ObjectCreator.Create(Type);
         AddChild(defenderNode);
         defenderNode.Position = _defenderPosition.Position;
 

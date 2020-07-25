@@ -13,6 +13,7 @@ public class Defender : Character
     {
         base._Ready();
         _defendersData = GetTree().Root.GetNode<DefendersData>("DefendersData");
+
         _damage = _defendersData.GetDefenderDamage(Object);
     }
 

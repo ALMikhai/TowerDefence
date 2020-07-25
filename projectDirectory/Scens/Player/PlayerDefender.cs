@@ -11,17 +11,19 @@ public class PlayerDefender : Node2D
 
     private int _maxShellsNum = 5;
     private int _shellsNum = 5;
-    private int _damage = 25; // Закинуть в DefendersData.
+    private int _damage = 25;
     private Timer _reloadTimer;
     private AudioStreamPlayer _attackSound;
 
-    private Global _global;
+    private DefendersData _defendersData;
 
     public override void _Ready()
     {
         _reloadTimer = GetNode<Timer>("ReloadTimer");
-        _global = GetTree().Root.GetNode<Global>("Global");
         _attackSound = GetNode<AudioStreamPlayer>("AttackSound");
+        _defendersData = GetTree().Root.GetNode<DefendersData>("DefendersData");
+
+        _damage = _defendersData.GetDefenderDamage(ObjectCreator.Objects.PLAYER);  //Добавить получение хп, в зависимости от уровня.
     }
 
     public void _OnReloadTimerTimeout()
