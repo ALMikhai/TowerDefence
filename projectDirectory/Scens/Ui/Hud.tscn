@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scens/Characteristics/MoneyNode.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Font/Silver.ttf" type="DynamicFontData" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/Ui/Hud/WindButton.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Ui/Hud/FireButton.png" type="Texture" id=6]
 [ext_resource path="res://Scens/Ui/Hud.cs" type="Script" id=7]
+[ext_resource path="res://Assets/Ui/Hud/shell(player)_trn.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 59
@@ -61,32 +62,29 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = 48.0
-margin_top = -104.0
+margin_top = -112.0
 margin_right = 336.0
-margin_bottom = -21.0
+margin_bottom = -29.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Shells" type="Label" parent="Stats"]
-margin_right = 270.0
+[node name="Shells" type="TextureRect" parent="Stats"]
+margin_right = 100.0
 margin_bottom = 83.0
-rect_min_size = Vector2( 270, 0 )
-custom_fonts/font = SubResource( 2 )
-text = "Shells"
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+rect_min_size = Vector2( 100, 0 )
+texture = ExtResource( 8 )
+expand = true
 
 [node name="Current" type="Label" parent="Stats/Shells"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -100.0
-margin_top = -36.5
-margin_bottom = 36.5
+margin_left = 28.0
+margin_top = -25.5
+margin_right = 138.0
+margin_bottom = 57.5
 rect_min_size = Vector2( 100, 0 )
 custom_fonts/font = SubResource( 2 )
 text = "5 / 5"
