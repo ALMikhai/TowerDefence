@@ -4,8 +4,6 @@
 [ext_resource path="res://Assets/Ui/EnemyHpBar/FillBarEnemy.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Ui/EnemyHpBar/EmptyBarEnemy.png" type="Texture" id=3]
 
-
-
 [sub_resource type="CSharpScript" id=1]
 resource_name = "Enemy"
 script/source = "using Godot;
@@ -37,9 +35,6 @@ public class Enemy : Area2D
 collision_layer = 1
 collision_mask = 2
 script = SubResource( 1 )
-
-[node name="DamageNode" parent="." index="2"]
-Damage = 1
 
 [node name="HpBar" type="TextureProgress" parent="." index="4"]
 margin_right = 60.0
