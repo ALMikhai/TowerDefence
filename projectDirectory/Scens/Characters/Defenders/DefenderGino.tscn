@@ -19,23 +19,11 @@
 [ext_resource path="res://Assets/Defenders/Gino/Idle/idle07.png" type="Texture" id=17]
 [ext_resource path="res://Scens/Shells/Dagger.tscn" type="PackedScene" id=18]
 
-
-
-
-
-
-
-
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 9 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 17 ), ExtResource( 15 ), ExtResource( 16 ) ],
 "loop": true,
 "name": "Idle",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "Death",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 8 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
@@ -45,16 +33,20 @@ animations = [ {
 }, {
 "frames": [  ],
 "loop": true,
+"name": "Death",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
 "name": "Walk",
 "speed": 5.0
 } ]
 
 [node name="DefenderGino" instance=ExtResource( 1 )]
-Object = 3
+Type = 3
 Shell = ExtResource( 18 )
 
-[node name="AnimatedSprite" parent="." index="0"]
+[node name="AnimatedSprite" parent="." index="2"]
 position = Vector2( 13.2292, -13.8591 )
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 1

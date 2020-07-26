@@ -5,6 +5,7 @@ namespace projectDirectory.Scens.Charecters.SM
     public class AttackState : State
     {
         private AudioStreamPlayer _attackSound;
+        private Timer _reloadTimer;
 
         public AttackState(Character character, StateMachine stateMachine) : base(character, stateMachine) { }
 
@@ -13,6 +14,11 @@ namespace projectDirectory.Scens.Charecters.SM
             if (_attackSound == null)
             {
                 _attackSound = _character.GetNode<AudioStreamPlayer>("AttackSound");
+            }
+
+            if (_reloadTimer == null)
+            {
+                _reloadTimer = _character.GetNode<Timer>("ReloadTimer");
             }
 
             _character.SetAnimation(projectDirectory.Static.Character.ATTACK);
@@ -36,6 +42,8 @@ namespace projectDirectory.Scens.Charecters.SM
         {
             _attackSound.Play();
             _character.Attack();
+            _reloadTimer.Start();
+            _stateMachine.ChangeState(_character._preAttackState);
         }
     }
 }

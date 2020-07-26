@@ -85,6 +85,7 @@
     <Compile Include="Scens\Characters\SM\MoveState.cs" />
     <Compile Include="Scens\Characters\SM\IdleState.cs" />
     <Compile Include="Scens\Characters\SM\State.cs" />
+    <Compile Include="Scens\Characters\SM\PreAttackState.cs" />
     <Compile Include="Scens\Characters\SM\StateMachine.cs" />
     <Compile Include="Scens\Characteristics\MoneyNode.cs" />
     <Compile Include="Scens\BattleGround\SM\State.cs" />

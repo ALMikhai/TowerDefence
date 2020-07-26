@@ -14,14 +14,15 @@ public class Defender : Character
         base._Ready();
         _defendersData = GetTree().Root.GetNode<DefendersData>("DefendersData");
 
-        _damage = _defendersData.GetDefenderDamage(Object);
+        StartDamage = _defendersData.GetDefenderDamage(Type);
+        _reloadTimer.WaitTime = StartReloadTime * (1 / (_defendersData.GetDefenderLevel(Type) * 0.5f));
     }
 
     public override void Attack()
     {
         var shell = (Shell)Shell.Instance();
         AddChild(shell);
-        shell.SetDamage(_damage);
+        shell.SetDamage(StartDamage);
         shell.SetDestination(_target.GlobalPosition);
     }
 }
