@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scens/Characteristics/MoneyNode.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Font/Silver.ttf" type="DynamicFontData" id=2]
@@ -8,9 +8,10 @@
 [ext_resource path="res://Assets/Ui/Hud/FireButton.png" type="Texture" id=6]
 [ext_resource path="res://Scens/Ui/Hud.cs" type="Script" id=7]
 [ext_resource path="res://Assets/Ui/Hud/shell(player)_trn.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Ui/Menu/SmallButton_trn.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
-size = 59
+size = 50
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
@@ -40,18 +41,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PauseButton" type="Button" parent="."]
+[node name="PauseButton" type="TextureButton" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -200.0
+margin_left = -264.0
 margin_top = 16.0
-margin_right = -72.0
-margin_bottom = 88.0
-custom_fonts/font = SubResource( 1 )
-text = "Pause"
+margin_right = -56.0
+margin_bottom = 72.0
+texture_normal = ExtResource( 9 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label" type="Label" parent="PauseButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -38.8094
+margin_top = -19.8016
+margin_right = 41.1906
+margin_bottom = 36.1984
+custom_fonts/font = SubResource( 1 )
+text = "Pause"
 
 [node name="Money" parent="." instance=ExtResource( 1 )]
 position = Vector2( 448, 616 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Ui/Menu/Back_Menu.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Ui/Menu/Button_Empty.png" type="Texture" id=2]
@@ -8,13 +8,14 @@
 [ext_resource path="res://Scens/MainMenu/Store/Strore.cs" type="Script" id=6]
 [ext_resource path="res://Scens/MainMenu/Menu.cs" type="Script" id=7]
 [ext_resource path="res://Sounds/Menu.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Assets/Ui/Menu/SmallButton_trn.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 74
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 50
+size = 63
 font_data = ExtResource( 4 )
 
 [node name="Menu" type="Control"]
@@ -75,10 +76,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -44.0
-margin_top = -41.5
-margin_right = 44.0
-margin_bottom = 41.5
+margin_left = -43.5795
+margin_top = -34.3524
+margin_right = 44.4205
+margin_bottom = 48.6476
 custom_fonts/font = SubResource( 1 )
 text = "Play"
 align = 1
@@ -99,9 +100,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -60.0
-margin_top = -41.5
+margin_top = -34.7728
 margin_right = 60.0
-margin_bottom = 41.5
+margin_bottom = 48.2272
 custom_fonts/font = SubResource( 1 )
 text = "Store"
 align = 1
@@ -121,10 +122,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -44.0
-margin_top = -41.5
-margin_right = 44.0
-margin_bottom = 41.5
+margin_left = -43.4054
+margin_top = -33.4728
+margin_right = 44.5946
+margin_bottom = 49.5272
 custom_fonts/font = SubResource( 1 )
 text = "Exit"
 align = 1
@@ -158,6 +159,8 @@ __meta__ = {
 [node name="Background" type="ColorRect" parent="Strore"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -0.5
+margin_bottom = -0.5
 color = Color( 0.0901961, 0.0901961, 0.0901961, 0.866667 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -203,13 +206,28 @@ margin_bottom = 450.0
 rect_min_size = Vector2( 300, 450 )
 Type = 3
 
-[node name="Back" type="Button" parent="Strore"]
+[node name="Back" type="TextureButton" parent="Strore"]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 48.0
 margin_top = -104.0
-margin_right = 248.0
-margin_bottom = -42.0
+margin_right = 256.0
+margin_bottom = -32.0
+texture_normal = ExtResource( 9 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Strore/Back"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -39.0115
+margin_top = -25.1591
+margin_right = 56.9885
+margin_bottom = 57.8409
 custom_fonts/font = SubResource( 2 )
 text = "Back"
 __meta__ = {
