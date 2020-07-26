@@ -67,6 +67,7 @@
     <Compile Include="Scens\MainMenu\Menu.cs" />
     <Compile Include="Scens\MainMenu\Store\Strore.cs" />
     <Compile Include="Scens\BattleGround\ShellsBorder.cs" />
+    <Compile Include="Scens\Shells\DamageView.cs" />
     <Compile Include="Scens\Shells\Shell.cs" />
     <Compile Include="Scens\Static\DefendersData.cs" />
     <Compile Include="Scens\Static\Global.cs" />
