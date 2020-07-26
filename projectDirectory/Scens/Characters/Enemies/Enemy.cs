@@ -20,12 +20,12 @@ public class Enemy : Character
         _hpBar = GetNode<TextureProgress>("HpBar");
         _global = GetTree().Root.GetNode<Global>("Global");
 
-        StartDamage = StartDamage + (int)Math.Sqrt(_global.GetLevel() * 5);
+        Damage = StartDamage + (int)Math.Sqrt(_global.GetLevel() * 5);
         Speed = StartSpeed + (int)Math.Sqrt(_global.GetLevel() * 500);
         _healthNode.SetHealth(StartHp + (int)Math.Sqrt(_global.GetLevel() * 150));
         _reloadTimer.WaitTime = 0;
     }
-    
+
     public int GetCost() => Cost;
 
     private void _OnHpValueUpdate(int max, int current)

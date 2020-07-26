@@ -23,7 +23,7 @@ public class PlayerDefender : Node2D
         _attackSound = GetNode<AudioStreamPlayer>("AttackSound");
         _defendersData = GetTree().Root.GetNode<DefendersData>("DefendersData");
 
-        _damage = _defendersData.GetDefenderDamage(ObjectCreator.Objects.PLAYER);  //Добавить получение хп, в зависимости от уровня.
+        _damage = (int)(_damage + Math.Sqrt(350 * _defendersData.GetDefenderLevel(ObjectCreator.Objects.PLAYER)));
     }
 
     public void _OnReloadTimerTimeout()

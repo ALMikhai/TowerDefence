@@ -7,20 +7,22 @@ using projectDirectory.Scens.Charecters.SM;
 public class Character : RigidBody2D
 {
     [Export]
-    public int Speed = 70;
-    [Export]
     public int AttackRange = 10;
     [Export]
-    public float StartReloadTime = 10;
+    public float StartReloadTime = 3;
     [Export]
     public int StartDamage = 25;
     [Export]
     public ObjectCreator.Objects Type;
-    
+
     [Signal]
     public delegate void HpUpdate(int max, int current);
     [Signal]
     public delegate void Death(Character character);
+
+    public float ReloadTime { get; protected set; }
+    public int Damage { get; protected set; }
+    public int Speed { get; protected set; }
 
     public StateMachine StateMachine;
     public IdleState _idleState;

@@ -5,6 +5,8 @@ public class DefenderCell : Control
 {
     [Export]
     public ObjectCreator.Objects Type;
+
+    private Character _defenderNode;
     private Position2D _defenderPosition;
     private Label _damage;
     private Label _level;
@@ -18,18 +20,19 @@ public class DefenderCell : Control
         _level = GetNode<Label>("Level/Value");
         _levelUpButton = GetNode<Button>("LevelUp");
         _defendersData = GetTree().Root.GetNode<DefendersData>("DefendersData");
+        _defenderNode = (Defender)ObjectCreator.Create(Type);
 
-        var defenderNode = (Character)ObjectCreator.Create(Type);
-        AddChild(defenderNode);
-        defenderNode.Position = _defenderPosition.Position;
+        AddChild(_defenderNode);
+        _defenderNode.Position = _defenderPosition.Position;
 
         UpdateView();
     }
 
     private void UpdateView()
     {
+        _defenderNode._Ready();
         _level.Text = _defendersData.GetDefenderLevel(Type).ToString();
-        _damage.Text = _defendersData.GetDefenderDamage(Type).ToString();
+        _damage.Text = ((int)(_defenderNode.Damage / _defenderNode.ReloadTime)).ToString();
         _levelUpButton.Text = _defendersData.GetNextLevelCost(Type).ToString();
     }
 

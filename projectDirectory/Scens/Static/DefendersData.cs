@@ -44,11 +44,6 @@ public class DefendersData : Node
         return _defenderLevels[obj];
     }
 
-    public int GetDefenderDamage(ObjectCreator.Objects obj)
-    {
-        return (int)(25 + Math.Sqrt(350 * _defenderLevels[obj]));
-    }
-
     public int GetNextLevelCost(ObjectCreator.Objects obj)
     {
         return 100 + 14 * _defenderLevels[obj];

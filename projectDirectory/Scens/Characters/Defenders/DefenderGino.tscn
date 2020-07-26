@@ -43,6 +43,8 @@ animations = [ {
 } ]
 
 [node name="DefenderGino" instance=ExtResource( 1 )]
+StartReloadTime = 1.0
+StartDamage = 10
 Type = 3
 Shell = ExtResource( 18 )
 
@@ -50,3 +52,4 @@ Shell = ExtResource( 18 )
 position = Vector2( 13.2292, -13.8591 )
 frames = SubResource( 1 )
 animation = "Idle"
+frame = 5

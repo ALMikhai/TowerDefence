@@ -55,3 +55,4 @@ animations = [ {
 [node name="AnimatedSprite" parent="." index="2"]
 frames = SubResource( 1 )
 animation = "Idle"
+frame = 1
