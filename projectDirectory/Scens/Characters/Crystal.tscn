@@ -1,18 +1,19 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Crystal/!$floatingrocks_2.png" type="Texture" id=1]
 [ext_resource path="res://Scens/Characters/Character.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scens/Characters/Crystal.cs" type="Script" id=3]
+[ext_resource path="res://Scens/Shells/IceBall.tscn" type="PackedScene" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 32, 96 )
+region = Rect2( 32, 0, 32, 96 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 32, 0, 32, 96 )
+region = Rect2( 0, 0, 32, 96 )
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
@@ -28,12 +29,12 @@ animations = [ {
 }, {
 "frames": [  ],
 "loop": true,
-"name": "Attack",
+"name": "Death",
 "speed": 5.0
 }, {
-"frames": [  ],
+"frames": [ SubResource( 2 ), SubResource( 2 ), SubResource( 3 ) ],
 "loop": true,
-"name": "Death",
+"name": "Attack",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -49,13 +50,16 @@ height = 100.401
 [node name="Crystal" instance=ExtResource( 2 )]
 collision_layer = 2
 script = ExtResource( 3 )
+AttackRange = 0
+StartReloadTime = 1.0
 Type = 2
+Shell = ExtResource( 4 )
 
 [node name="AnimatedSprite" parent="." index="2"]
 scale = Vector2( 2.5, 2.5 )
 frames = SubResource( 4 )
 animation = "Idle"
-frame = 2
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" parent="." index="3"]

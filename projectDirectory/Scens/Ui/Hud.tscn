@@ -2,8 +2,8 @@
 
 [ext_resource path="res://Scens/Characteristics/MoneyNode.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Font/Silver.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Assets/Ui/Hud/EmptyBar.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Ui/Hud/FillBar.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Ui/Hud/HpBarFill.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Ui/Hud/HpBarEmpty.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Ui/Hud/WindButton.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Ui/Hud/FireButton.png" type="Texture" id=6]
 [ext_resource path="res://Scens/Ui/Hud.cs" type="Script" id=7]
@@ -28,13 +28,13 @@ __meta__ = {
 [node name="HpBar" type="TextureProgress" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -184.0
-margin_top = 16.0
-margin_right = 192.0
-margin_bottom = 56.0
+margin_left = -200.0
+margin_top = 24.0
+margin_right = 200.0
+margin_bottom = 72.0
 value = 100.0
-texture_under = ExtResource( 3 )
-texture_progress = ExtResource( 4 )
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 3 )
 nine_patch_stretch = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -94,6 +94,7 @@ __meta__ = {
 }
 
 [node name="Buttons" type="HBoxContainer" parent="."]
+visible = false
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0

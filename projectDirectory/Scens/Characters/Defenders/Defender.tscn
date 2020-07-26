@@ -15,12 +15,11 @@ script = ExtResource( 12 )
 AttackRange = 5000
 Shell = ExtResource( 13 )
 
-[node name="AnimatedSprite" parent="." index="1"]
+[node name="AnimatedSprite" parent="." index="2"]
 scale = Vector2( 1.5, 1.5 )
-animation = "Attack"
 speed_scale = 2.0
 playing = true
 
-[node name="CollisionShape2D" parent="." index="2"]
+[node name="CollisionShape2D" parent="." index="3"]
 position = Vector2( -1.85405, 9.43781 )
 shape = SubResource( 1 )

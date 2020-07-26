@@ -23,7 +23,7 @@ public class Enemy : Character
         Damage = StartDamage + (int)Math.Sqrt(_global.GetLevel() * 5);
         Speed = StartSpeed + (int)Math.Sqrt(_global.GetLevel() * 500);
         _healthNode.SetHealth(StartHp + (int)Math.Sqrt(_global.GetLevel() * 150));
-        _reloadTimer.WaitTime = 0;
+        _reloadTimer.WaitTime = 0.1f;
     }
 
     public int GetCost() => Cost;
