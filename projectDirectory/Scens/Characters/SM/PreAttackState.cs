@@ -16,6 +16,12 @@ namespace projectDirectory.Scens.Charecters.SM
             }
 
             _character.SetAnimation(projectDirectory.Static.Character.IDLE);
+            TargetConnect();
+        }
+
+        public override void Exit()
+        {
+            TargetDisconnect();
         }
 
         public override void PhysicsUpdate(float delta)

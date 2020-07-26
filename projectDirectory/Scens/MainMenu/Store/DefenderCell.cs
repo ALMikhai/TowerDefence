@@ -6,7 +6,7 @@ public class DefenderCell : Control
     [Export]
     public ObjectCreator.Objects Type;
 
-    private Character _defenderNode;
+    private Defender _defenderNode;
     private Position2D _defenderPosition;
     private Label _damage;
     private Label _level;
