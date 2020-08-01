@@ -1,21 +1,32 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Assets/Ui/Hud/coin_trn.png" type="Texture" id=1]
 [ext_resource path="res://Scens/Characteristics/Money.cs" type="Script" id=2]
 
+[sub_resource type="Animation" id=1]
+resource_name = "Setup"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -20, -35 ), Vector2( -35, -50 ), Vector2( -50, -40 ), Vector2( -60, 0 ) ]
+}
+
 [node name="Money" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Texture" type="TextureRect" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -16.0
-margin_top = -16.0
-margin_right = 16.0
-margin_bottom = 16.0
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -60, 0 )
 texture = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Setup"
+anims/Setup = SubResource( 1 )
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_OnAnimationPlayerAnimationFinished"]
