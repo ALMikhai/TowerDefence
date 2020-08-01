@@ -13,7 +13,7 @@ public class DamageView : Node2D
 
     public override void _PhysicsProcess(float delta)
     {
-        Position = Position + (Vector2.Up * _speed * delta);
+        Position += Vector2.Up * _speed * delta;
     }
 
     public void _OnTimeToLiveTimeout()

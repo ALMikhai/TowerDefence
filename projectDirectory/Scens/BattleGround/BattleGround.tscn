@@ -613,8 +613,8 @@ position = Vector2( 632, 368 )
 [node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -912.0
-margin_right = 880.0
+margin_left = -904.0
+margin_right = 1168.0
 margin_bottom = 880.0
 texture = ExtResource( 13 )
 expand = true

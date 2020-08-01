@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Scens\BattleGround\BattleGround.cs" />
+    <Compile Include="Scens\Characteristics\Money.cs" />
     <Compile Include="Scens\Characters\Character.cs" />
     <Compile Include="Scens\Characters\Crystal.cs" />
     <Compile Include="Scens\Player\PlayerDefender.cs" />

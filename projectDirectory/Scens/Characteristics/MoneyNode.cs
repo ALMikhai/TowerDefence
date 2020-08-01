@@ -25,6 +25,15 @@ public class MoneyNode : Node2D
         UpdateLabel();
     }
 
+    public void ViewAdd(int money, Vector2 position)
+    {
+        var moneyView = (Money)GD.Load<PackedScene>("res://Scens/Characteristics/Money.tscn").Instance();
+        AddChild(moneyView);
+        moneyView.GlobalPosition = position;
+        moneyView.SetMoneyNode(this);
+        moneyView.SetCost(money);
+    }
+
     public bool TrySpend(int money)
     {
         if (money <= _money)
@@ -41,7 +50,7 @@ public class MoneyNode : Node2D
         }
     }
 
-    private void UpdateLabel()
+    public void UpdateLabel()
     {
         if (_valueLabel == null)
             _valueLabel = GetNode<Label>("Coin/Value");

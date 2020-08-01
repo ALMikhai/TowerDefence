@@ -68,7 +68,7 @@ public class BattleGround : Node2D
 
     private void _OnEnemyDeath(Enemy enemy)
     {
-        _moneyNode.Add(enemy.GetCost());
+        _moneyNode.ViewAdd(enemy.GetCost(), enemy.GlobalPosition);
     }
 
     private void _OnContinueButtonPressed()
