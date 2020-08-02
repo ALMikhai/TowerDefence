@@ -39,20 +39,21 @@ animations = [ {
 "name": "Death",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 20 ), ExtResource( 4 ), ExtResource( 16 ), ExtResource( 7 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 24 ), ExtResource( 21 ), ExtResource( 25 ), ExtResource( 15 ), ExtResource( 19 ), ExtResource( 14 ), ExtResource( 1 ), ExtResource( 5 ), ExtResource( 2 ), ExtResource( 8 ), ExtResource( 3 ), ExtResource( 12 ), ExtResource( 6 ), ExtResource( 23 ) ],
-"loop": true,
-"name": "Attack",
-"speed": 12.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "Walk",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 4 ), ExtResource( 16 ), ExtResource( 7 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 24 ), ExtResource( 21 ), ExtResource( 25 ), ExtResource( 15 ), ExtResource( 19 ), ExtResource( 14 ), ExtResource( 1 ), ExtResource( 5 ), ExtResource( 2 ), ExtResource( 8 ), ExtResource( 3 ), ExtResource( 12 ), ExtResource( 6 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "Attack",
+"speed": 12.0
 } ]
 
 [node name="DefenderFrost" instance=ExtResource( 26 )]
 
 [node name="AnimatedSprite" parent="." index="2"]
+position = Vector2( 0.594604, -16 )
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 3
+frame = 1
