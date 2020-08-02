@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Scens/BattleGround/BattleGround.cs" type="Script" id=1]
 [ext_resource path="res://Scens/Characters/Crystal.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://Scens/Ui/Hud.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scens/BattleGround/WaveSpawner.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scens/Player/PlayerDefender.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scens/Shells/IceBall.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scens/BattleGround/ShellsBorder.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scens/BattleGround/DefenderSpawnPoint.cs" type="Script" id=10]
 [ext_resource path="res://Scens/Ui/PauseMenu.tscn" type="PackedScene" id=11]
@@ -675,8 +674,7 @@ position = Vector2( 336, 320 )
 mode = 1
 
 [node name="PlayerDefender" parent="." instance=ExtResource( 7 )]
-position = Vector2( 352, 320 )
-Shell = ExtResource( 8 )
+position = Vector2( 352, 304 )
 
 [node name="Hud" parent="." instance=ExtResource( 5 )]
 margin_left = -8.0
