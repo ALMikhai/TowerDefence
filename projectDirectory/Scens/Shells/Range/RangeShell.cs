@@ -3,11 +3,16 @@ using System.Collections.Generic;
 
 public class RangeShell : Shell
 {
+	[Export] 
+	public PackedScene Explosion;
+
 	private List<Node> _inRangeAreaNods;
+	private AnimatedSprite _animatedSprite;
 	
 	public override void _Ready()
 	{
 		_inRangeAreaNods = new List<Node>();
+		_animatedSprite = GetNode<AnimatedSprite>("AnimatedSprite");
 	}
 
 	private void _OnShellBodyEntered(Node body)
@@ -22,6 +27,10 @@ public class RangeShell : Shell
 			damageView.SetValue(_damage);
 			damageView.GlobalPosition = enemy.GlobalPosition;
 		}
+
+		var explosion = Explosion.Instance() as Explosion;
+		GetParent().AddChild(explosion);
+		explosion.GlobalPosition = GlobalPosition;
 		
 		CallDeferred("queue_free");
 	}
