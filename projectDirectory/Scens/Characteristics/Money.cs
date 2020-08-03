@@ -3,19 +3,15 @@ using System;
 
 public class Money : Node2D
 {
+	private Sprite _sprite;
 	private MoneyNode _moneyNode;
 	private bool _animationFinished = false;
 	private int _speed = 700;
 	private int _cost = 0;
 
-	public void SetMoneyNode(MoneyNode node)
+	public override void _Ready()
 	{
-		_moneyNode = node;
-	}
-
-	public void SetCost(int cost)
-	{
-		_cost = cost;
+		_sprite = GetNode<Sprite>("Sprite");
 	}
 
 	public override void _PhysicsProcess(float delta)
@@ -23,8 +19,8 @@ public class Money : Node2D
 		if (_moneyNode == null || !_animationFinished)
 			return;
 
-		GlobalPosition += (_moneyNode.GlobalPosition - GlobalPosition).Normalized() * delta * _speed;
-		if (GlobalPosition.DistanceTo(_moneyNode.GlobalPosition) <= 10)
+		_sprite.GlobalPosition += (_moneyNode.GlobalPosition - _sprite.GlobalPosition).Normalized() * delta * _speed;
+		if (_sprite.GlobalPosition.DistanceTo(_moneyNode.GlobalPosition) <= 10)
 		{
 			_moneyNode.Add(_cost);
 			_moneyNode.UpdateLabel();
@@ -35,5 +31,15 @@ public class Money : Node2D
 	private void _OnAnimationPlayerAnimationFinished(string animationName)
 	{
 		_animationFinished = true;
+	}
+	
+	public void SetMoneyNode(MoneyNode node)
+	{
+		_moneyNode = node;
+	}
+
+	public void SetCost(int cost)
+	{
+		_cost = cost;
 	}
 }

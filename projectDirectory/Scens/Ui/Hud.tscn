@@ -67,7 +67,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Pause"
 
 [node name="Money" parent="." instance=ExtResource( 1 )]
-position = Vector2( 448, 616 )
+position = Vector2( 464, 656 )
 
 [node name="Stats" type="HBoxContainer" parent="."]
 anchor_left = 0.5
