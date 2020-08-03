@@ -195,7 +195,7 @@ __meta__ = {
 [node name="DefenderPlayer" parent="Strore/Defenders" instance=ExtResource( 5 )]
 margin_left = 354.0
 margin_right = 704.0
-Type = 2
+Type = 4
 
 [node name="DefenderGino" parent="Strore/Defenders" instance=ExtResource( 5 )]
 margin_left = 708.0

@@ -15,14 +15,16 @@ public class DefendersData : Node
         _defenderAvailable = new Dictionary<ObjectCreator.Objects, bool>
         {
             { ObjectCreator.Objects.DEFENDERGINO, true },
-            { ObjectCreator.Objects.DEFENDERFROST, true }
+            { ObjectCreator.Objects.DEFENDERFROST, true },
+            { ObjectCreator.Objects.ROBOT, true },
         };
 
         _defenderLevels = new Dictionary<ObjectCreator.Objects, int>
         {
             { ObjectCreator.Objects.PLAYER, 1 },
             { ObjectCreator.Objects.DEFENDERGINO, 1 },
-            { ObjectCreator.Objects.DEFENDERFROST, 1 }
+            { ObjectCreator.Objects.DEFENDERFROST, 1 },
+            { ObjectCreator.Objects.ROBOT, 1 }
         };
 
         Load();
@@ -69,10 +71,12 @@ public class DefendersData : Node
         {
             { "DEFENDERGINO_LEVEL", _defenderLevels[ObjectCreator.Objects.DEFENDERGINO] },
             { "DEFENDERFROST_LEVEL", _defenderLevels[ObjectCreator.Objects.DEFENDERFROST] },
+            { "DEFENDERROBOT_LEVEL", _defenderLevels[ObjectCreator.Objects.ROBOT] },
             { "PLAYER_LEVEL", _defenderLevels[ObjectCreator.Objects.PLAYER] },
 
             { "DEFENDERGINO_OPEN", _defenderAvailable[ObjectCreator.Objects.DEFENDERGINO] },
             { "DEFENDERFROST_OPEN", _defenderAvailable[ObjectCreator.Objects.DEFENDERFROST] },
+            { "DEFENDERROBOT_OPEN", _defenderAvailable[ObjectCreator.Objects.ROBOT] },
         };
 
         saveFile.StoreLine(JSON.Print(saveData));
@@ -91,10 +95,12 @@ public class DefendersData : Node
 
         _defenderLevels[ObjectCreator.Objects.DEFENDERGINO] = saveData["DEFENDERGINO_LEVEL"].ToString().ToInt();
         _defenderLevels[ObjectCreator.Objects.DEFENDERFROST] = saveData["DEFENDERFROST_LEVEL"].ToString().ToInt();
+        _defenderLevels[ObjectCreator.Objects.ROBOT] = saveData["DEFENDERROBOT_LEVEL"].ToString().ToInt();
         _defenderLevels[ObjectCreator.Objects.PLAYER] = saveData["PLAYER_LEVEL"].ToString().ToInt();
 
         _defenderAvailable[ObjectCreator.Objects.DEFENDERGINO] = (bool)saveData["DEFENDERGINO_OPEN"];
         _defenderAvailable[ObjectCreator.Objects.DEFENDERFROST] = (bool)saveData["DEFENDERFROST_OPEN"];
+        _defenderAvailable[ObjectCreator.Objects.ROBOT] = (bool)saveData["DEFENDERROBOT_OPEN"];
 
         saveGame.Close();
     }
