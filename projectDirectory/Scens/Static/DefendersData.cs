@@ -6,6 +6,7 @@ public class DefendersData : Node
 {
     private Dictionary<ObjectCreator.Objects, bool> _defenderAvailable;
     private Dictionary<ObjectCreator.Objects, int> _defenderLevels;
+    private Dictionary<ObjectCreator.Objects, string> _defenderNames;
     private Global _global;
 
     public override void _Ready()
@@ -25,6 +26,14 @@ public class DefendersData : Node
             { ObjectCreator.Objects.DEFENDERGINO, 1 },
             { ObjectCreator.Objects.DEFENDERFROST, 1 },
             { ObjectCreator.Objects.ROBOT, 1 }
+        };
+
+        _defenderNames = new Dictionary<ObjectCreator.Objects, string>
+        {
+            { ObjectCreator.Objects.PLAYER, "PLAYER" },
+            { ObjectCreator.Objects.DEFENDERGINO, "DEFENDERGINO" },
+            { ObjectCreator.Objects.DEFENDERFROST, "DEFENDERFROST" },
+            { ObjectCreator.Objects.ROBOT, "DEFENDERROBOT" }
         };
 
         Load();
@@ -66,18 +75,17 @@ public class DefendersData : Node
     {
         var saveFile = new File();
         saveFile.Open("user://DefendersData.save", File.ModeFlags.Write);
+        var saveData = new Godot.Collections.Dictionary<string, object>();
 
-        var saveData = new Godot.Collections.Dictionary<string, object>
+        foreach (var valuePair in _defenderLevels)
         {
-            { "DEFENDERGINO_LEVEL", _defenderLevels[ObjectCreator.Objects.DEFENDERGINO] },
-            { "DEFENDERFROST_LEVEL", _defenderLevels[ObjectCreator.Objects.DEFENDERFROST] },
-            { "DEFENDERROBOT_LEVEL", _defenderLevels[ObjectCreator.Objects.ROBOT] },
-            { "PLAYER_LEVEL", _defenderLevels[ObjectCreator.Objects.PLAYER] },
-
-            { "DEFENDERGINO_OPEN", _defenderAvailable[ObjectCreator.Objects.DEFENDERGINO] },
-            { "DEFENDERFROST_OPEN", _defenderAvailable[ObjectCreator.Objects.DEFENDERFROST] },
-            { "DEFENDERROBOT_OPEN", _defenderAvailable[ObjectCreator.Objects.ROBOT] },
-        };
+            saveData.Add($"{_defenderNames[valuePair.Key]}_Level", valuePair.Value);
+        }
+        
+        foreach (var valuePair in _defenderAvailable)
+        {
+            saveData.Add($"{_defenderNames[valuePair.Key]}_Open", valuePair.Value);
+        }
 
         saveFile.StoreLine(JSON.Print(saveData));
         saveFile.Close();
@@ -93,14 +101,19 @@ public class DefendersData : Node
 
         var saveData = new Godot.Collections.Dictionary<string, object>((Godot.Collections.Dictionary)JSON.Parse(saveGame.GetLine()).Result);
 
-        _defenderLevels[ObjectCreator.Objects.DEFENDERGINO] = saveData["DEFENDERGINO_LEVEL"].ToString().ToInt();
-        _defenderLevels[ObjectCreator.Objects.DEFENDERFROST] = saveData["DEFENDERFROST_LEVEL"].ToString().ToInt();
-        _defenderLevels[ObjectCreator.Objects.ROBOT] = saveData["DEFENDERROBOT_LEVEL"].ToString().ToInt();
-        _defenderLevels[ObjectCreator.Objects.PLAYER] = saveData["PLAYER_LEVEL"].ToString().ToInt();
-
-        _defenderAvailable[ObjectCreator.Objects.DEFENDERGINO] = (bool)saveData["DEFENDERGINO_OPEN"];
-        _defenderAvailable[ObjectCreator.Objects.DEFENDERFROST] = (bool)saveData["DEFENDERFROST_OPEN"];
-        _defenderAvailable[ObjectCreator.Objects.ROBOT] = (bool)saveData["DEFENDERROBOT_OPEN"];
+        var defenderLevels = new Dictionary<ObjectCreator.Objects, int>();
+        foreach (var valuePair in _defenderLevels)
+        {
+            defenderLevels[valuePair.Key] = saveData[$"{_defenderNames[valuePair.Key]}_Level"].ToString().ToInt();
+        }
+        _defenderLevels = defenderLevels;
+        
+        var defenderAvailable = new Dictionary<ObjectCreator.Objects, bool>();
+        foreach (var valuePair in _defenderAvailable)
+        {
+            defenderAvailable[valuePair.Key] = (bool)saveData[$"{_defenderNames[valuePair.Key]}_Open"];
+        }
+        _defenderAvailable = defenderAvailable;
 
         saveGame.Close();
     }
