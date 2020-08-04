@@ -1,5 +1,3 @@
-using Godot;
-
 namespace projectDirectory.Scens.Static.SceneSM
 {
     public class State
@@ -15,9 +13,6 @@ namespace projectDirectory.Scens.Static.SceneSM
 
         public virtual void Enter() { }
 
-        async public virtual void Exit()
-        {
-            await _sceneChanger.ToSignal(_sceneChanger.GetTree().CreateTimer(3), "timeout");
-        }
+        public virtual void Exit() { }
     }
 }

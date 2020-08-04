@@ -1,3 +1,5 @@
+using Godot;
+
 namespace projectDirectory.Scens.Static.SceneSM
 {
     public class StateMachine

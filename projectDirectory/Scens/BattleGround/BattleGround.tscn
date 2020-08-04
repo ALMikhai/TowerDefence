@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scens/BattleGround/BattleGround.cs" type="Script" id=1]
 [ext_resource path="res://Scens/Characters/Crystal.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Map/Tiles/tf_dd_A5_2.png" type="Texture" id=3]
+[ext_resource path="res://Scens/Static/SceneChanger/JumpScreen.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scens/Ui/Hud.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scens/BattleGround/WaveSpawner.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scens/Player/PlayerDefender.tscn" type="PackedScene" id=7]
@@ -689,6 +690,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 1312.0
 margin_bottom = 736.0
+
+[node name="JumpScreen" parent="." instance=ExtResource( 4 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1624.0
+margin_bottom = 856.0
 [connection signal="WavesEnd" from="WaveSpawner" to="." method="_OnWavesEnd"]
 [connection signal="Death" from="Crystal" to="." method="_OnCrystalBroke"]
 [connection signal="HpUpdate" from="Crystal" to="Hud" method="_OnCrystalHpUpdate"]

@@ -7,6 +7,7 @@ public class Menu : Control
 	private StateMachine _stateMachine;
 	private MenuState _menuState;
 	private StoreState _storeState;
+	private JumpScreen _jumpScreen;
 	private SceneChanger _sceneChanger;
 
 	private Label _levelLabel;
@@ -21,9 +22,12 @@ public class Menu : Control
 
 		_levelLabel = GetNode<Label>("MenuPanel/Level");
 		_global = GetTree().Root.GetNode<Global>("Global");
-
+		_jumpScreen = GetNode<JumpScreen>("JumpScreen");
+		
 		_stateMachine.Initialize(_menuState);
 		UpdateView();
+		
+		_jumpScreen.EnterAnimation();
 	}
 	
 	private void _OnStorePressed()
@@ -31,8 +35,11 @@ public class Menu : Control
 		_stateMachine.ChangeState(_storeState);
 	}
 	
-	private void _OnExitPressed()
+	private async void _OnExitPressed()
 	{
+		_jumpScreen.ExitAnimation();
+		await ToSignal(_jumpScreen, nameof(JumpScreen.AnimationFinished));
+		
 		_sceneChanger._stateMachine.ChangeState(_sceneChanger._exitState);
 	}
 

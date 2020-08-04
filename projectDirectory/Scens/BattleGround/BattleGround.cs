@@ -12,6 +12,7 @@ public class BattleGround : Node2D
 	private WaveSpawner _waveSpawner;
 	private EnemyContainer _enemyContainer;
 	private MoneyNode _moneyNode;
+	private JumpScreen _jumpScreen;
 
 	private StateMachine _stateMachine;
 	public PauseState _pauseState;
@@ -20,7 +21,7 @@ public class BattleGround : Node2D
 	public Global _global;
 	private SceneChanger _sceneChanger;
 
-	public override void _Ready()
+	public async override void _Ready()
 	{
 		_crystal = GetNode<Character>("Crystal");
 		_waveSpawner = GetNode<WaveSpawner>("WaveSpawner");
@@ -28,6 +29,7 @@ public class BattleGround : Node2D
 		_moneyNode = GetNode<MoneyNode>("Hud/Money");
 		_global = GetTree().Root.GetNode<Global>("Global");
 		_sceneChanger = GetTree().Root.GetNode<SceneChanger>("SceneChanger");
+		_jumpScreen = GetNode<JumpScreen>("JumpScreen");
 
 		_enemyContainer.Connect(nameof(EnemyContainer.Updated), this, nameof(_OnEnemyContainerUpdated));
 		_enemyContainer.Connect(nameof(EnemyContainer.EnemyDeath), this, nameof(_OnEnemyDeath));
@@ -37,6 +39,9 @@ public class BattleGround : Node2D
 		_playerAttackState = new PlayerAttackState(this, _stateMachine);
 
 		_stateMachine.Initialize(_playerAttackState);
+		
+		_jumpScreen.EnterAnimation();
+		await ToSignal(_jumpScreen, nameof(JumpScreen.AnimationFinished));
 
 		Start(3, _global.GetLevel());
 	}

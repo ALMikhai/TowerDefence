@@ -138,4 +138,4 @@ position = Vector2( -18.5406, 22.4936 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 13 )
 animation = "Idle"
-frame = 7
+frame = 9

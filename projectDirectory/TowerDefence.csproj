@@ -74,6 +74,7 @@
     <Compile Include="Scens\Shells\Shell.cs" />
     <Compile Include="Scens\Static\DefendersData.cs" />
     <Compile Include="Scens\Static\Global.cs" />
+    <Compile Include="Scens\Static\SceneChanger\JumpScreen.cs" />
     <Compile Include="Scens\Static\SceneChanger\SceneChanger.cs" />
     <Compile Include="Scens\Ui\Hud.cs" />
     <Compile Include="Scens\Ui\PauseMenu.cs" />
@@ -105,7 +106,6 @@
     <Compile Include="Scens\Static\SceneChanger\SM\StateMachine.cs" />
     <Compile Include="Scens\Static\SceneChanger\SM\GameState.cs" />
     <Compile Include="Scens\Static\SceneChanger\SM\MenuState.cs" />
-    <Compile Include="Scens\Static\SceneChanger\SM\StartState.cs" />
     <Compile Include="Scens\Static\SceneChanger\SM\ExitState.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
