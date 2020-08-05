@@ -1,0 +1,24 @@
+[gd_resource type="SpriteFrames" format=2]
+
+[resource]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "Death",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "Attack",
+"speed": 6.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "Walk",
+"speed": 5.0
+} ]

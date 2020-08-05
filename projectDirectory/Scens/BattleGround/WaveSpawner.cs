@@ -30,7 +30,9 @@ public class WaveSpawner : Node
 	{
 		for (var i = 0; i < _enemyOnWave; i++)
 		{
-			var enemy = _enemyContainer.Add();
+			Enemy enemy = i % 2 == 0
+				? _enemyContainer.Add(ObjectCreator.Objects.ZOMBIE)
+				: _enemyContainer.Add(ObjectCreator.Objects.SKELETON);
 			AddChild(enemy);
 			_spawnLocation.Offset = _random.Next();
 			enemy.GlobalPosition = _spawnLocation.GlobalPosition;

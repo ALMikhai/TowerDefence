@@ -6,6 +6,8 @@ public class Defender : Character
 {
 	[Export]
 	public PackedScene Shell;
+	[Export]
+	public ObjectCreator.Objects Type;
 
 	private DefendersData _defendersData;
 

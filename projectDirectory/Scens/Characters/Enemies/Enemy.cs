@@ -21,7 +21,7 @@ public class Enemy : Character
         _global = GetTree().Root.GetNode<Global>("Global");
 
         Damage = StartDamage + (int)Math.Sqrt(_global.GetLevel() * 5);
-        Speed = StartSpeed + (int)Math.Sqrt(_global.GetLevel() * 500);
+        Speed = StartSpeed + (int)Math.Sqrt(_global.GetLevel() * 50);
         _healthNode.SetHealth(StartHp + (int)Math.Sqrt(_global.GetLevel() * 150));
         _reloadTimer.WaitTime = 0.1f;
     }

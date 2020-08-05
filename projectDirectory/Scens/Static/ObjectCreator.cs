@@ -5,17 +5,19 @@ public static class ObjectCreator
 {
     public enum Objects : int 
     { 
-        DEFENDERFROST = 0, ENEMYNEAR = 1,
+        DEFENDERFROST = 0, SKELETON = 1,
         PLAYER = 2, DEFENDERGINO = 3,
-        ROBOT = 4
+        ROBOT = 4, ZOMBIE = 5,
     }
-    private static string[] _objectsPaths =
+    
+    private static readonly string[] _objectsPaths =
     {
         "res://Scens/Characters/Defenders/DefenderFrost.tscn",
-        "res://Scens/Characters/Enemies/EnemyNear.tscn",
+        "res://Scens/Characters/Enemies/Skeleton.tscn",
         "res://Scens/Characters/Crystal.tscn",
         "res://Scens/Characters/Defenders/DefenderGino.tscn",
-        "res://Scens/Characters/Defenders/Robot.tscn"
+        "res://Scens/Characters/Defenders/Robot.tscn",
+        "res://Scens/Characters/Enemies/Zombie.tscn"
     };
 
     public static Node Create(Objects obj)

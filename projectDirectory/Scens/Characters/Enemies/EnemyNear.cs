@@ -4,8 +4,8 @@ using projectDirectory.Static;
 
 public class EnemyNear : Enemy
 {
-    public override void Attack()
-    {
-        _target.GetNode<HealthNode>("HealthNode").ApplyDamage(Damage);
-    }
+	public override void Attack()
+	{
+		_target.GetNode<HealthNode>("HealthNode").ApplyDamage(Damage);
+	}
 }

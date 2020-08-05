@@ -12,8 +12,6 @@ public class Character : RigidBody2D
     public float StartReloadTime = 3;
     [Export]
     public int StartDamage = 25;
-    [Export]
-    public ObjectCreator.Objects Type;
 
     [Signal]
     public delegate void HpUpdate(int max, int current);

@@ -29,9 +29,9 @@ public class EnemyContainer : Node
 		EmitSignal(nameof(Updated));
 	}
 
-	public Enemy Add()
+	public Enemy Add(ObjectCreator.Objects enemyType)
 	{
-		var enemy = (Enemy)ObjectCreator.Create(ObjectCreator.Objects.ENEMYNEAR);
+		var enemy = (Enemy)ObjectCreator.Create(enemyType);
 		_enemies.Add(enemy);
 		enemy.Connect(nameof(Character.Death), this, nameof(_OnEnemyDeath));
 		EmitSignal(nameof(Updated));
