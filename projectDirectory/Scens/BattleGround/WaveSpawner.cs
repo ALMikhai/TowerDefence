@@ -1,16 +1,20 @@
 using Godot;
 using System;
 
-public class WaveSpawner : Node2D
+public class WaveSpawner : Node
 {
 	[Signal]
 	public delegate void WavesEnd();
 
 	private EnemyContainer _enemyContainer;
+	private AnimationPlayer _animationPlayer;
+	private Label _waveLabel;
+	
 	private Character _target;
 	private PathFollow2D _spawnLocation;
 	private Timer _waveSpawnTimer;
 	private int _wavesNum = 3;
+	private int _currentWaveNum = 1;
 	private int _enemyOnWave = 3;
 	private Random _random = new Random();
 
@@ -18,6 +22,8 @@ public class WaveSpawner : Node2D
 	{
 		_enemyContainer = GetNode<EnemyContainer>("EnemyContainer");
 		_waveSpawnTimer = GetNode<Timer>("WaveSpawnTimer");
+		_animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+		_waveLabel = GetNode<Label>("WaveLabel/Value");
 	}
 
 	public void _OnWaveSpawnTimerTimeout()
@@ -34,13 +40,16 @@ public class WaveSpawner : Node2D
 
 	private void _StartNewWave()
 	{
-		if (_wavesNum <= 0)
+		if (_currentWaveNum > _wavesNum)
 		{
 			EmitSignal(nameof(WavesEnd));
 		}
 		else
 		{
-			_wavesNum--;
+			_waveLabel.Text = _currentWaveNum.ToString();
+			_animationPlayer.Play("ShowWave");
+			
+			_currentWaveNum++;
 			_waveSpawnTimer.Start();
 		}
 	}
