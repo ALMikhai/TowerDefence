@@ -14,7 +14,7 @@ public class DefenderSpawnPoint : Node2D
     private void AddDefenders()
     {
         var defenders = _defendersData.GetAvailableDefenderList();
-        for (int i = 0; i < defenders.Count; i++)
+        for (var i = 0; i < defenders.Count; i++)
         {
             var defenderNode = (Defender)ObjectCreator.Create(defenders[i]);
             AddChild(defenderNode);

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using projectDirectory.Scens.GameSM;
 
-public class BattleGround : Node2D
+public class BattleGround : Node
 {
 	[Signal]
 	public delegate void OnWaveEnd();
@@ -15,13 +15,13 @@ public class BattleGround : Node2D
 	private JumpScreen _jumpScreen;
 
 	private StateMachine _stateMachine;
-	public PauseState _pauseState;
-	public PlayerAttackState _playerAttackState;
+	public PauseState PauseState;
+	public PlayerAttackState PlayerAttackState;
 
-	public Global _global;
+	private Global _global;
 	private SceneChanger _sceneChanger;
 
-	public async override void _Ready()
+	public override async void _Ready()
 	{
 		_crystal = GetNode<Character>("Crystal");
 		_waveSpawner = GetNode<WaveSpawner>("WaveSpawner");
@@ -35,10 +35,10 @@ public class BattleGround : Node2D
 		_enemyContainer.Connect(nameof(EnemyContainer.EnemyDeath), this, nameof(_OnEnemyDeath));
 
 		_stateMachine = new StateMachine();
-		_pauseState = new PauseState(this, _stateMachine);
-		_playerAttackState = new PlayerAttackState(this, _stateMachine);
+		PauseState = new PauseState(this, _stateMachine);
+		PlayerAttackState = new PlayerAttackState(this, _stateMachine);
 
-		_stateMachine.Initialize(_playerAttackState);
+		_stateMachine.Initialize(PlayerAttackState);
 		
 		_jumpScreen.EnterAnimation();
 		await ToSignal(_jumpScreen, nameof(JumpScreen.AnimationFinished));
@@ -78,17 +78,17 @@ public class BattleGround : Node2D
 
 	private void _OnContinueButtonPressed()
 	{
-		_stateMachine.ChangeState(_playerAttackState);  
+		_stateMachine.ChangeState(PlayerAttackState);  
 	}
 
 	private void _OnPauseButtonPressed()
 	{
-		_stateMachine.ChangeState(_pauseState);
+		_stateMachine.ChangeState(PauseState);
 	}
 
 	private void _OnExitButtonPressed()
 	{
-		_stateMachine.ChangeState(_playerAttackState);
+		_stateMachine.ChangeState(PlayerAttackState);
 		_sceneChanger._stateMachine.ChangeState(_sceneChanger._menuState);
 	}
 

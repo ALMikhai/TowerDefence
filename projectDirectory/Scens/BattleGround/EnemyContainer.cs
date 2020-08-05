@@ -19,7 +19,7 @@ public class EnemyContainer : Node2D
 
     private void _OnEnemyDeath(Enemy enemy)
     {
-        enemy.Disconnect(nameof(Enemy.Death), this, nameof(_OnEnemyDeath));
+        enemy.Disconnect(nameof(Character.Death), this, nameof(_OnEnemyDeath));
         _enemies.Remove(enemy);
         EmitSignal(nameof(EnemyDeath), enemy);
 
@@ -33,7 +33,7 @@ public class EnemyContainer : Node2D
     {
         var enemy = (Enemy)ObjectCreator.Create(ObjectCreator.Objects.ENEMYNEAR);
         _enemies.Add(enemy);
-        enemy.Connect(nameof(Enemy.Death), this, nameof(_OnEnemyDeath));
+        enemy.Connect(nameof(Character.Death), this, nameof(_OnEnemyDeath));
         EmitSignal(nameof(Updated));
         return enemy;
     }

@@ -26,7 +26,7 @@ namespace projectDirectory.Scens.GameSM
         public override void HandleInput(InputEvent @event)
         {
             if (@event.IsActionPressed("pause"))
-                _stateMachine.ChangeState(_battleGround._playerAttackState);
+                _stateMachine.ChangeState(_battleGround.PlayerAttackState);
         }
     }
 }

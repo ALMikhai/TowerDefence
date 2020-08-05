@@ -22,7 +22,7 @@ namespace projectDirectory.Scens.GameSM
         public override void HandleInput(InputEvent @event)
         {
             if (@event.IsActionPressed("pause"))
-                _stateMachine.ChangeState(_battleGround._pauseState);
+                _stateMachine.ChangeState(_battleGround.PauseState);
 
             if (@event is InputEventScreenTouch screenTouchEvent && screenTouchEvent.IsPressed())
             {
