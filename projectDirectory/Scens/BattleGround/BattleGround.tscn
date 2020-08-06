@@ -11,7 +11,7 @@
 [ext_resource path="res://Scens/BattleGround/ShellsBorder.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scens/BattleGround/DefenderSpawnPoint.cs" type="Script" id=10]
 [ext_resource path="res://Scens/Ui/PauseMenu.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Sounds/Battle.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Scens/BattleGround/BattleGroundMusicPlayer.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Assets/Map/Fire.jpg" type="Texture" id=13]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
@@ -597,15 +597,13 @@ points = PoolVector2Array( 32, 32, 0.165558, 32, 0.165558, 21.1372, 32, 21.1372 
 
 [sub_resource type="Curve2D" id=10]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 1288, 0, 0, 0, 0, 0, 1344, 0, 0, 0, 0, 0, 1344, 720, 0, 0, 0, 0, 1408, 720, 0, 0, 0, 0, 1408, 0, 0, 0, 0, 0, 1472, 0, 0, 0, 0, 0, 1472, 720, 0, 0, 0, 0, 1536, 720, 0, 0, 0, 0, 1536, 0, 0, 0, 0, 0, 1600, 0, 0, 0, 0, 0, 1600, 720, 0, 0, 0, 0, 1288, 720, 0, 0, 0, 0, 1288, 0 )
+"points": PoolVector2Array( 0, 0, 0, 0, 1288, 0, 0, 0, 0, 0, 1344, 0, 0, 0, 0, 0, 1344, 720, 0, 0, 0, 0, 1408, 720, 0, 0, 0, 0, 1408, 0, 0, 0, 0, 0, 1426.84, 0.0851822, 0, 0, 0, 0, 1472, 0, 0, 0, 0, 0, 1472, 720, 0, 0, 0, 0, 1536, 720, 0, 0, 0, 0, 1536, 0, 0, 0, 0, 0, 1600, 0, 0, 0, 0, 0, 1600, 720, 0, 0, 0, 0, 1288, 720, 0, 0, 0, 0, 1288, 0 )
 }
 
 [node name="BattleGround" type="Node"]
 script = ExtResource( 1 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 12 )
-autoplay = true
+[node name="BattleGroundMusicPlayer" parent="." instance=ExtResource( 12 )]
 
 [node name="ShellsBorder" parent="." instance=ExtResource( 9 )]
 visible = false
@@ -614,9 +612,9 @@ position = Vector2( 632, 368 )
 [node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -680.0
-margin_right = -680.0
-margin_bottom = 112.0
+margin_left = -808.0
+margin_right = -536.0
+margin_bottom = 432.0
 texture = ExtResource( 13 )
 expand = true
 stretch_mode = 7
@@ -661,7 +659,7 @@ position = Vector2( 88, 472 )
 position = Vector2( 88, 568 )
 
 [node name="EnemyPath" type="Path2D" parent="."]
-position = Vector2( 24, 32 )
+position = Vector2( 0, 32 )
 scale = Vector2( 1, 0.922222 )
 curve = SubResource( 10 )
 __meta__ = {
@@ -684,6 +682,11 @@ anchor_bottom = 1.0
 margin_right = 0.0
 margin_bottom = 0.0
 
+[node name="JumpScreen" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="Fireworks" parent="." instance=ExtResource( 8 )]
+
 [node name="PauseMenu" parent="." instance=ExtResource( 11 )]
 pause_mode = 2
 visible = false
@@ -691,16 +694,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 0.0
 margin_bottom = 0.0
-
-[node name="JumpScreen" parent="." instance=ExtResource( 4 )]
-visible = false
-
-[node name="Fireworks" parent="." instance=ExtResource( 8 )]
 [connection signal="WavesEnd" from="WaveSpawner" to="." method="_OnWavesEnd"]
 [connection signal="Death" from="Crystal" to="." method="_OnCrystalBroke"]
 [connection signal="HpUpdate" from="Crystal" to="Hud" method="_OnCrystalHpUpdate"]
 [connection signal="ShellsUpdate" from="PlayerDefender" to="Hud" method="_OnShellsUpdate"]
 [connection signal="PauseButtonPressed" from="Hud" to="." method="_OnPauseButtonPressed"]
+[connection signal="FireworksEnd" from="Fireworks" to="." method="_OnFireworksEnd"]
 [connection signal="ContinueButtonPressed" from="PauseMenu" to="." method="_OnContinueButtonPressed"]
 [connection signal="ExitButtonPressed" from="PauseMenu" to="." method="_OnExitButtonPressed"]
-[connection signal="FireworksEnd" from="Fireworks" to="." method="_OnFireworksEnd"]

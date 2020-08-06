@@ -48,7 +48,7 @@ public class WaveSpawner : Node
 		}
 		else
 		{
-			_waveLabel.Text = _currentWaveNum.ToString();
+			_waveLabel.Text = $"{_currentWaveNum} / {_wavesNum}";
 			_animationPlayer.Play("ShowWave");
 			
 			_currentWaveNum++;

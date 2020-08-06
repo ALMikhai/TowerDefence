@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Scens\BattleGround\BattleGround.cs" />
+    <Compile Include="Scens\BattleGround\BattleGroundMusicPlayer.cs" />
     <Compile Include="Scens\BattleGround\Firework.cs" />
     <Compile Include="Scens\BattleGround\Fireworks.cs" />
     <Compile Include="Scens\Characteristics\Money.cs" />

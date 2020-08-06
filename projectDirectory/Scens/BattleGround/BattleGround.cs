@@ -14,6 +14,7 @@ public class BattleGround : Node
 	private MoneyNode _moneyNode;
 	private JumpScreen _jumpScreen;
 	private Fireworks _fireworks;
+	private BattleGroundMusicPlayer _musicPlayer;
 
 	private StateMachine _stateMachine;
 	public PauseState PauseState;
@@ -32,6 +33,7 @@ public class BattleGround : Node
 		_sceneChanger = GetTree().Root.GetNode<SceneChanger>("SceneChanger");
 		_jumpScreen = GetNode<JumpScreen>("JumpScreen");
 		_fireworks = GetNode<Fireworks>("Fireworks");
+		_musicPlayer = GetNode<BattleGroundMusicPlayer>("BattleGroundMusicPlayer");
 
 		_enemyContainer.Connect(nameof(EnemyContainer.Updated), this, nameof(_OnEnemyContainerUpdated));
 		_enemyContainer.Connect(nameof(EnemyContainer.EnemyDeath), this, nameof(_OnEnemyDeath));
@@ -55,6 +57,7 @@ public class BattleGround : Node
 
 	public void _OnCrystalBroke(Character character)
 	{
+		_global.Money.Add(_moneyNode.Get());
 		_sceneChanger._stateMachine.ChangeState(_sceneChanger._menuState);
 	}
 
@@ -62,6 +65,7 @@ public class BattleGround : Node
 	{
 		_global.NextLevel();
 		_global.Money.Add(_moneyNode.Get());
+		_musicPlayer.PlayWinMusic();
 		_fireworks.Start();
 	}
 
@@ -94,8 +98,11 @@ public class BattleGround : Node
 		_sceneChanger._stateMachine.ChangeState(_sceneChanger._menuState);
 	}
 	
-	private void _OnFireworksEnd()
+	private async void _OnFireworksEnd()
 	{
+		_jumpScreen.ExitAnimation();
+		await ToSignal(_jumpScreen, nameof(JumpScreen.AnimationFinished));
+		
 		_sceneChanger._stateMachine.ChangeState(_sceneChanger._menuState);
 	}
 
