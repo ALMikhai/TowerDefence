@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scens/BattleGround/BattleGround.cs" type="Script" id=1]
 [ext_resource path="res://Scens/Characters/Crystal.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Scens/Ui/Hud.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scens/BattleGround/WaveSpawner.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scens/Player/PlayerDefender.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scens/BattleGround/Fireworks.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scens/BattleGround/ShellsBorder.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scens/BattleGround/DefenderSpawnPoint.cs" type="Script" id=10]
 [ext_resource path="res://Scens/Ui/PauseMenu.tscn" type="PackedScene" id=11]
@@ -693,6 +694,8 @@ margin_bottom = 0.0
 
 [node name="JumpScreen" parent="." instance=ExtResource( 4 )]
 visible = false
+
+[node name="Fireworks" parent="." instance=ExtResource( 8 )]
 [connection signal="WavesEnd" from="WaveSpawner" to="." method="_OnWavesEnd"]
 [connection signal="Death" from="Crystal" to="." method="_OnCrystalBroke"]
 [connection signal="HpUpdate" from="Crystal" to="Hud" method="_OnCrystalHpUpdate"]
@@ -700,3 +703,4 @@ visible = false
 [connection signal="PauseButtonPressed" from="Hud" to="." method="_OnPauseButtonPressed"]
 [connection signal="ContinueButtonPressed" from="PauseMenu" to="." method="_OnContinueButtonPressed"]
 [connection signal="ExitButtonPressed" from="PauseMenu" to="." method="_OnExitButtonPressed"]
+[connection signal="FireworksEnd" from="Fireworks" to="." method="_OnFireworksEnd"]

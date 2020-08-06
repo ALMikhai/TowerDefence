@@ -13,6 +13,7 @@ public class BattleGround : Node
 	private EnemyContainer _enemyContainer;
 	private MoneyNode _moneyNode;
 	private JumpScreen _jumpScreen;
+	private Fireworks _fireworks;
 
 	private StateMachine _stateMachine;
 	public PauseState PauseState;
@@ -30,6 +31,7 @@ public class BattleGround : Node
 		_global = GetTree().Root.GetNode<Global>("Global");
 		_sceneChanger = GetTree().Root.GetNode<SceneChanger>("SceneChanger");
 		_jumpScreen = GetNode<JumpScreen>("JumpScreen");
+		_fireworks = GetNode<Fireworks>("Fireworks");
 
 		_enemyContainer.Connect(nameof(EnemyContainer.Updated), this, nameof(_OnEnemyContainerUpdated));
 		_enemyContainer.Connect(nameof(EnemyContainer.EnemyDeath), this, nameof(_OnEnemyDeath));
@@ -60,7 +62,7 @@ public class BattleGround : Node
 	{
 		_global.NextLevel();
 		_global.Money.Add(_moneyNode.Get());
-		_sceneChanger._stateMachine.ChangeState(_sceneChanger._menuState);
+		_fireworks.Start();
 	}
 
 	private void _OnEnemyContainerUpdated()
@@ -89,6 +91,11 @@ public class BattleGround : Node
 	private void _OnExitButtonPressed()
 	{
 		_stateMachine.ChangeState(PlayerAttackState);
+		_sceneChanger._stateMachine.ChangeState(_sceneChanger._menuState);
+	}
+	
+	private void _OnFireworksEnd()
+	{
 		_sceneChanger._stateMachine.ChangeState(_sceneChanger._menuState);
 	}
 
