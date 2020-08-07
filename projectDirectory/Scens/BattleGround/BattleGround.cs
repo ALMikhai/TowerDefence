@@ -14,6 +14,7 @@ public class BattleGround : Node
 	private MoneyNode _moneyNode;
 	private JumpScreen _jumpScreen;
 	private Fireworks _fireworks;
+	private DeathScreen _deathScreen;
 	private BattleGroundMusicPlayer _musicPlayer;
 
 	private StateMachine _stateMachine;
@@ -33,6 +34,7 @@ public class BattleGround : Node
 		_sceneChanger = GetTree().Root.GetNode<SceneChanger>("SceneChanger");
 		_jumpScreen = GetNode<JumpScreen>("JumpScreen");
 		_fireworks = GetNode<Fireworks>("Fireworks");
+		_deathScreen = GetNode<DeathScreen>("DeathScreen");
 		_musicPlayer = GetNode<BattleGroundMusicPlayer>("BattleGroundMusicPlayer");
 
 		_enemyContainer.Connect(nameof(EnemyContainer.Updated), this, nameof(_OnEnemyContainerUpdated));
@@ -41,7 +43,7 @@ public class BattleGround : Node
 		_stateMachine = new StateMachine();
 		PauseState = new PauseState(this, _stateMachine);
 		PlayerAttackState = new PlayerAttackState(this, _stateMachine);
-
+		
 		_stateMachine.Initialize(PlayerAttackState);
 		
 		_jumpScreen.EnterAnimation();
@@ -58,7 +60,8 @@ public class BattleGround : Node
 	public void _OnCrystalBroke(Character character)
 	{
 		_global.Money.Add(_moneyNode.Get());
-		_sceneChanger._stateMachine.ChangeState(_sceneChanger._menuState);
+		_musicPlayer.PlayDeathMusic();
+		_deathScreen.Start();
 	}
 
 	public void _OnWavesEnd()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Scens/BattleGround/BattleGround.cs" type="Script" id=1]
 [ext_resource path="res://Scens/Characters/Crystal.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Scens/Ui/PauseMenu.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scens/BattleGround/BattleGroundMusicPlayer.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Assets/Map/Fire.jpg" type="Texture" id=13]
+[ext_resource path="res://Scens/BattleGround/DeathScreen.tscn" type="PackedScene" id=14]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 10.0278, 2.18791, 16.4234, 5.48263, 23.7881, 10.3278, 30.9589, 19.4367, 31.3465, 32, 22.4314, 31.8403, 22.0438, 30.2899, 19.7181, 23.5066, 12.9349, 16.5296, 5.37643, 11.8783, 0, 9.94019 )
@@ -604,6 +605,7 @@ _data = {
 script = ExtResource( 1 )
 
 [node name="BattleGroundMusicPlayer" parent="." instance=ExtResource( 12 )]
+pause_mode = 2
 
 [node name="ShellsBorder" parent="." instance=ExtResource( 9 )]
 visible = false
@@ -686,6 +688,10 @@ margin_bottom = 0.0
 visible = false
 
 [node name="Fireworks" parent="." instance=ExtResource( 8 )]
+
+[node name="DeathScreen" parent="." instance=ExtResource( 14 )]
+pause_mode = 2
+visible = false
 
 [node name="PauseMenu" parent="." instance=ExtResource( 11 )]
 pause_mode = 2
