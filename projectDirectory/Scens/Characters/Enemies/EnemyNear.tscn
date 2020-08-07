@@ -3,7 +3,7 @@
 [ext_resource path="res://Scens/Characters/Enemies/Enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scens/Characters/Enemies/EnemyNear.cs" type="Script" id=62]
 
-[sub_resource type="SpriteFrames" id=40]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [  ],
 "loop": true,
@@ -26,7 +26,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=41]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 15.2811, 29.8301 )
 
 [node name="EnemyNear" instance=ExtResource( 3 )]
@@ -34,14 +34,13 @@ script = ExtResource( 62 )
 AttackRange = 0
 StartReloadTime = 0.0
 StartDamage = 0
-Type = 1
 Cost = 0
 StartSpeed = 0
 StartHp = 0
 
 [node name="AnimatedSprite" parent="." index="2"]
 scale = Vector2( 2, 2 )
-frames = SubResource( 40 )
+frames = SubResource( 1 )
 animation = "Walk"
 speed_scale = 2.0
 playing = true
@@ -49,7 +48,7 @@ flip_h = true
 
 [node name="CollisionShape2D" parent="." index="3"]
 position = Vector2( 10, 10 )
-shape = SubResource( 41 )
+shape = SubResource( 2 )
 
 [node name="HpBar" parent="." index="4"]
 margin_left = -27.0163

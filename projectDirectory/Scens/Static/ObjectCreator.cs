@@ -8,6 +8,7 @@ public static class ObjectCreator
         DEFENDERFROST = 0, SKELETON = 1,
         PLAYER = 2, DEFENDERGINO = 3,
         ROBOT = 4, ZOMBIE = 5,
+        MINOTAUR = 6,
     }
     
     private static readonly string[] _objectsPaths =
@@ -17,7 +18,8 @@ public static class ObjectCreator
         "res://Scens/Characters/Crystal.tscn",
         "res://Scens/Characters/Defenders/DefenderGino.tscn",
         "res://Scens/Characters/Defenders/Robot.tscn",
-        "res://Scens/Characters/Enemies/Zombie.tscn"
+        "res://Scens/Characters/Enemies/Zombie.tscn",
+        "res://Scens/Characters/Enemies/Bosses/Minotaur.tscn"
     };
 
     public static Node Create(Objects obj)

@@ -55,6 +55,6 @@ public class Menu : Control
 
 	private void UpdateView()
 	{
-		_levelLabel.Text = $"Lavel {_global.GetLevel()}";
+		_levelLabel.Text = $"Level {_global.GetLevel()}";
 	}
 }

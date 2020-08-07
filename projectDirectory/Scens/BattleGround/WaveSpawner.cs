@@ -28,15 +28,26 @@ public class WaveSpawner : Node
 
 	public void _OnWaveSpawnTimerTimeout()
 	{
-		for (var i = 0; i < _enemyOnWave; i++)
+		if (_currentWaveNum - 1 == _wavesNum)
 		{
-			Enemy enemy = i % 2 == 0
-				? _enemyContainer.Add(ObjectCreator.Objects.ZOMBIE)
-				: _enemyContainer.Add(ObjectCreator.Objects.SKELETON);
+			Enemy enemy = _enemyContainer.Add(ObjectCreator.Objects.MINOTAUR);
 			AddChild(enemy);
 			_spawnLocation.Offset = _random.Next();
 			enemy.GlobalPosition = _spawnLocation.GlobalPosition;
 			enemy.SetTarget(_target);
+		}
+		else
+		{
+			for (var i = 0; i < _enemyOnWave; i++)
+			{
+				Enemy enemy = i % 2 == 0
+					? _enemyContainer.Add(ObjectCreator.Objects.ZOMBIE)
+					: _enemyContainer.Add(ObjectCreator.Objects.SKELETON);
+				AddChild(enemy);
+				_spawnLocation.Offset = _random.Next();
+				enemy.GlobalPosition = _spawnLocation.GlobalPosition;
+				enemy.SetTarget(_target);
+			}
 		}
 	}
 
