@@ -67,7 +67,6 @@ public class BattleGround : Node
 	public void _OnWavesEnd()
 	{
 		_global.NextLevel();
-		_global.Money.Add(_moneyNode.Get());
 		_musicPlayer.PlayWinMusic();
 		_fireworks.Start();
 	}
@@ -103,6 +102,8 @@ public class BattleGround : Node
 	
 	private async void _OnFireworksEnd()
 	{
+		_global.Money.Add(_moneyNode.Get());
+		
 		_jumpScreen.ExitAnimation();
 		await ToSignal(_jumpScreen, nameof(JumpScreen.AnimationFinished));
 		
