@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scens/Characteristics/MoneyNode.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Font/Silver.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Assets/Ui/Hud/HpBarFill.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Ui/Hud/HpBarEmpty.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Ui/Hud/WindButton.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Ui/Hud/FireButton.png" type="Texture" id=6]
+[ext_resource path="res://Scens/Effects/WindEffect.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scens/Ui/Hud.cs" type="Script" id=7]
 [ext_resource path="res://Assets/Ui/Hud/shell(player)_trn.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Ui/Menu/SmallButton_trn.png" type="Texture" id=9]
@@ -106,32 +105,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Buttons" type="HBoxContainer" parent="."]
-visible = false
+[node name="WindEffect" parent="." instance=ExtResource( 5 )]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -176.0
-margin_top = -96.0
-margin_right = -42.0
-margin_bottom = -31.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Wind" type="TextureButton" parent="Buttons"]
-margin_right = 65.0
-margin_bottom = 65.0
-rect_min_size = Vector2( 65, 65 )
-texture_normal = ExtResource( 5 )
-expand = true
-
-[node name="Fire" type="TextureButton" parent="Buttons"]
-margin_left = 69.0
-margin_right = 134.0
-margin_bottom = 65.0
-rect_min_size = Vector2( 65, 65 )
-texture_normal = ExtResource( 6 )
-expand = true
+margin_left = -168.0
+margin_top = -120.0
+margin_right = -80.0
+margin_bottom = -32.0
 [connection signal="pressed" from="PauseButton" to="." method="_OnPauseButtonPressed"]

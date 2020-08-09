@@ -21,6 +21,7 @@ namespace projectDirectory.Scens.Charecters.SM
         public override void PhysicsUpdate(float delta)
         {
             _character.LinearVelocity = _character.Position.DirectionTo(_character.GetTarget().Position) * _character.Speed;
+
             if (_character.IsCloseToTarget())
             {
                 _stateMachine.ChangeState(_character._preAttackState);
