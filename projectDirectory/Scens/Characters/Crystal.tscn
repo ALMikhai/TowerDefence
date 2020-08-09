@@ -27,14 +27,14 @@ animations = [ {
 "name": "Idle",
 "speed": 5.0
 }, {
-"frames": [  ],
-"loop": true,
-"name": "Death",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 2 ), SubResource( 2 ), SubResource( 3 ) ],
 "loop": true,
 "name": "Attack",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "Death",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -52,8 +52,8 @@ collision_layer = 2
 script = ExtResource( 3 )
 AttackRange = 0
 StartReloadTime = 1.0
-Type = 2
 Shell = ExtResource( 4 )
+Type = 2
 
 [node name="AnimatedSprite" parent="." index="2"]
 scale = Vector2( 2.5, 2.5 )

@@ -67,6 +67,7 @@
     <Compile Include="Scens\Characters\Crystal.cs" />
     <Compile Include="Scens\Effects\Effect.cs" />
     <Compile Include="Scens\Effects\FireEffect.cs" />
+    <Compile Include="Scens\Effects\HealEffect.cs" />
     <Compile Include="Scens\Effects\WindEffect.cs" />
     <Compile Include="Scens\Player\PlayerDefender.cs" />
     <Compile Include="Scens\BattleGround\DefenderSpawnPoint.cs" />

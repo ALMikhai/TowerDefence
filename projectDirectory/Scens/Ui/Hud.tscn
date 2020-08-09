@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scens/Characteristics/MoneyNode.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Font/Silver.ttf" type="DynamicFontData" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Scens/Ui/Hud.cs" type="Script" id=7]
 [ext_resource path="res://Assets/Ui/Hud/shell(player)_trn.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Ui/Menu/SmallButton_trn.png" type="Texture" id=9]
+[ext_resource path="res://Scens/Effects/HealEffect.tscn" type="PackedScene" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -107,10 +108,14 @@ __meta__ = {
 }
 
 [node name="Effects" type="HBoxContainer" parent="."]
-margin_left = 900.0
-margin_top = 600.0
-margin_right = 988.0
-margin_bottom = 688.0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -330.0
+margin_top = -120.0
+margin_right = -58.0
+margin_bottom = -32.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -122,4 +127,8 @@ rect_min_size = Vector2( 88, 88 )
 [node name="FireEffect" parent="Effects" instance=ExtResource( 6 )]
 margin_left = 92.0
 margin_right = 180.0
+
+[node name="HealEffect" parent="Effects" instance=ExtResource( 10 )]
+margin_left = 184.0
+margin_right = 272.0
 [connection signal="pressed" from="PauseButton" to="." method="_OnPauseButtonPressed"]

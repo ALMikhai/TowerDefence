@@ -6,7 +6,7 @@
 
 [node name="WindEffect" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-Cost = 50
+Cost = 10
 
 [node name="Button" parent="." index="0"]
 texture_normal = ExtResource( 3 )
