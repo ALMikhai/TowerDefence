@@ -3,6 +3,9 @@ using System;
 
 public class WindEffect : Effect
 {
+	[Export] 
+	public int PushPower = 10000;
+	
 	protected override void Action()
 	{
 		var enemies = GetTree().GetNodesInGroup("Enemy");
@@ -10,8 +13,7 @@ public class WindEffect : Effect
 		foreach (var node in enemies)
 		{
 			var enemy = node as Enemy;
-			var velocity = enemy.LinearVelocity.Normalized() * -1 * 10;
-			enemy.ApplyCentralImpulse(velocity);
+			enemy.MoveAndSlide(Vector2.Right * PushPower);
 		}
 	}
 }

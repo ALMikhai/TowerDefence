@@ -14,14 +14,14 @@ namespace projectDirectory.Scens.Charecters.SM
 
         public override void Exit()
         {
-            _character.LinearVelocity = Vector2.Zero;
+            //_character.LinearVelocity = Vector2.Zero;
             TargetDisconnect();
         }
 
         public override void PhysicsUpdate(float delta)
         {
-            _character.LinearVelocity = _character.Position.DirectionTo(_character.GetTarget().Position) * _character.Speed;
-
+            _character.MoveAndSlide(_character.Position.DirectionTo(_character.GetTarget().Position) * _character.Speed);
+            
             if (_character.IsCloseToTarget())
             {
                 _stateMachine.ChangeState(_character._preAttackState);
