@@ -48,9 +48,12 @@ public class BattleGround : Node
 		
 		_jumpScreen.EnterAnimation();
 		await ToSignal(_jumpScreen, nameof(JumpScreen.AnimationFinished));
-		
-		GetNode<Effect>("Hud/WindEffect").Init(this);
 
+		foreach (var effect in GetNode<HBoxContainer>("Hud/Effects").GetChildren())
+		{
+			(effect as Effect).Init(this);
+		}
+	
 		Start(3, _global.GetLevel());
 	}
 

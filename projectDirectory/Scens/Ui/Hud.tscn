@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scens/Characteristics/MoneyNode.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Font/Silver.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Assets/Ui/Hud/HpBarFill.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Ui/Hud/HpBarEmpty.png" type="Texture" id=4]
 [ext_resource path="res://Scens/Effects/WindEffect.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scens/Effects/FireEffect.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scens/Ui/Hud.cs" type="Script" id=7]
 [ext_resource path="res://Assets/Ui/Hud/shell(player)_trn.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Ui/Menu/SmallButton_trn.png" type="Texture" id=9]
@@ -66,16 +67,16 @@ custom_fonts/font = SubResource( 1 )
 text = "Pause"
 
 [node name="Money" parent="." instance=ExtResource( 1 )]
-position = Vector2( 464, 656 )
+position = Vector2( 400, 656 )
 
 [node name="Stats" type="HBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = 48.0
+margin_left = -90.0
 margin_top = -112.0
-margin_right = 336.0
+margin_right = 198.0
 margin_bottom = -29.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -105,13 +106,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="WindEffect" parent="." instance=ExtResource( 5 )]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -168.0
-margin_top = -120.0
-margin_right = -80.0
-margin_bottom = -32.0
+[node name="Effects" type="HBoxContainer" parent="."]
+margin_left = 900.0
+margin_top = 600.0
+margin_right = 988.0
+margin_bottom = 688.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WindEffect" parent="Effects" instance=ExtResource( 5 )]
+rect_min_size = Vector2( 88, 88 )
+
+[node name="FireEffect" parent="Effects" instance=ExtResource( 6 )]
+margin_left = 92.0
+margin_right = 180.0
 [connection signal="pressed" from="PauseButton" to="." method="_OnPauseButtonPressed"]

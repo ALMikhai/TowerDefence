@@ -14,7 +14,6 @@ namespace projectDirectory.Scens.Charecters.SM
 
         public override void Exit()
         {
-            //_character.LinearVelocity = Vector2.Zero;
             TargetDisconnect();
         }
 
