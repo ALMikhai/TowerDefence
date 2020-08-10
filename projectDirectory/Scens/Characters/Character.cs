@@ -57,8 +57,8 @@ public class Character : KinematicBody2D
 
 	private void _OnDeath()
 	{
-		StateMachine.CurrentState.Death();
 		EmitSignal(nameof(Death), this);
+		StateMachine.CurrentState.Death();
 	}
 
 	private void _OnAnimationFinished()
@@ -76,10 +76,17 @@ public class Character : KinematicBody2D
 		_animatedSprite.Animation = AnimationNames.GetCharacterAnimation(animation);
 	}
 
-	public void SetTarget(Character target)
+	public void SetTarget(Character target = null)
 	{
 		_target = target;
-		StateMachine.CurrentState.SetTarget();
+		if (target == null)
+		{
+			StateMachine.ChangeState(_idleState);
+		}
+		else
+		{
+			StateMachine.CurrentState.SetTarget();
+		}
 	}
 
 	public Character GetTarget()

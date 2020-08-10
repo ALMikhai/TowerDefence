@@ -9,6 +9,8 @@ namespace projectDirectory.Scens.Charecters.SM
         public override void Enter()
         {
             _character.SetAnimation(projectDirectory.Static.Character.DEATH);
+            _character.CollisionLayer = 0;
+            _character.CollisionMask = 0;
         }
 
         public override void AnimationFinished()

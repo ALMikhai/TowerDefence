@@ -82,6 +82,10 @@ public class BattleGround : Node
 		{
 			GetTree().CallGroup("Defender", "SetTarget", _enemyContainer.GetActual());
 		}
+		else
+		{
+			GetTree().CallGroup("Defender", "SetTarget");
+		}
 	}
 
 	private void _OnEnemyDeath(Enemy enemy)

@@ -6,7 +6,12 @@ namespace projectDirectory.Scens.Charecters.SM
     {
         protected Character _character;
         protected StateMachine _stateMachine;
-        protected bool _targetConnected = false;
+
+        protected bool TargetConnected
+        {
+            get => _character.GetTarget().IsConnected(nameof(Character.Death), this, nameof(_OnTargetDeath));
+        }
+
         public State(Character character, StateMachine stateMachine)
         {
             _character = character;
@@ -36,19 +41,17 @@ namespace projectDirectory.Scens.Charecters.SM
 
         protected void TargetConnect()
         {
-            if (!_targetConnected)
+            if (!TargetConnected)
             {
                 _character.GetTarget().Connect(nameof(Character.Death), this, nameof(_OnTargetDeath));
-                _targetConnected = true;
             }
         }
 
         protected void TargetDisconnect()
         {
-            if (_targetConnected)
+            if (TargetConnected)
             {
                 _character.GetTarget().Disconnect(nameof(Character.Death), this, nameof(_OnTargetDeath));
-                _targetConnected = false;
             }
         }
 

@@ -35,7 +35,6 @@ namespace projectDirectory.Scens.Charecters.SM
             if (_reloadTimer.IsStopped())
             {
                 _stateMachine.ChangeState(_character._attackState);
-                return;
             }
         }
     }
