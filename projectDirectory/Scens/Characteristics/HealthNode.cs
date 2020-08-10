@@ -31,5 +31,10 @@ public class HealthNode : Node2D
 		{
 			EmitSignal(nameof(Death));
 		}
+		
+		var damageView = (DamageView)GD.Load<PackedScene>("res://Scens/Shells/DamageView.tscn").Instance();
+		GetParent().AddChild(damageView);
+		damageView.SetValue(damage);
+		damageView.GlobalPosition = (GetParent() as Character).GlobalPosition;
 	}
 }

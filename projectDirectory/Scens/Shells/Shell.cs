@@ -1,6 +1,4 @@
 using Godot;
-using System;
-using projectDirectory.Static;
 
 public class Shell : RigidBody2D
 {
@@ -12,12 +10,6 @@ public class Shell : RigidBody2D
 	{
 		var enemy = (Enemy)body;
 		enemy.GetNode<HealthNode>("HealthNode").ApplyDamage(_damage);
-
-		var damageView = (DamageView)GD.Load<PackedScene>("res://Scens/Shells/DamageView.tscn").Instance();
-		GetParent().AddChild(damageView);
-		damageView.SetValue(_damage);
-		damageView.GlobalPosition = enemy.GlobalPosition;
-
 		CallDeferred("queue_free");
 	}
 
