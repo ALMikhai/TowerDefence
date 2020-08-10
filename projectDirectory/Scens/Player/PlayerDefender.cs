@@ -15,15 +15,15 @@ public class PlayerDefender : Node2D
 	private Timer _reloadTimer;
 	private AudioStreamPlayer _attackSound;
 
-	private DefendersData _defendersData;
+	private Global _global;
 
 	public override void _Ready()
 	{
 		_reloadTimer = GetNode<Timer>("ReloadTimer");
 		_attackSound = GetNode<AudioStreamPlayer>("AttackSound");
-		_defendersData = GetTree().Root.GetNode<DefendersData>("DefendersData");
+		_global = GetTree().Root.GetNode<Global>("Global");
 
-		_damage = (int)(_damage + Math.Sqrt(350 * _defendersData.GetDefenderLevel(ObjectCreator.Objects.PLAYER)));
+		_damage = (int)(_damage + Math.Sqrt(350 * _global.Level));
 	}
 
 	public void _OnReloadTimerTimeout()

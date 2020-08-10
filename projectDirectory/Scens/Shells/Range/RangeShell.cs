@@ -21,11 +21,6 @@ public class RangeShell : Shell
 		{
 			var enemy = node as Enemy;
 			enemy.GetNode<HealthNode>("HealthNode").ApplyDamage(_damage);
-
-			var damageView = (DamageView)GD.Load<PackedScene>("res://Scens/Shells/DamageView.tscn").Instance();
-			GetParent().AddChild(damageView);
-			damageView.SetValue(_damage);
-			damageView.GlobalPosition = enemy.GlobalPosition;
 		}
 
 		var explosion = Explosion.Instance() as Explosion;

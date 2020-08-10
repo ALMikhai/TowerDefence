@@ -54,7 +54,7 @@ public class BattleGround : Node
 			(effect as Effect).Init(this);
 		}
 	
-		Start(3, _global.GetLevel());
+		Start(3, _global.Level);
 	}
 
 	public override void _Input(InputEvent @event)

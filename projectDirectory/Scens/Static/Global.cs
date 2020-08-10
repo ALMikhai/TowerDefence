@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class Global : Node
 {
     public MoneyNode Money { get; private set; }
-    private int _level = 1;
+    public int Level { get; private set; } = 1;
 
     public override void _Ready()
     {
@@ -13,14 +13,9 @@ public class Global : Node
         Load();
     }
 
-    public int GetLevel()
-    {
-        return _level;
-    }
-
     public void NextLevel()
     {
-        _level++;
+        Level++;
     }
 
     public void Save()
@@ -31,7 +26,7 @@ public class Global : Node
         var saveData = new Godot.Collections.Dictionary<string, object>
         {
             { "MONEY", Money.Get() },
-            { "LEVEL", _level }
+            { "LEVEL", Level }
         };
 
         saveFile.StoreLine(JSON.Print(saveData));
@@ -49,7 +44,7 @@ public class Global : Node
         var saveData = new Godot.Collections.Dictionary<string, object>((Godot.Collections.Dictionary)JSON.Parse(saveGame.GetLine()).Result);
 
         Money.Add(saveData["MONEY"].ToString().ToInt());
-        _level = saveData["LEVEL"].ToString().ToInt();
+        Level = saveData["LEVEL"].ToString().ToInt();
 
         saveGame.Close();
     }

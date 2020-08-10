@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class DefendersData : Node
 {
-    private Dictionary<ObjectCreator.Objects, bool> _defenderAvailable;
     private Dictionary<ObjectCreator.Objects, int> _defenderLevels;
     private Dictionary<ObjectCreator.Objects, string> _defenderNames;
     private Global _global;
@@ -13,24 +12,15 @@ public class DefendersData : Node
     {
         _global = GetTree().Root.GetNode<Global>("Global");
 
-        _defenderAvailable = new Dictionary<ObjectCreator.Objects, bool>
-        {
-            { ObjectCreator.Objects.DEFENDERGINO, true },
-            { ObjectCreator.Objects.DEFENDERFROST, true },
-            { ObjectCreator.Objects.ROBOT, true },
-        };
-
         _defenderLevels = new Dictionary<ObjectCreator.Objects, int>
         {
-            { ObjectCreator.Objects.PLAYER, 1 },
-            { ObjectCreator.Objects.DEFENDERGINO, 1 },
-            { ObjectCreator.Objects.DEFENDERFROST, 1 },
-            { ObjectCreator.Objects.ROBOT, 1 }
+            { ObjectCreator.Objects.DEFENDERGINO, 0 },
+            { ObjectCreator.Objects.DEFENDERFROST, 0 },
+            { ObjectCreator.Objects.ROBOT, 0 }
         };
 
         _defenderNames = new Dictionary<ObjectCreator.Objects, string>
         {
-            { ObjectCreator.Objects.PLAYER, "PLAYER" },
             { ObjectCreator.Objects.DEFENDERGINO, "DEFENDERGINO" },
             { ObjectCreator.Objects.DEFENDERFROST, "DEFENDERFROST" },
             { ObjectCreator.Objects.ROBOT, "DEFENDERROBOT" }
@@ -42,9 +32,9 @@ public class DefendersData : Node
     public List<ObjectCreator.Objects> GetAvailableDefenderList()
     {
         var result = new List<ObjectCreator.Objects>();
-        foreach (var defender in _defenderAvailable)
+        foreach (var defender in _defenderLevels)
         {
-            if (defender.Value == true)
+            if (defender.Value > 0)
                 result.Add(defender.Key);
         }
         return result;
@@ -81,11 +71,6 @@ public class DefendersData : Node
         {
             saveData.Add($"{_defenderNames[valuePair.Key]}_Level", valuePair.Value);
         }
-        
-        foreach (var valuePair in _defenderAvailable)
-        {
-            saveData.Add($"{_defenderNames[valuePair.Key]}_Open", valuePair.Value);
-        }
 
         saveFile.StoreLine(JSON.Print(saveData));
         saveFile.Close();
@@ -107,13 +92,6 @@ public class DefendersData : Node
             defenderLevels[valuePair.Key] = saveData[$"{_defenderNames[valuePair.Key]}_Level"].ToString().ToInt();
         }
         _defenderLevels = defenderLevels;
-        
-        var defenderAvailable = new Dictionary<ObjectCreator.Objects, bool>();
-        foreach (var valuePair in _defenderAvailable)
-        {
-            defenderAvailable[valuePair.Key] = (bool)saveData[$"{_defenderNames[valuePair.Key]}_Open"];
-        }
-        _defenderAvailable = defenderAvailable;
 
         saveGame.Close();
     }
