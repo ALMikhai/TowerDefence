@@ -168,10 +168,12 @@ __meta__ = {
 }
 
 [node name="MoneyContainer" type="HBoxContainer" parent="Strore"]
-margin_left = 1064.0
-margin_top = 48.0
-margin_right = 1112.0
-margin_bottom = 88.0
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -200.0
+margin_top = 40.0
+margin_right = -152.0
+margin_bottom = 80.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -204,12 +206,10 @@ margin_right = 1058.0
 Type = 3
 
 [node name="Back" type="TextureButton" parent="Strore"]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 40.0
-margin_top = -696.0
-margin_right = 248.0
-margin_bottom = -624.0
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 232.0
+margin_bottom = 96.0
 texture_normal = ExtResource( 9 )
 expand = true
 __meta__ = {

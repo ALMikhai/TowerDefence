@@ -12,6 +12,7 @@ public class DefenderCell : Control
 	private Label _level;
 	private Label _levelUpCostLabel;
 	private DefendersData _defendersData;
+	private TextureRect _blur;
 
 	public override void _Ready()
 	{
@@ -21,6 +22,7 @@ public class DefenderCell : Control
 		_levelUpCostLabel = GetNode<Label>("LevelUp/Cost");
 		_defendersData = GetTree().Root.GetNode<DefendersData>("DefendersData");
 		_defenderNode = (Defender)ObjectCreator.Create(Type);
+		_blur = GetNode<TextureRect>("BlurContainer/Blur");
 
 		AddChild(_defenderNode);
 		_defenderNode.Position = _defenderPosition.Position;
@@ -31,9 +33,12 @@ public class DefenderCell : Control
 	private void UpdateView()
 	{
 		_defenderNode._Ready();
-		_level.Text = _defendersData.GetDefenderLevel(Type).ToString();
+		var defenderLevel = _defendersData.GetDefenderLevel(Type);
+		_level.Text = defenderLevel.ToString();
 		_dps.Text = ((int)(_defenderNode.Damage / _defenderNode.ReloadTime)).ToString();
 		_levelUpCostLabel.Text = _defendersData.GetNextLevelCost(Type).ToString();
+
+		_blur.Visible = defenderLevel == 0;
 	}
 
 	private void _OnLevelUpPressed()
