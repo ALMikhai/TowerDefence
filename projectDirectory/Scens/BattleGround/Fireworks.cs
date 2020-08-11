@@ -10,7 +10,7 @@ public class Fireworks : Node
 	public delegate void FireworksEnd();
 	
 	private Random _random;
-	private int _fireworksNum = 10;
+	private int _fireworksNum = 7;
 	
 	public override void _Ready()
 	{
@@ -19,11 +19,9 @@ public class Fireworks : Node
 
 	private void _OnReloadTimeout()
 	{
-		if (_fireworksNum > 0)
-		{
-			_fireworksNum--;
-		}
-		else
+		_fireworksNum--;
+		
+		if (_fireworksNum == 0)
 		{
 			EmitSignal(nameof(FireworksEnd));
 		}

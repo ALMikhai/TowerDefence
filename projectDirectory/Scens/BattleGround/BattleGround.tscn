@@ -646,19 +646,10 @@ __meta__ = {
 position = Vector2( 88, 88 )
 
 [node name="1" type="Position2D" parent="DefenderSpawnPoint"]
-position = Vector2( 88, 184 )
+position = Vector2( 88, 312 )
 
 [node name="2" type="Position2D" parent="DefenderSpawnPoint"]
-position = Vector2( 88, 280 )
-
-[node name="3" type="Position2D" parent="DefenderSpawnPoint"]
-position = Vector2( 88, 376 )
-
-[node name="4" type="Position2D" parent="DefenderSpawnPoint"]
-position = Vector2( 88, 472 )
-
-[node name="5" type="Position2D" parent="DefenderSpawnPoint"]
-position = Vector2( 88, 568 )
+position = Vector2( 88, 504 )
 
 [node name="EnemyPath" type="Path2D" parent="."]
 position = Vector2( 0, 32 )
